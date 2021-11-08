@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
@@ -55,10 +55,10 @@ describe('Testa a tela de Login', () => {
     fireEvent.change(password, { target: { value: '12345678' } });
 
     const entrarBtn = screen.getByTestId(SUBMIT_BTN);
-    userEvent.click(entrarBtn);
+    fireEvent.click(entrarBtn);
 
     // const { pathname } = history.location;
-    // const { location: { pathname } } = history;
-    // expect(pathname).toBe('/comidas');
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/comidas');
   });
 });
