@@ -1,13 +1,15 @@
 // - Tem os data-testids `profile-top-btn`, `page-title` e `search-top-btn`
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import searchBar from './searchBar';
 
 function Header({ title, showSearchBtn = false }) {
   const history = useHistory();
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   return (
     <div>
@@ -20,11 +22,15 @@ function Header({ title, showSearchBtn = false }) {
       </button>
       <h1 data-testid="page-title">{title}</h1>
       { showSearchBtn && (
-        <button type="button" data-testid="search-top-btn">
+        <button
+          type="button"
+          data-testid="search-top-btn"
+          onClick={ () => setShowSearchBar(!showSearchBar) }
+        >
           <img src={ searchIcon } alt="searchIcon" />
         </button>
-      )
-      }
+      )}
+      { showSearchBar && <searchBar /> }
     </div>
   );
 }

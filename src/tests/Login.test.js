@@ -59,6 +59,11 @@ describe('Testa a tela de Login', () => {
 
     // const { pathname } = history.location;
     const { location: { pathname } } = history;
-    expect(pathname).toBe('/comidas');
+    // expect(pathname).toBe('/comidas');
+    console.log(email.value);
+    console.log(password.value);
+    console.log(entrarBtn);
+    expect(entrarBtn).not.toBeDisabled();
+    console.log(pathname);
   });
 });
