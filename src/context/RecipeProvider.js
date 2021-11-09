@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
@@ -14,16 +14,15 @@ function RecipeProvider({ children }) {
   };
 
   const fetchDrink = async (method, option, search) => {
-    const drinkURL = 'https://thecocktaildb.com/api/json/v1/1/'
-    + `${method}.php?${option}=${search}`;
+    const drinkURL = `https://thecocktaildb.com/api/json/v1/1/${method}.php?${option}=${search}`;
     const drinkRecipes = await fetch(drinkURL).then((response) => response.json());
     return drinkRecipes.drinks;
   };
 
-  useEffect(() => {
-    fetchMeal('search', 's', 'Arrabiata');
-    fetchDrink('search', 's', 'margarita');
-  }, []);
+  // useEffect(() => {
+  //   fetchMeal('search', 's', 'Arrabiata');
+  //   fetchDrink('search', 's', 'margarita');
+  // }, []);
 
   const context = {
     fetchDrink,
