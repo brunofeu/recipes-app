@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import searchBar from './searchBar';
+import SearchBar from './SearchBar';
 
 function Header({ title, showSearchBtn = false }) {
   const history = useHistory();
@@ -16,21 +16,19 @@ function Header({ title, showSearchBtn = false }) {
       <button
         type="button"
         onClick={ () => history.push('/perfil') }
-        data-testid="profile-top-btn"
       >
-        <img src={ profileIcon } alt="profile" />
+        <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
       </button>
       <h1 data-testid="page-title">{title}</h1>
       { showSearchBtn && (
         <button
           type="button"
-          data-testid="search-top-btn"
           onClick={ () => setShowSearchBar(!showSearchBar) }
         >
-          <img src={ searchIcon } alt="searchIcon" />
+          <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
-      { showSearchBar && <searchBar /> }
+      { showSearchBar && <SearchBar /> }
     </div>
   );
 }

@@ -26,9 +26,10 @@ function App() {
           <Route exact path="/" component={ Login } />
           <Route exact path="/comidas" component={ Food } />
           <Route exact path="/bebidas" component={ Drinks } />
-          <Route path="/comidas/:{id-da-receita}" component={ FoodRecipes } />
-          <Route path="/bebidas/:{id-da-receita}" component={ DrinkRecipes } />
+          <Route exact path="/comidas/:{id-da-receita}" component={ FoodRecipes } />
+          <Route exact path="/bebidas/:{id-da-receita}" component={ DrinkRecipes } />
           <Route
+            exact
             path="/comidas/:{id-da-receita}/in-progress"
             component={ FoodInProgress }
           />
@@ -37,17 +38,18 @@ function App() {
             component={ DrinkInProgress }
           />
           <Route exact path="/explorar" component={ ExploreMenu } />
-          <Route path="/explorar/comidas" component={ ExploreFoods } />
-          <Route path="/explorar/bebidas" component={ ExploreDrinks } />
+          <Route exact path="/explorar/comidas" component={ ExploreFoods } />
+          <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
           <Route
             path="/explorar/comidas/ingredientes"
             component={ ExploreFoodsRecipes }
           />
           <Route
+            exact
             path="/explorar/bebidas/ingredientes"
             component={ ExploreDrinksRecipes }
           />
-          <Route path="/explorar/comidas/area" component={ ExploreByPlaces } />
+          <Route exact path="/explorar/comidas/area" component={ ExploreByPlaces } />
           <Route exact path="/perfil" component={ Profile } />
           <Route path="/receitas-feitas" component={ MadeRecipes } />
           <Route path="/receitas-favoritas" component={ Favorites } />
