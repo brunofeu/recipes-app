@@ -19,10 +19,14 @@ describe('Testa o Header da aplicação', () => {
     expect(searchBtn).toBeInTheDocument();
   });
 
-  // test('Verifica o Header em todas as Rotas', () => {
-  //   const {history} = renderWithRouter(<App />);
+  test('Verifica o Header em todas as Rotas', () => {
+    const { history } = renderWithRouter(<App />);
 
-  //   const profileBtn = screen.getByTestId('profile-top-btn');
-  //   expect(profileBtn).not.toBeInTheDocument();
-  // });
+    const profileBtn = screen.getByTestId('profile-top-btn');
+    expect(profileBtn).not.toBeInTheDocument();
+
+    history.push('/comidas');
+
+    expect(profileBtn).toBeInTheDocument();
+  });
 });
