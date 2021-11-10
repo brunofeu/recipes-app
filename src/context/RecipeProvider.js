@@ -1,32 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
 function RecipeProvider({ children }) {
-  // const [data, setData] = useState({});
+  // const [isLoading, setLoading] = useState(true);
+  const [meal, setMeal] = useState('');
+  const [drink, setDrink] = useState('');
+  const [page, setPage] = useState('');
 
   // https://www.thecocktaildb.com/api/json/v1/1/{endpoint};
 
   const fetchMeal = async (method, option, search) => {
-    const mealURL = `https://themealdb.com/api/json/v1/1/${method}.php?${option}=${search}`;
+    const mealURL = 'https://www.themealdb.com/api/json/v1/1/'
+    + `${method}.php?${option}=${search}`;
     const mealRecipes = await fetch(mealURL).then((response) => response.json());
-    return mealRecipes.meals;
+    const mealResponse = mealRecipes.meals;
+    setMeal(mealResponse);
   };
 
   const fetchDrink = async (method, option, search) => {
-    const drinkURL = `https://www.thecocktaildb.com/api/json/v1/1/${method}.php?${option}=${search}`;
+    const drinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/'
+    + `${method}.php?${option}=${search}`;
     const drinkRecipes = await fetch(drinkURL).then((response) => response.json());
-    return drinkRecipes.drinks;
+    const drinkResponse = drinkRecipes.drinks;
+    setDrink(drinkResponse);
   };
 
+  useEffect(() => {}, []);
+
   // useEffect(() => {
-  //   fetchMeal('lookup', 'i', '52771');
-  //   fetchDrink('lookup', 'i', '178319');
+  //   fetchMeal('search', 's', 'Arrabiata');
+  //   fetchDrink('search', 's', 'margarita');
   // }, []);
 
   const context = {
     fetchMeal,
     fetchDrink,
+    setPage,
+    meal,
+    drink,
+    page,
   };
 
   return (
