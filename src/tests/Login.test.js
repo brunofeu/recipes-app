@@ -47,7 +47,7 @@ describe('Testa a tela de Login', () => {
   });
 
   it('Verifica se depois de apertar o botão redireciona para a pagina de Food', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
 
     const email = screen.getByTestId(EMAIL_INPUT);
     fireEvent.change(email, { target: { value: 'teste@gmail.com' } });
@@ -57,13 +57,6 @@ describe('Testa a tela de Login', () => {
     const entrarBtn = screen.getByTestId(SUBMIT_BTN);
     fireEvent.click(entrarBtn);
 
-    // const { pathname } = history.location;
-    const { location: { pathname } } = history;
-    // expect(pathname).toBe('/comidas');
-    console.log(email.value);
-    console.log(password.value);
-    console.log(entrarBtn);
-    expect(entrarBtn).not.toBeDisabled();
-    console.log(pathname);
+    expect(window.location.pathname).toBe('/comidas');
   });
 });

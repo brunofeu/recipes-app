@@ -1,8 +1,12 @@
 import React from 'react';
 
-function searchBar() {
+function SearchBar() {
   return (
     <div>
+      <input
+        data-testid="search-input"
+        name="search"
+      />
       <label htmlFor="byIngridient">
         <input
           data-testid="ingredient-search-radio"
@@ -37,4 +41,4 @@ function searchBar() {
   );
 }
 
-export default searchBar;
+export default SearchBar;
