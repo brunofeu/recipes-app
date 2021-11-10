@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton';
 import IngredientsList from '../../components/IngredientsList';
 import RecipeInstructions from '../../components/RecipeInstructions';
@@ -10,6 +11,7 @@ import RecipeContext from '../../context/RecipeContext';
 
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
+  const history = useHistory();
   const { fetchMeal, fetchDrink } = useContext(RecipeContext);
   const [recipe, setRecipe] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
@@ -39,12 +41,12 @@ function DrinkRecipes(props) {
           />
           <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
           <ShareButton />
-          <FavoriteButton />
+          <FavoriteButton recipe={ recipe } type="Drink" />
           <h3 data-testid="recipe-category">{ recipe.strAlcoholic }</h3>
           <IngredientsList recipe={ recipe } />
           <RecipeInstructions recipe={ recipe } />
           <RecomendationCard recomendations={ recomendations } type="Meal" />
-          <StartButton />
+          <StartButton location={ history.location.pathname } />
         </div>
       )}
     </div>
