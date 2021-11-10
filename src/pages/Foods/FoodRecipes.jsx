@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import FavoriteButton from '../../components/FavoriteButton';
 import IngredientsList from '../../components/IngredientsList';
+import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
 import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
@@ -41,7 +42,7 @@ function FoodRecipes(props) {
           <FavoriteButton />
           <h3 data-testid="recipe-category">{ recipe.strCategory }</h3>
           <IngredientsList recipe={ recipe } />
-          <h2 data-testid="instructions"> Instructions </h2>
+          <RecipeInstructions recipe={ recipe } />
           <h2 data-testid="video">Video</h2>
           <RecomendationCard recomendations={ recomendations } type="Drink" />
           <StartButton />

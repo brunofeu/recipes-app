@@ -2,21 +2,21 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function IngredientsList({ recipe }) {
-  console.log(recipe)
-  const ingredients = Object.keys(recipe).filter(
-    (item) => item.includes('strIngredient'),
-  );
+  const ingredients = {
+    ingredient: Object.keys(recipe).filter((item) => item.includes('strIngredient')),
+    measure: Object.keys(recipe).filter((item) => item.includes('strMeasure')),
+  };
 
   return (
     <div>
       <h2>Ingredientes</h2>
       <ul>
         {
-          ingredients.map((item, index) => (
+          ingredients.ingredient.map((item, index) => (
             recipe[item] !== '' && recipe[item] !== null
               ? (
                 <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-                  {recipe[item]}
+                  {`${recipe[item]} - ${recipe[ingredients.measure[index]]}`}
                 </li>
               )
               : null

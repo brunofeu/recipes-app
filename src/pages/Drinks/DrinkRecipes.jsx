@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import FavoriteButton from '../../components/FavoriteButton';
 import IngredientsList from '../../components/IngredientsList';
+import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
 import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
@@ -9,24 +10,22 @@ import RecipeContext from '../../context/RecipeContext';
 
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
-  const { fetchMeal, fetchDrink, meal, drink } = useContext(RecipeContext);
+  const { fetchMeal, fetchDrink } = useContext(RecipeContext);
   const [recipe, setRecipe] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipeDetail = async () => {
-    // const listDrink = (await fetchDrink('lookup', 'i', id));
-    await fetchDrink('lookup', 'i', id);
-    await fetchMeal('search', 's', '');
-    // const listRecomendations = (await fetchMeal('search', 's', ''));
-    setRecomendations(meal);
-    setRecipe(drink[0]);
+    setIsLoading(true);
+    const listDrink = (await fetchDrink('lookup', 'i', id));
+    const listRecomendations = (await fetchMeal('search', 's', ''));
+    setRecomendations(listRecomendations);
+    setRecipe(listDrink[0]);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchRecipeDetail();
-    setIsLoading(false);
   }, []);
 
   return (
@@ -41,9 +40,9 @@ function DrinkRecipes(props) {
           <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
           <ShareButton />
           <FavoriteButton />
-          <h3 data-testid="recipe-category">{ recipe.strCategory }</h3>
+          <h3 data-testid="recipe-category">{ recipe.strAlcoholic }</h3>
           <IngredientsList recipe={ recipe } />
-          <h2 data-testid="instructions"> Instructions </h2>
+          <RecipeInstructions recipe={ recipe } />
           <RecomendationCard recomendations={ recomendations } type="Meal" />
           <StartButton />
         </div>
