@@ -10,22 +10,21 @@ import RecipeContext from '../../context/RecipeContext';
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
   const { fetchMeal, fetchDrink } = useContext(RecipeContext);
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipeDetail = async () => {
-    setIsloading(true);
     const listDrink = (await fetchDrink('lookup', 'i', id));
     const listRecomendations = (await fetchMeal('search', 's', ''));
     setRecomendations(listRecomendations);
     setRecipe(listDrink[0]);
-    setIsloading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchRecipeDetail();
-    fetchRecipeDetail();
+    setIsLoading(false);
   }, []);
 
   return (
@@ -34,7 +33,7 @@ function DrinkRecipes(props) {
         <div>
           <img
             src={ recipe.strDrinkThumb }
-            alt="foto da receita"
+            alt="imagem-da-receita"
             data-testid="recipe-photo"
           />
           <h1 data-testid="recipe-title">{recipe.strDrink}</h1>

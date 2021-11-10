@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function IngredientsList({ recipe }) {
+  console.log(recipe)
   const ingredients = Object.keys(recipe).filter(
     (item) => item.includes('strIngredient'),
   );

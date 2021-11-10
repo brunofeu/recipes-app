@@ -12,15 +12,15 @@ function FoodRecipes(props) {
   const { fetchMeal, fetchDrink } = useContext(RecipeContext);
   const [recipe, setRecipe] = useState({});
   const [recomendations, setRecomendations] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipeDetail = async () => {
-    setIsloading(true);
+    setIsLoading(true);
     const listMeal = (await fetchMeal('lookup', 'i', id));
     const listRecomendations = (await fetchDrink('search', 's', ''));
     setRecomendations(listRecomendations);
     setRecipe(listMeal[0]);
-    setIsloading(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {

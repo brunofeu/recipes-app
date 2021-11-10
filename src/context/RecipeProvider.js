@@ -14,19 +14,19 @@ function RecipeProvider({ children }) {
   };
 
   const fetchDrink = async (method, option, search) => {
-    const drinkURL = `https://thecocktaildb.com/api/json/v1/1/${method}.php?${option}=${search}`;
+    const drinkURL = `https://www.thecocktaildb.com/api/json/v1/1/${method}.php?${option}=${search}`;
     const drinkRecipes = await fetch(drinkURL).then((response) => response.json());
     return drinkRecipes.drinks;
   };
 
   // useEffect(() => {
-  //   fetchMeal('search', 's', 'Arrabiata');
-  //   fetchDrink('search', 's', 'margarita');
+  //   fetchMeal('lookup', 'i', '52771');
+  //   fetchDrink('lookup', 'i', '178319');
   // }, []);
 
   const context = {
-    fetchDrink,
     fetchMeal,
+    fetchDrink,
   };
 
   return (

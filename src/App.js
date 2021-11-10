@@ -34,6 +34,7 @@ function App() {
             component={ FoodInProgress }
           />
           <Route
+            exact
             path="/bebidas/:id/in-progress"
             component={ DrinkInProgress }
           />
