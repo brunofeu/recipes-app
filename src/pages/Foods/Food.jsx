@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react';
-import CardReceita from '../../components/CardReceita';
+import React, { useContext, useEffect } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
+import CardReceita from '../../components/CardReceita';
 
 function Food() {
-  const { foodRecipes, fetchMeal } = useContext(RecipeContext);
+  const { meal, fetchMeal } = useContext(RecipeContext);
 
   const search = 'search';
   const s = 's';
@@ -12,12 +12,18 @@ function Food() {
 
   useEffect(() => {
     fetchMeal(search, s, a);
-  }, []);
+    // const { setPage } = useContext(RecipeContext);
+  });
+
+  // useEffect(() => {
+  //   setPage('comidas');
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div>
       <Header title="Comidas" showSearchBtn="true" />
-      <CardReceita infos={ [foodRecipes, 'idMeal', 'strMealThumb', 'strMeal'] } />
+      <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal'] } />
     </div>
   );
 }

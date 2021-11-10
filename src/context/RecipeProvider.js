@@ -1,32 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
 function RecipeProvider({ children }) {
-  // const [data, setData] = useState({});
-  const [foodRecipes, setFoodRecipes] = useState([]);
-  const [drinkRecipes, setDrinkRecipes] = useState([]);
+  // const [isLoading, setLoading] = useState(true);
+  const [meal, setMeal] = useState([]);
+  const [drink, setDrink] = useState([]);
+  const [page, setPage] = useState('');
 
   // https://www.thecocktaildb.com/api/json/v1/1/{endpoint};
 
-  const fetchMeal = async (method = 'search', option = 's', search = '') => {
-    const mealURL = `https://themealdb.com/api/json/v1/1/${method}.php?${option}=${search}`;
-    const mealResponse = await fetch(mealURL).then((response) => response.json());
-    setFoodRecipes(mealResponse.meals);
+  const fetchMeal = async (method, option, search) => {
+    const mealURL = 'https://www.themealdb.com/api/json/v1/1/'
+    + `${method}.php?${option}=${search}`;
+    const mealRecipes = await fetch(mealURL).then((response) => response.json());
+    const mealResponse = mealRecipes.meals;
+    setMeal(mealResponse);
   };
 
-  const fetchDrink = async (method = 'search', option = 's', search = '') => {
-    const drinkURL = 'https://thecocktaildb.com/api/json/v1/1/'
+  const fetchDrink = async (method, option, search) => {
+    const drinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/'
     + `${method}.php?${option}=${search}`;
-    const drinkResponse = await fetch(drinkURL).then((response) => response.json());
-    setDrinkRecipes(drinkResponse.drinks);
+    const drinkRecipes = await fetch(drinkURL).then((response) => response.json());
+    const drinkResponse = drinkRecipes.drinks;
+    setDrink(drinkResponse);
   };
+
+  useEffect(() => {}, []);
+
+  // useEffect(() => {
+  //   fetchMeal('search', 's', 'Arrabiata');
+  //   fetchDrink('search', 's', 'margarita');
+  // }, []);
 
   const context = {
-    foodRecipes,
-    drinkRecipes,
     fetchDrink,
     fetchMeal,
+    setPage,
+    meal,
+    drink,
+    page,
   };
 
   return (
