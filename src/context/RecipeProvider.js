@@ -10,7 +10,7 @@ function RecipeProvider({ children }) {
 
   // https://www.thecocktaildb.com/api/json/v1/1/{endpoint};
 
-  const fetchMeal = async (method, option, search) => {
+  const fetchMeal = async (method = 'search', option = 'f', search = '') => {
     const mealURL = 'https://www.themealdb.com/api/json/v1/1/'
     + `${method}.php?${option}=${search}`;
     const mealRecipes = await fetch(mealURL).then((response) => response.json());

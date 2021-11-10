@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 
-function SearchBar(props) {
+function SearchBar() {
   const { fetchDrink, fetchMeal, page, meal, drink } = useContext(RecipeContext);
   const [data, setData] = useState({
     searchText: '',
     searchSubmited: '',
   });
+  const history = useHistory();
 
   const handleChange = (event) => {
     setData({
@@ -24,19 +26,20 @@ function SearchBar(props) {
   };
 
   const mealRedirect = () => {
-    const { history } = props;
+    // const { history } = prop;
     const goTo = meal.length;
     const magicNumber = 1;
 
     if (goTo === magicNumber) {
       history.push(`/comidas/${meal[0].idMeal}`);
+      console.log(`/comidas/${meal[0].idMeal}`);
     } if (goTo < magicNumber) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   };
 
   const drinkRedirect = () => {
-    const { history } = props;
+    // const { history } = props;
     const goTo = drink.length;
     const magicNumber = 1;
 
@@ -49,9 +52,9 @@ function SearchBar(props) {
 
   const fetchRecipe = (method, option, search) => {
     if (page === 'comidas') {
-      return fetchMeal(method, option, search) && mealRedirect();
+      return fetchMeal(method, option, search) /*&& mealRedirect()*/;
     } if (page === 'bebidas') {
-      return fetchDrink(method, option, search) && drinkRedirect();
+      return fetchDrink(method, option, search) /*&& drinkRedirect()*/;
     }
   };
 
@@ -60,22 +63,27 @@ function SearchBar(props) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     } if (data.searchSubmited === 'ingredient') {
       fetchRecipe('filter', 'i', data.searchText);
-      console.log(data.searchText);
+      // console.log(data.searchText);
     } if (data.searchSubmited === 'name') {
       fetchRecipe('search', 's', data.searchText);
-      console.log(data.searchText);
+      // console.log(data.searchText);
     } if (data.searchSubmited === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
-      console.log(data.searchText);
+      // console.log(data.searchText);
     } else {
-      console.log('testess');
+      // console.log('testess');
     }
-    console.log(meal);
-    console.log(drink);
-    console.log(page);
+    // console.log(meal);
+    // console.log(drink);
+    // console.log(page);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    mealRedirect();
+  }, [meal]);
+  useEffect(() => {
+    drinkRedirect();
+  }, [drink]);
 
   return (
     <div>
@@ -85,36 +93,35 @@ function SearchBar(props) {
         name="search"
         onChange={ handleChange }
       />
-      <label htmlFor="byIngridient">
+      <div>
         <input
           data-testid="ingredient-search-radio"
           id="byIngridient"
+          name="radioBtn"
           type="radio"
           value="ingredient"
           onClick={ handleCheck }
         />
         Ingrediente
-      </label>
-      <label htmlFor="byName">
         <input
           data-testid="name-search-radio"
           id="byName"
+          name="radioBtn"
           type="radio"
           value="name"
           onClick={ handleCheck }
         />
         Nome
-      </label>
-      <label htmlFor="byFirstLetter">
         <input
           data-testid="first-letter-search-radio"
           id="byFirstLetter"
+          name="radioBtn"
           type="radio"
           value="firstLetter"
           onClick={ handleCheck }
         />
         Primeira Letra
-      </label>
+      </div>
       <button
         data-testid="exec-search-btn"
         type="button"
