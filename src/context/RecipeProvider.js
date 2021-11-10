@@ -10,6 +10,7 @@ function RecipeProvider({ children }) {
   const fetchMeal = async (method, option, search) => {
     const mealURL = `https://themealdb.com/api/json/v1/1/${method}.php?${option}=${search}`;
     const mealRecipes = await fetch(mealURL).then((response) => response.json());
+    console.log(mealRecipes)
     return mealRecipes.meals;
   };
 
