@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import RecipeContext from '../context/RecipeContext';
 
 function SearchBar() {
-  const { fetchMeal, meal } = useContext(RecipeContext);
+  const { fetchDrink, fetchMeal, page, meal, drink } = useContext(RecipeContext);
   const [data, setData] = useState({
     searchText: '',
     searchSubmited: '',
@@ -22,22 +22,32 @@ function SearchBar() {
     });
   };
 
+  const fetchRecipe = (method, option, search) => {
+    if (page === 'comidas') {
+      return fetchMeal(method, option, search);
+    } if (page === 'bebidas') {
+      return fetchDrink(method, option, search);
+    }
+  };
+
   const handleClick = () => {
     if (data.searchSubmited === 'firstLetter' && data.searchText.length > 1) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     } if (data.searchSubmited === 'ingredient') {
-      fetchMeal('filter', 'i', data.searchText);
-      console.log('oi');
+      fetchRecipe('filter', 'i', data.searchText);
+      console.log(data.searchText);
     } if (data.searchSubmited === 'name') {
-      fetchMeal('search', 's', data.searchText);
-      console.log('bye');
+      fetchRecipe('search', 's', data.searchText);
+      console.log(data.searchText);
     } if (data.searchSubmited === 'firstLetter') {
-      fetchMeal('search', 'f', data.searchText);
-      console.log('teste');
+      fetchRecipe('search', 'f', data.searchText);
+      console.log(data.searchText);
     } else {
-      console.log(data.searchSubmited);
+      console.log('testess');
     }
     console.log(meal);
+    console.log(drink);
+    console.log(page);
   };
 
   useEffect(() => {}, []);
