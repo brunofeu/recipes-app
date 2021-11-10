@@ -3,7 +3,13 @@ import React from 'react';
 function StartButton() {
   return (
     <div>
-      <button type="button" data-testid="start-recipe-btn">Iniciar Receita</button>
+      <button
+        className="start-recipe-btn"
+        type="button"
+        data-testid="start-recipe-btn"
+      >
+        Iniciar Receita
+      </button>
     </div>
   );
 }
