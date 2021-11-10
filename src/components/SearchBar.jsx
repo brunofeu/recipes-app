@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 
-function SearchBar() {
+function SearchBar(props) {
   const { fetchDrink, fetchMeal, page, meal, drink } = useContext(RecipeContext);
   const [data, setData] = useState({
     searchText: '',
@@ -22,11 +23,35 @@ function SearchBar() {
     });
   };
 
+  const mealRedirect = () => {
+    const { history } = props;
+    const goTo = meal.length;
+    const magicNumber = 1;
+
+    if (goTo === magicNumber) {
+      history.push(`/comidas/${meal[0].idMeal}`);
+    } if (goTo < magicNumber) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    }
+  };
+
+  const drinkRedirect = () => {
+    const { history } = props;
+    const goTo = drink.length;
+    const magicNumber = 1;
+
+    if (goTo === magicNumber) {
+      history.push(`/bebidas/${drink[0].idDrink}`);
+    } if (goTo < magicNumber) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    }
+  };
+
   const fetchRecipe = (method, option, search) => {
     if (page === 'comidas') {
-      return fetchMeal(method, option, search);
+      return fetchMeal(method, option, search) && mealRedirect();
     } if (page === 'bebidas') {
-      return fetchDrink(method, option, search);
+      return fetchDrink(method, option, search) && drinkRedirect();
     }
   };
 
@@ -51,11 +76,6 @@ function SearchBar() {
   };
 
   useEffect(() => {}, []);
-
-  // useEffect(() => {
-  //   fetchAPI();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [data]);
 
   return (
     <div>
@@ -105,5 +125,11 @@ function SearchBar() {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default SearchBar;
