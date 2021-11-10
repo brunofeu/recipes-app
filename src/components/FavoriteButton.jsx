@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -31,10 +32,11 @@ function FavoriteButton({ recipe, type }) {
 
   useEffect(() => {
     checkIfIsFavorite();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = () => {
-    const arrayFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'))
+    const arrayFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (arrayFavorites.some(({ id }) => id === recipe[`id${type}`])) {
       setFavoriteRecipes(favoriteRecipes.filter(
         ({ id }) => id !== recipe[`id${type}`],
@@ -78,5 +80,14 @@ function FavoriteButton({ recipe, type }) {
     </div>
   );
 }
+
+FavoriteButton.propTypes = {
+  recipe: PropTypes.shape({
+    strAlcoholic: PropTypes.string,
+    strArea: PropTypes.string,
+    strCategory: PropTypes.string,
+  }).isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default FavoriteButton;
