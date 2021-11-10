@@ -9,16 +9,18 @@ import RecipeContext from '../../context/RecipeContext';
 
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
-  const { fetchMeal, fetchDrink } = useContext(RecipeContext);
+  const { fetchMeal, fetchDrink, meal, drink } = useContext(RecipeContext);
   const [recipe, setRecipe] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipeDetail = async () => {
-    const listDrink = (await fetchDrink('lookup', 'i', id));
-    const listRecomendations = (await fetchMeal('search', 's', ''));
-    setRecomendations(listRecomendations);
-    setRecipe(listDrink[0]);
+    // const listDrink = (await fetchDrink('lookup', 'i', id));
+    await fetchDrink('lookup', 'i', id);
+    await fetchMeal('search', 's', '');
+    // const listRecomendations = (await fetchMeal('search', 's', ''));
+    setRecomendations(meal);
+    setRecipe(drink[0]);
   };
 
   useEffect(() => {
