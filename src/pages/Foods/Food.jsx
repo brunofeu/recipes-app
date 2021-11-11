@@ -16,10 +16,14 @@ function Food() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleClick = async ({ target: { name } }) => {
+    fetchMeal('filter', 'c', name);
+  };
+
   return (
     <div>
       <Header title="Comidas" showSearchBtn="true" />
-      <Categories categories={ categories.meals } />
+      <Categories categories={ categories.meals } onClick={ handleClick } />
       <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal'] } />
     </div>
   );

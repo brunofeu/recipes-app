@@ -16,10 +16,14 @@ function Drinks() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleClick = async ({ target: { name } }) => {
+    fetchDrink('filter', 'c', name);
+  };
+
   return (
     <div>
       <Header title="Bebidas" showSearchBtn="true" />
-      <Categories categories={ categories.drinks } />
+      <Categories categories={ categories.drinks } onClick={ handleClick } />
       <CardReceita infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink'] } />
     </div>
   );
