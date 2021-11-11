@@ -40,11 +40,18 @@ function RecipeProvider({ children }) {
     return drinkResponse;
   };
 
+  const fetchRandom = async (url) => {
+    const randomURL = `https://www.${url}.com/api/json/v1/1/random.php`;
+    const randomRecipe = await fetch(randomURL).then((response) => response.json());
+    return url === 'themealdb' ? randomRecipe.meals : randomRecipe.drinks;
+  };
+
   useEffect(() => {}, []);
 
   const context = {
-    fetchDrink,
+    fetchRandom,
     fetchMeal,
+    fetchDrink,
     setPage,
     meal,
     drink,
