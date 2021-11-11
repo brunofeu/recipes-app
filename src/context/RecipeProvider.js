@@ -15,9 +15,8 @@ function RecipeProvider({ children }) {
     + `${method}.php?${option}=${search}`;
     const mealRecipes = await fetch(mealURL).then((response) => response.json());
     const mealResponse = mealRecipes.meals;
-    // console.log(mealResponse);
     setMeal(mealResponse);
-    // console.log(meal);
+    return mealResponse;
   };
 
   const fetchDrink = async (method, option, search) => {
@@ -26,6 +25,7 @@ function RecipeProvider({ children }) {
     const drinkRecipes = await fetch(drinkURL).then((response) => response.json());
     const drinkResponse = drinkRecipes.drinks;
     setDrink(drinkResponse);
+    return drinkResponse;
   };
 
   const fetchRandom = async (url) => {
@@ -43,8 +43,8 @@ function RecipeProvider({ children }) {
 
   const context = {
     fetchRandom,
-    fetchDrink,
     fetchMeal,
+    fetchDrink,
     setPage,
     meal,
     drink,
