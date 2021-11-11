@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
@@ -8,6 +8,7 @@ function Drinks() {
   const {
     drink, fetchDrink, setPage, fetchCategories, categories,
   } = useContext(RecipeContext);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     setPage('bebidas');
@@ -17,7 +18,14 @@ function Drinks() {
   }, []);
 
   const handleClick = async ({ target: { name } }) => {
-    fetchDrink('filter', 'c', name);
+    if (selected === false) {
+      fetchDrink('filter', 'c', name);
+      setSelected(true);
+    }
+    if (selected === true) {
+      fetchDrink();
+      setSelected(false);
+    }
   };
 
   return (
