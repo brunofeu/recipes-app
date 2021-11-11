@@ -17,8 +17,8 @@ function FavoriteButton({ recipe, type }) {
 
   useEffect(() => {
     switch (type) {
-    case 'Meal': return setPage('comidas');
-    case 'Drink': return setPage('bebidas');
+    case 'Meal': return setPage('comida');
+    case 'Drink': return setPage('bebida');
     default: return null;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,9 +46,9 @@ function FavoriteButton({ recipe, type }) {
         ...favoriteRecipes,
         { id: recipe[`id${type}`],
           type: page,
-          area: recipe.strArea,
+          area: (type === 'Drink' ? '' : recipe.strArea),
           category: recipe.strCategory,
-          alcoholicorNot: (type === 'Drink' ? recipe.strAlcoholic : ''),
+          alcoholicOrNot: (type === 'Drink' ? recipe.strAlcoholic : ''),
           name: recipe[`str${type}`],
           image: recipe[`str${type}Thumb`],
         },
@@ -59,11 +59,8 @@ function FavoriteButton({ recipe, type }) {
 
   useEffect(() => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-    console.log('teste');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFavorite]);
-
-  // useEffect(() => {checkIfIsFavorite()},[])
 
   return (
     <div>
