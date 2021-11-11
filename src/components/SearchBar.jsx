@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
@@ -7,7 +7,7 @@ function SearchBar() {
   const { fetchDrink, fetchMeal, page, meal, drink } = useContext(RecipeContext);
   const [data, setData] = useState({
     searchText: '',
-    searchSubmited: '',
+    selectedOption: '',
   });
   const history = useHistory();
 
@@ -21,7 +21,7 @@ function SearchBar() {
   const handleCheck = (event) => {
     setData({
       ...data,
-      searchSubmited: event.target.value,
+      selectedOption: event.target.value,
     });
   };
 
@@ -32,9 +32,6 @@ function SearchBar() {
 
     if (goTo === magicNumber) {
       history.push(`/comidas/${meal[0].idMeal}`);
-      console.log(`/comidas/${meal[0].idMeal}`);
-    } if (goTo < magicNumber) {
-      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   };
 
@@ -45,30 +42,47 @@ function SearchBar() {
 
     if (goTo === magicNumber) {
       history.push(`/bebidas/${drink[0].idDrink}`);
-    } if (goTo < magicNumber) {
+    }
+  };
+
+  const redirectTo = () => {
+    if (page === 'comidas') {
+      return mealRedirect();
+    } if (page === 'bebidas') {
+      return drinkRedirect();
+    }
+  };
+
+  const warningTo = () => {
+    if (meal === null || drink === null) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else {
+      redirectTo();
     }
   };
 
   const fetchRecipe = (method, option, search) => {
     if (page === 'comidas') {
-      return fetchMeal(method, option, search) /*&& mealRedirect()*/;
+      return fetchMeal(method, option, search);
     } if (page === 'bebidas') {
-      return fetchDrink(method, option, search) /*&& drinkRedirect()*/;
+      return fetchDrink(method, option, search);
     }
   };
 
   const handleClick = () => {
-    if (data.searchSubmited === 'firstLetter' && data.searchText.length > 1) {
+    if (data.selectedOption === 'firstLetter' && data.searchText.length > 1) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
-    } if (data.searchSubmited === 'ingredient') {
+    } if (data.selectedOption === 'ingredient') {
       fetchRecipe('filter', 'i', data.searchText);
+      warningTo();
       // console.log(data.searchText);
-    } if (data.searchSubmited === 'name') {
+    } if (data.selectedOption === 'name') {
       fetchRecipe('search', 's', data.searchText);
+      warningTo();
       // console.log(data.searchText);
-    } if (data.searchSubmited === 'firstLetter') {
+    } if (data.selectedOption === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
+      warningTo();
       // console.log(data.searchText);
     } else {
       // console.log('testess');
@@ -79,11 +93,8 @@ function SearchBar() {
   };
 
   useEffect(() => {
-    mealRedirect();
-  }, [meal]);
-  useEffect(() => {
-    drinkRedirect();
-  }, [drink]);
+    warningTo();
+  }, [meal, drink]);
 
   return (
     <div>
@@ -94,33 +105,39 @@ function SearchBar() {
         onChange={ handleChange }
       />
       <div>
-        <input
-          data-testid="ingredient-search-radio"
-          id="byIngridient"
-          name="radioBtn"
-          type="radio"
-          value="ingredient"
-          onClick={ handleCheck }
-        />
-        Ingrediente
-        <input
-          data-testid="name-search-radio"
-          id="byName"
-          name="radioBtn"
-          type="radio"
-          value="name"
-          onClick={ handleCheck }
-        />
-        Nome
-        <input
-          data-testid="first-letter-search-radio"
-          id="byFirstLetter"
-          name="radioBtn"
-          type="radio"
-          value="firstLetter"
-          onClick={ handleCheck }
-        />
-        Primeira Letra
+        <label htmlFor="byIngredient">
+          <input
+            data-testid="ingredient-search-radio"
+            id="byIngredient"
+            name="radioBtn"
+            type="radio"
+            value="ingredient"
+            onClick={ handleCheck }
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="byName">
+          <input
+            data-testid="name-search-radio"
+            id="byName"
+            name="radioBtn"
+            type="radio"
+            value="name"
+            onClick={ handleCheck }
+          />
+          Nome
+        </label>
+        <label htmlFor="byFirstLetter">
+          <input
+            data-testid="first-letter-search-radio"
+            id="byFirstLetter"
+            name="radioBtn"
+            type="radio"
+            value="firstLetter"
+            onClick={ handleCheck }
+          />
+          Primeira Letra
+        </label>
       </div>
       <button
         data-testid="exec-search-btn"
