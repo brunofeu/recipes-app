@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
+import RecipeContext from '../../context/RecipeContext';
 
 function ExploreDrinks() {
   const history = useHistory();
+  const { fetchRandom } = useContext(RecipeContext);
+
+  const handleClick = async () => {
+    const randomRecipe = await fetchRandom('thecocktaildb');
+    history.push(`/bebidas/${randomRecipe[0].idDrink}`);
+  };
+
   return (
     <div>
       <Header title="Explorar Bebidas" />
@@ -14,11 +22,10 @@ function ExploreDrinks() {
       >
         Por Ingredientes
       </button>
-      {/* ajustar botao me surpreenda. necessita da API */}
       <button
         type="button"
         data-testid="explore-surprise"
-        onClick={ () => history.push('/explorar/bebidas') }
+        onClick={ handleClick }
       >
         Me Surpreenda!
       </button>

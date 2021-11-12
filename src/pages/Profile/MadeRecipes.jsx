@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
+import FavoriteButton from '../../components/FavoriteButton';
 import Header from '../../components/Header';
+import ShareButton from '../../components/ShareButton';
 import RecipeContext from '../../context/RecipeContext';
 import shareIcon from '../../images/shareIcon.svg';
 
@@ -52,18 +54,8 @@ function MadeRecipes() {
         >
           Drinks
         </button>
-        <button
-          onClick={ () => {
-            navigator.clipboard.writeText('url'); // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
-            setMessage(true);
-          } }
-          type="button"
-        >
-          <img
-            src={ shareIcon }
-            alt="compartilhar"
-          />
-        </button>
+        <ShareButton />
+        <FavoriteButton />
         {message ? <h5>Link copiado!</h5> : null }
       </div>
     </div>

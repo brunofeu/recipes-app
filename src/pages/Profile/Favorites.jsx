@@ -1,73 +1,83 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import FavoriteButton from '../../components/FavoriteButton';
+import ShareButton from '../../components/ShareButton';
 import Header from '../../components/Header';
-import RecipeContext from '../../context/RecipeContext';
-import shareIcon from '../../images/shareIcon.svg';
-
 
 function Favorites() {
-  const [message, setMessage] = useState(false);
   const [recipeFilter, setRecipesFilter] = useState();
+  const [render, setRender] = useState(false);
 
-  const { page } = useContext(RecipeContext);
-
-  const favoriteRecipes = ['localStorage'];
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
 
   const handlecliclAll = () => {
     setRecipesFilter(favoriteRecipes);
   };
 
   const handleClickFood = () => {
-    const filterFood = favoriteRecipes.filter((recipe) => (recipe));
+    const filterFood = favoriteRecipes.filter((recipe) => (recipe.type === 'comida'));
     setRecipesFilter(filterFood);
   };
 
   const handleClickDrinks = () => {
-    const filterDrinks = favoriteRecipes.filter((recipe) => (recipe));
+    const filterDrinks = favoriteRecipes.filter((recipe) => (recipe.type === 'bebida'));
     setRecipesFilter(filterDrinks);
   };
 
-  useEffect(() => setRecipesFilter(favoriteRecipes), []);
+  const handleFavorite = (e) => {
+    const removeFav = favoriteRecipes.filter((recipe) => (recipe.id !== e.target.id));
+    setRecipesFilter(removeFav);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(removeFav));
+    setRender(true);
+  };
+
+  useEffect(() => setRecipesFilter(favoriteRecipes), [render]);
 
   return (
-    <div>
+    <section>
       <Header title="Receitas Favoritas" />
-      <div>
-        <button
-          type="button"
-          onClick={ handlecliclAll }
-          data-testid="filter-by-all-btn"
-        >
-          All
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickFood }
-          data-testid="filter-by-food-btn"
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickDrinks }
-          data-testid="filter-by-drink-btn"
-        >
-          Drinks
-        </button>
-        <button
-          onClick={ () => {
-            navigator.clipboard.writeText('url'); // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
-            setMessage(true);
-          } }
-          type="button"
-        >
-          <img
-            src={ shareIcon }
-            alt="compartilhar"
-          />
-        </button>
-        {message ? <h5>Link copiado!</h5> : null }
-      </div>
-    </div>
+      <button
+        type="button"
+        onClick={ handlecliclAll }
+        data-testid="filter-by-all-btn"
+      >
+        All
+      </button>
+      <button
+        type="button"
+        onClick={ handleClickFood }
+        data-testid="filter-by-food-btn"
+      >
+        Food
+      </button>
+      <button
+        type="button"
+        onClick={ handleClickDrinks }
+        data-testid="filter-by-drink-btn"
+      >
+        Drinks
+      </button>
+      {recipeFilter.map((rec) => (
+        <div key={ rec.id }>
+          <Link
+            key={ rec.id }
+            to={ `/${rec.type}s/${rec.id}` }
+          >
+            <img
+              src={ rec.image }
+              alt={ rec.name }
+            />
+          </Link>
+          <div>
+            <ShareButton />
+            <FavoriteButton
+              onClick={ handleFavorite }
+              id={ rec.id }
+            />
+          </div>
+        </div>
+      )) }
+    </section>
   );
 }
 
