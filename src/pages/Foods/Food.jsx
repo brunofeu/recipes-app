@@ -8,7 +8,7 @@ function Food() {
   const {
     meal, fetchMeal, setPage, fetchCategories, categories,
   } = useContext(RecipeContext);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState({ name: '', state: false });
 
   useEffect(() => {
     setPage('comidas');
@@ -18,13 +18,13 @@ function Food() {
   }, []);
 
   const handleClick = ({ target: { name } }) => {
-    if (selected === false) {
+    if (selected.state === false || (selected.state === true && selected.name !== name)) {
       fetchMeal('filter', 'c', name);
-      setSelected(true);
+      setSelected({ name, state: true });
     }
-    if (selected === true) {
+    if (selected.state === true && selected.name === name) {
       fetchMeal();
-      setSelected(false);
+      setSelected({ name: '', state: false });
     }
   };
 
@@ -34,8 +34,9 @@ function Food() {
       <Categories
         categories={ categories.meals }
         onClick={ handleClick }
+        onAll={ fetchMeal }
       />
-      <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal'] } />
+      <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
     </div>
   );
 }

@@ -8,7 +8,7 @@ function Drinks() {
   const {
     drink, fetchDrink, setPage, fetchCategories, categories,
   } = useContext(RecipeContext);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState({ name: '', state: false });
 
   useEffect(() => {
     setPage('bebidas');
@@ -18,21 +18,25 @@ function Drinks() {
   }, []);
 
   const handleClick = async ({ target: { name } }) => {
-    if (selected === false) {
+    if (selected.state === false || (selected.state === true && selected.name !== name)) {
       fetchDrink('filter', 'c', name);
-      setSelected(true);
+      setSelected({ name, state: true });
     }
-    if (selected === true) {
+    if (selected.state === true && selected.name === name) {
       fetchDrink();
-      setSelected(false);
+      setSelected({ name: '', state: false });
     }
   };
 
   return (
     <div>
       <Header title="Bebidas" showSearchBtn="true" />
-      <Categories categories={ categories.drinks } onClick={ handleClick } />
-      <CardReceita infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink'] } />
+      <Categories
+        categories={ categories.drinks }
+        onClick={ handleClick }
+        onAll={ fetchDrink }
+      />
+      <CardReceita infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] } />
     </div>
   );
 }
