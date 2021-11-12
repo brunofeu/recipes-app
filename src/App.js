@@ -18,6 +18,7 @@ import Profile from './pages/Profile/Profile';
 import Favorites from './pages/Profile/Favorites';
 import MadeRecipes from './pages/Profile/MadeRecipes';
 import './App.css';
+import IngredientsList from './components/IngredientsList';
 
 function App() {
   return (
