@@ -30,7 +30,8 @@ function Favorites() {
     localStorage.setItem('favoriteRecipes', JSON.stringify(removeFav));
     setRender(true);
   };
-
+  // só irei atualizar novamente o estado com o favorite recipes caso o render seja alterado.
+  // e o render só será alterado justamente caso eu altere meus favoritos
   useEffect(() => setRecipesFilter(favoriteRecipes), [render]);
 
   return (
