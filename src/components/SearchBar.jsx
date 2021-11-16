@@ -65,36 +65,38 @@ function SearchBar() {
         name="search"
         onChange={ handleChange }
       />
-      <label htmlFor="byIngridient">
-        <input
-          data-testid="ingredient-search-radio"
-          id="byIngridient"
-          type="radio"
-          value="ingredient"
-          onClick={ handleCheck }
-        />
-        Ingrediente
-      </label>
-      <label htmlFor="byName">
-        <input
-          data-testid="name-search-radio"
-          id="byName"
-          type="radio"
-          value="name"
-          onClick={ handleCheck }
-        />
-        Nome
-      </label>
-      <label htmlFor="byFirstLetter">
-        <input
-          data-testid="first-letter-search-radio"
-          id="byFirstLetter"
-          type="radio"
-          value="firstLetter"
-          onClick={ handleCheck }
-        />
-        Primeira Letra
-      </label>
+      <div>
+        <label htmlFor="byIngridient">
+          <input
+            data-testid="ingredient-search-radio"
+            id="byIngridient"
+            type="radio"
+            value="ingredient"
+            onClick={ handleCheck }
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="byName">
+          <input
+            data-testid="name-search-radio"
+            id="byName"
+            type="radio"
+            value="name"
+            onClick={ handleCheck }
+          />
+          Nome
+        </label>
+        <label htmlFor="byFirstLetter">
+          <input
+            data-testid="first-letter-search-radio"
+            id="byFirstLetter"
+            type="radio"
+            value="firstLetter"
+            onClick={ handleCheck }
+          />
+          Primeira Letra
+        </label>
+      </div>
       <button
         data-testid="exec-search-btn"
         type="button"

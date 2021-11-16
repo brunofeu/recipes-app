@@ -58,7 +58,7 @@ function Favorites() {
       >
         Drinks
       </button>
-      {/* {recipeFilter.map((rec) => (
+      {recipeFilter.map((rec) => (
         <div key={ rec.id }>
           <Link
             key={ rec.id }
@@ -77,7 +77,7 @@ function Favorites() {
             />
           </div>
         </div>
-      )) } */}
+      )) }
     </section>
   );
 }
