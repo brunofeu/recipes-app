@@ -17,6 +17,7 @@ function RecipeProvider({ children }) {
     const mealRecipes = await fetch(mealURL).then((response) => response.json());
     const mealResponse = mealRecipes.meals;
     setMeal(mealResponse);
+    return mealResponse;
   };
 
   const fetchDrink = async (method = 'search', option = 's', search = '') => {

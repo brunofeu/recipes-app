@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import clipboardCopy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 
-function ShareButton() {
+function ShareButton({ testid, clipBoard }) {
   const [linkCopy, setLinkCopy] = useState(false);
 
   const handleClick = () => {
-    clipboardCopy(window.location.href);
+    clipboardCopy(clipBoard);
     setLinkCopy(true);
   };
 
@@ -24,12 +25,17 @@ function ShareButton() {
         <img
           src={ shareIcon }
           alt="botão compartilhar"
-          data-testid="share-btn"
+          data-testid={ testid }
         />
       </button>
       { linkCopy && <p>Link copiado!</p> }
     </div>
   );
 }
+
+ShareButton.propTypes = {
+  testid: PropTypes.string.isRequired,
+  clipBoard: PropTypes.string.isRequired,
+};
 
 export default ShareButton;

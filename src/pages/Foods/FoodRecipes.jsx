@@ -41,7 +41,10 @@ function FoodRecipes(props) {
             data-testid="recipe-photo"
           />
           <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
-          <ShareButton />
+          <ShareButton
+            clipBoard={ window.location.href }
+            testid="share-btn"
+          />
           <FavoriteButton recipe={ recipe } type="Meal" />
           <h3 data-testid="recipe-category">{ recipe.strCategory }</h3>
           <IngredientsList recipe={ recipe } />

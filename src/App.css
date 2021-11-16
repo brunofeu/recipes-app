@@ -71,3 +71,7 @@
   bottom: 0;
   position: fixed;
 }
+
+.recipeImg {
+  height: 150px;
+}

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import FavoriteButton from '../../components/FavoriteButton';
 import ShareButton from '../../components/ShareButton';
 import Header from '../../components/Header';
+import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import '../../App.css';
 
 function Favorites() {
-  const [recipeFilter, setRecipesFilter] = useState();
+  const [recipeFilter, setRecipesFilter] = useState([]);
   const [render, setRender] = useState(false);
 
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   const handlecliclAll = () => {
     setRecipesFilter(favoriteRecipes);
@@ -58,40 +59,57 @@ function Favorites() {
       >
         Drinks
       </button>
-      <ShareButton
-        //data-testid={ `${0}-horizontal-share-btn` }
-      />
-      <FavoriteButton
-        onClick={ handleFavorite }
-        // id={ rec.id }
-        //data-testid={ `${0}-horizontal-favorite-btn` }
-      />
-      {/* {recipeFilter.map((rec) => (
+
+      {recipeFilter.map((rec, index) => (
         <div key={ rec.id }>
           <Link
             key={ rec.id }
             to={ `/${rec.type}s/${rec.id}` }
           >
             <img
+              className="recipeImg"
               src={ rec.image }
               alt={ rec.name }
+              data-testid={ `${index}-horizontal-image` }
             />
           </Link>
           <div>
-            <ShareButton />
-            <FavoriteButton
-              onClick={ handleFavorite }
-              id={ rec.id }
+            <ShareButton
+              clipBoard={ (`http://localhost:3000/${rec.type}s/${rec.id}`) }
+              testid={ `${index}-horizontal-share-btn` }
             />
+            <button
+              type="button"
+              onClick={ handleFavorite }
+              image={ blackHeartIcon }
+            >
+              <img
+                alt="liked"
+                // data-testid="favorite-btn"
+                src={ blackHeartIcon }
+                id={ rec.id }
+                data-testid={ `${index}-horizontal-favorite-btn` }
+              />
+            </button>
           </div>
           <Link
             key={ rec.id }
             to={ `/${rec.type}s/${rec.id}` }
           >
-            <h2>{rec.name}</h2>
+            {/* <h2>{rec.name}</h2> */}
+          </Link>
+          <h4 data-testid={ `${index}-horizontal-top-text` }>
+            {rec.area
+              ? `${rec.area} - ${rec.category}` : `${rec.alcoholicOrNot}`}
+          </h4>
+          <Link
+            key={ rec.id }
+            to={ `/${rec.type}s/${rec.id}` }
+          >
+            <h2 data-testid={ `${index}-horizontal-name` }>{rec.name}</h2>
           </Link>
         </div>
-      )) } */}
+      )) }
     </section>
   );
 }
