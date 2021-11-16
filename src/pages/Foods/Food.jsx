@@ -1,21 +1,44 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import RecipeContext from '../../context/RecipeContext';
+import CardReceita from '../../components/CardReceita';
+import Categories from '../../components/Categories';
+import Footer from '../../components/Footer';
 
 function Food() {
-  const { setPage } = useContext(RecipeContext);
+  const {
+    meal, fetchMeal, setPage, fetchCategories, categories,
+  } = useContext(RecipeContext);
+  const [selected, setSelected] = useState({ name: '', state: false });
 
   useEffect(() => {
     setPage('comidas');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchMeal();
+    fetchCategories('meal', 'meals');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleClick = ({ target: { name } }) => {
+    if (selected.state === false || (selected.state === true && selected.name !== name)) {
+      fetchMeal('filter', 'c', name);
+      setSelected({ name, state: true });
+    }
+    if (selected.state === true && selected.name === name) {
+      fetchMeal();
+      setSelected({ name: '', state: false });
+    }
+  };
 
   return (
     <>
       <div>
         <Header title="Comidas" showSearchBtn="true" />
-        Food
+        <Categories
+          categories={ categories.meals }
+          onClick={ handleClick }
+          onAll={ fetchMeal }
+        />
+        <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
       </div>
       <footer>
         <Footer />
