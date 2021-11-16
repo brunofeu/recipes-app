@@ -6,15 +6,21 @@ import RecipeContext from '../../context/RecipeContext';
 function ExploreByPlaces() {
   const { meal, fetchMeal } = useContext(RecipeContext);
   const [areas, setAreas] = useState([]);
+  const [selectValue, setSelectValue] = useState('American');
 
   const getAreas = async () => {
     const fetchAreas = await fetchMeal('list', 'a', 'list');
     setAreas(fetchAreas);
   };
 
+  const handleSelect = async ({ target: { value } }) => {
+    await fetchMeal('filter', 'a', value);
+    setSelectValue(value);
+  };
+
   useEffect(() => {
-    fetchMeal();
     getAreas();
+    fetchMeal();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -23,7 +29,12 @@ function ExploreByPlaces() {
       <Header title="Explorar Origem" showSearchBtn="true" />
       {areas.length > 0
         && (
-          <select data-testid="explore-by-area-dropdown" title={ areas[0].strArea }>
+          <select
+            data-testid="explore-by-area-dropdown"
+            title={ areas[0].strArea }
+            value={ selectValue }
+            onChange={ handleSelect }
+          >
             {areas.map(({ strArea }, index) => (
               <option
                 key={ index }

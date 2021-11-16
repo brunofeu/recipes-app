@@ -9,7 +9,6 @@ function RecipeCard(props) {
   const { infos } = props;
   const [infoArray, id, image, name, type] = infos;
   const recipes = infoArray.slice(0, CARDS_QUANTITY);
-  console.log(recipes[0]);
   return (
     <section>
       {recipes.map((recipe, index) => (
