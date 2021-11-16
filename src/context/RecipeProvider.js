@@ -34,6 +34,8 @@ function RecipeProvider({ children }) {
     return url === 'themealdb' ? randomRecipe.meals : randomRecipe.drinks;
   };
 
+  useEffect(() => {}, []);
+
   const fetchCategories = async (type, key) => {
     const CATEGORY_URL = `https://www.the${type}db.com/api/json/v1/1/list.php?c=list`;
     const category = await fetch(CATEGORY_URL).then((response) => response.json());

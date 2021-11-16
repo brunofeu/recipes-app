@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import ShareButton from '../../components/ShareButton';
 
@@ -48,7 +49,20 @@ function MadeRecipes() {
         >
           Drinks
         </button>
-        <ShareButton />
+        { recipesFilter.map((recipe) => (
+          <div key={ recipe.id }>
+            <Link
+              key={ recipe.id }
+              to={ `/${recipe.type}s/${recipe.id}` }
+            >
+              <img
+                src={ recipe.image }
+                alt={ recipe.name }
+              />
+            </Link>
+            <ShareButton />
+          </div>
+        ))}
       </div>
 
     </div>
