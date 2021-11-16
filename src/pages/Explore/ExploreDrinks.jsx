@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import RecipeContext from '../../context/RecipeContext';
+import Footer from '../../components/Footer';
 
 function ExploreDrinks() {
   const history = useHistory();

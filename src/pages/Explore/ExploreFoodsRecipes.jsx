@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import IngredientCard from '../../components/IngredientCard';
 import RecipeContext from '../../context/RecipeContext';
-import Footer from '../../components/Footer';
 
 function ExploreFoodsRecipes() {
   const { fetchMeal } = useContext(RecipeContext);

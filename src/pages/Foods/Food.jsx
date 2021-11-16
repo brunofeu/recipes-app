@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
-import Categories from '../../components/Categories';
 import Footer from '../../components/Footer';
+import Categories from '../../components/Categories';
 
 function Food() {
   const {
