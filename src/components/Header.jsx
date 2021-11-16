@@ -19,7 +19,6 @@ function Header({ title, showSearchBtn = false }) {
       >
         <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
       </button>
-      <h1 data-testid="page-title">{title}</h1>
       { showSearchBtn && (
         <button
           type="button"
@@ -28,6 +27,7 @@ function Header({ title, showSearchBtn = false }) {
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
+      <h1 data-testid="page-title">{title}</h1>
       { showSearchBar && <SearchBar /> }
     </div>
   );

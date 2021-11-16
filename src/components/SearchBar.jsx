@@ -110,6 +110,10 @@ function SearchBar() {
             data-testid="ingredient-search-radio"
             id="byIngredient"
             name="radioBtn"
+        <label htmlFor="byIngridient">
+          <input
+            data-testid="ingredient-search-radio"
+            id="byIngridient"
             type="radio"
             value="ingredient"
             onClick={ handleCheck }
