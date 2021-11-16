@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { Card } from 'react-bootstrap';
 
-function CardReceita(props) {
+function RecipeCard(props) {
   const CARDS_QUANTITY = 12;
   const { infos } = props;
   const [infoArray, id, image, name, type] = infos;
@@ -37,7 +37,7 @@ function CardReceita(props) {
   );
 }
 
-CardReceita.propTypes = {
+RecipeCard.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -46,4 +46,4 @@ CardReceita.propTypes = {
   }).isRequired,
 }.isRequired;
 
-export default CardReceita;
+export default RecipeCard;

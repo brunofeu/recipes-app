@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
-import CardReceita from '../../components/CardReceita';
+import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 
 function Food() {
@@ -36,7 +36,7 @@ function Food() {
         onClick={ handleClick }
         onAll={ fetchMeal }
       />
-      <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+      <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
     </div>
   );
 }
