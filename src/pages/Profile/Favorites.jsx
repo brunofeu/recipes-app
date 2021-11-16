@@ -58,6 +58,14 @@ function Favorites() {
       >
         Drinks
       </button>
+      <ShareButton
+        //data-testid={ `${0}-horizontal-share-btn` }
+      />
+      <FavoriteButton
+        onClick={ handleFavorite }
+        // id={ rec.id }
+        //data-testid={ `${0}-horizontal-favorite-btn` }
+      />
       {/* {recipeFilter.map((rec) => (
         <div key={ rec.id }>
           <Link
