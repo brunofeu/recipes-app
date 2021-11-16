@@ -75,21 +75,13 @@ function SearchBar() {
     } if (data.selectedOption === 'ingredient') {
       fetchRecipe('filter', 'i', data.searchText);
       warningTo();
-      // console.log(data.searchText);
     } if (data.selectedOption === 'name') {
       fetchRecipe('search', 's', data.searchText);
       warningTo();
-      // console.log(data.searchText);
     } if (data.selectedOption === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
       warningTo();
-      // console.log(data.searchText);
-    } else {
-      // console.log('testess');
     }
-    // console.log(meal);
-    // console.log(drink);
-    // console.log(page);
   };
 
   useEffect(() => {
@@ -105,11 +97,6 @@ function SearchBar() {
         onChange={ handleChange }
       />
       <div>
-        <label htmlFor="byIngredient">
-          <input
-            data-testid="ingredient-search-radio"
-            id="byIngredient"
-            name="radioBtn"
         <label htmlFor="byIngridient">
           <input
             data-testid="ingredient-search-radio"
