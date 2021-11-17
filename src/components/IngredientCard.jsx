@@ -5,7 +5,7 @@ import RecipeContext from '../context/RecipeContext';
 
 function IngredientCard({ list, url }) {
   const history = useHistory();
-  const { fetchDrink, fetchMeal, setFilter } = useContext(RecipeContext);
+  const { setFilter } = useContext(RecipeContext);
   const [key, setKey] = useState();
   const [type, setType] = useState();
 
@@ -16,31 +16,20 @@ function IngredientCard({ list, url }) {
   }, []);
 
   const handleClick = async ({ target: { name } }) => {
-    const ingredient = name.replace(' ', '_');
-    const filterByIngredient = await (
-      type === 'comidas'
-        ? fetchMeal('filter', 'i', ingredient)
-        : fetchDrink('filter', 'i', ingredient)
-    );
     setFilter(name);
     history.push(`/${type}`);
-    console.log(filterByIngredient);
-    // REQUISITO 77
-    // A FUNÇÃO DEVE DIRECIONAR PARA A PÁGINA PRINCIPAL DE COMIDA/BEBIDA FILTRADA PELO INGREDIENTE
-    // DEPENDE DA PÁGINA PRINCIPAL
   };
 
   return (
     <div>
       <ul>
         {list.map((item, index) => (
-          <li key={ index }>
+          <li key={ index } data-testid={ `${index}-ingredient-card` }>
             <button
               className="ingredient-button"
               type="button"
               name={ `${item[key]}` }
               onClick={ handleClick }
-              data-testid={ `${index}-ingredient-card` }
             >
               <img
                 name={ `${item[key]}` }
