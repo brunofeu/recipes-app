@@ -12,7 +12,7 @@ function Header({ title, showSearchBtn = false }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   return (
-    <div>
+    <header>
       <button
         type="button"
         onClick={ () => history.push('/perfil') }
@@ -29,7 +29,7 @@ function Header({ title, showSearchBtn = false }) {
       )}
       <h1 data-testid="page-title">{title}</h1>
       { showSearchBar && <SearchBar /> }
-    </div>
+    </header>
   );
 }
 
