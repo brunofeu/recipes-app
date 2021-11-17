@@ -103,7 +103,7 @@ function MainDrinkInProgress({ history, match: { params: { id } } }) {
     }
     history.push('/receitas-feitas');
   };
-
+  // Risca o ingrediente
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
       SetCheckArray([...checkArray, index]);

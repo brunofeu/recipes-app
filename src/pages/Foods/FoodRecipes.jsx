@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton';
 import IngredientsList from '../../components/IngredientsList';
-import RecipeInstructions from '../../components/RecipeInstruction';
+import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
 import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
