@@ -18,6 +18,7 @@ import Profile from './pages/Profile/Profile';
 import Favorites from './pages/Profile/Favorites';
 import MadeRecipes from './pages/Profile/MadeRecipes';
 import './App.css';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route exact path="/perfil" component={ Profile } />
           <Route path="/receitas-feitas" component={ MadeRecipes } />
           <Route path="/receitas-favoritas" component={ Favorites } />
+          <Route to="" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     </RecipeProvider>

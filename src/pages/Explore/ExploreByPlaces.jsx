@@ -6,15 +6,20 @@ import RecipeContext from '../../context/RecipeContext';
 function ExploreByPlaces() {
   const { meal, fetchMeal } = useContext(RecipeContext);
   const [areas, setAreas] = useState([]);
-  const [selectValue, setSelectValue] = useState('American');
+  const [selectValue, setSelectValue] = useState('All');
 
   const getAreas = async () => {
     const fetchAreas = await fetchMeal('list', 'a', 'list');
+    fetchAreas.push({ strArea: 'All' });
     setAreas(fetchAreas);
   };
 
   const handleSelect = async ({ target: { value } }) => {
-    await fetchMeal('filter', 'a', value);
+    if (value === 'All') {
+      await fetchMeal();
+    } else {
+      await fetchMeal('filter', 'a', value);
+    }
     setSelectValue(value);
   };
 
