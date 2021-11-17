@@ -38,10 +38,11 @@ function Drinks() {
         onAll={ fetchDrink }
       />
       { (drink !== null)
-        ? <CardReceita
-          // eslint-disable-next-line react/jsx-indent-props
-          infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
-        />
+        ? (
+          <CardReceita
+            infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
+          />
+        )
         : <FiltersNotFound /> }
     </div>
   );
