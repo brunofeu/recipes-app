@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { /* useContext */ } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card } from 'react-bootstrap';
 
+// import RecipeContext from '../context/RecipeContext';
+
 function CardReceita(props) {
+  // const { alertTrigger } = useContext(RecipeContext);
   const CARDS_QUANTITY = 12;
   const { infos } = props;
   const [infoArray, id, image, name, type] = infos;
