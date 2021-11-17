@@ -3,14 +3,11 @@ import propTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
 function RecipeProvider({ children }) {
-  // const [isLoading, setLoading] = useState(true);
   const [meal, setMeal] = useState([]);
   const [drink, setDrink] = useState([]);
   const [page, setPage] = useState('');
   const [categories, setCategories] = useState({ meals: [], drinks: [] });
   const [filter, setFilter] = useState('');
-
-  // https://www.thecocktaildb.com/api/json/v1/1/{endpoint};
 
   const fetchMeal = async (method = 'search', option = 's', search = '') => {
     const mealURL = 'https://www.themealdb.com/api/json/v1/1/'
@@ -36,6 +33,10 @@ function RecipeProvider({ children }) {
     return url === 'themealdb' ? randomRecipe.meals : randomRecipe.drinks;
   };
 
+  const alertTrigger = () => {
+    global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  };
+
   const fetchCategories = async (type, key) => {
     const CATEGORY_URL = `https://www.the${type}db.com/api/json/v1/1/list.php?c=list`;
     const category = await fetch(CATEGORY_URL).then((response) => response.json());
@@ -44,6 +45,7 @@ function RecipeProvider({ children }) {
   };
 
   const context = {
+    alertTrigger,
     fetchRandom,
     fetchMeal,
     fetchDrink,

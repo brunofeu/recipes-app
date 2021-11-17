@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
+import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Food() {
   const {
@@ -41,7 +42,9 @@ function Food() {
         onClick={ handleClick }
         onAll={ fetchMeal }
       />
-      <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+      { (meal !== null)
+        ? <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+        : <FiltersNotFound /> }
     </div>
   );
 }
