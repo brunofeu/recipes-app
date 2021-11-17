@@ -80,13 +80,10 @@ function SearchBar() {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     } if (data.selectedOption === 'ingredient') {
       fetchRecipe('filter', 'i', data.searchText);
-      warningTo();
     } if (data.selectedOption === 'name') {
       fetchRecipe('search', 's', data.searchText);
-      warningTo();
     } if (data.selectedOption === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
-      warningTo();
     }
   };
 

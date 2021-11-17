@@ -3,10 +3,11 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
 import Categories from '../../components/Categories';
+import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Food() {
   const {
-    meal, fetchMeal, setPage, fetchCategories, categories, /* alertTrigger, */
+    meal, fetchMeal, setPage, fetchCategories, categories,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
@@ -38,7 +39,7 @@ function Food() {
       />
       { (meal !== null)
         ? <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
-        : console.log('??') }
+        : <FiltersNotFound /> }
     </div>
   );
 }

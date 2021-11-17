@@ -3,10 +3,11 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
 import Categories from '../../components/Categories';
+import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Drinks() {
   const {
-    drink, fetchDrink, setPage, fetchCategories, categories, alertTrigger,
+    drink, fetchDrink, setPage, fetchCategories, categories,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
@@ -38,9 +39,10 @@ function Drinks() {
       />
       { (drink !== null)
         ? <CardReceita
+          // eslint-disable-next-line react/jsx-indent-props
           infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
         />
-        : alertTrigger() }
+        : <FiltersNotFound /> }
     </div>
   );
 }
