@@ -8,6 +8,7 @@ function RecipeCard(props) {
   const CARDS_QUANTITY = 12;
   const { infos } = props;
   const [infoArray, id, image, name, type] = infos;
+  if (!infoArray) return <div />;
   const recipes = infoArray.slice(0, CARDS_QUANTITY);
   return (
     <section>

@@ -22,7 +22,7 @@ function IngredientCard({ list, url }) {
         ? fetchMeal('filter', 'i', ingredient)
         : fetchDrink('filter', 'i', ingredient)
     );
-    setFilter(ingredient);
+    setFilter(name);
     history.push(`/${type}`);
     console.log(filterByIngredient);
     // REQUISITO 77

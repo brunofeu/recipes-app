@@ -10,7 +10,7 @@ function ExploreByPlaces() {
 
   const getAreas = async () => {
     const fetchAreas = await fetchMeal('list', 'a', 'list');
-    fetchAreas.unshift({ strArea: 'All' });
+    // fetchAreas.unshift({ strArea: 'All' });
     setAreas(fetchAreas);
   };
 
@@ -40,6 +40,7 @@ function ExploreByPlaces() {
             value={ selectValue }
             onChange={ handleSelect }
           >
+            <option data-testid="All-option">All</option>
             {areas.map(({ strArea }, index) => (
               <option
                 key={ index }
