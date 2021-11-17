@@ -4,7 +4,15 @@ import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 
 function SearchBar() {
-  const { fetchDrink, fetchMeal, page, meal, drink } = useContext(RecipeContext);
+  const {
+    alertTrigger,
+    fetchDrink,
+    fetchMeal,
+    page,
+    meal,
+    drink,
+  } = useContext(RecipeContext);
+
   const [data, setData] = useState({
     searchText: '',
     selectedOption: '',
@@ -26,7 +34,6 @@ function SearchBar() {
   };
 
   const mealRedirect = () => {
-    // const { history } = prop;
     const goTo = meal.length;
     const magicNumber = 1;
 
@@ -36,7 +43,6 @@ function SearchBar() {
   };
 
   const drinkRedirect = () => {
-    // const { history } = props;
     const goTo = drink.length;
     const magicNumber = 1;
 
@@ -55,7 +61,7 @@ function SearchBar() {
 
   const warningTo = () => {
     if (meal === null || drink === null) {
-      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      alertTrigger();
     } else {
       redirectTo();
     }
@@ -74,18 +80,16 @@ function SearchBar() {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     } if (data.selectedOption === 'ingredient') {
       fetchRecipe('filter', 'i', data.searchText);
-      warningTo();
     } if (data.selectedOption === 'name') {
       fetchRecipe('search', 's', data.searchText);
-      warningTo();
     } if (data.selectedOption === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
-      warningTo();
     }
   };
 
   useEffect(() => {
     warningTo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meal, drink]);
 
   return (
@@ -101,6 +105,7 @@ function SearchBar() {
           <input
             data-testid="ingredient-search-radio"
             id="byIngridient"
+            name="radioBtn"
             type="radio"
             value="ingredient"
             onClick={ handleCheck }

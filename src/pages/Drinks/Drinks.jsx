@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
 import Categories from '../../components/Categories';
+import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Drinks() {
   const {
@@ -36,7 +37,13 @@ function Drinks() {
         onClick={ handleClick }
         onAll={ fetchDrink }
       />
-      <CardReceita infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] } />
+      { (drink !== null)
+        ? (
+          <CardReceita
+            infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
+          />
+        )
+        : <FiltersNotFound /> }
     </div>
   );
 }
