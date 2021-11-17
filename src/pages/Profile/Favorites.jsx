@@ -25,8 +25,8 @@ function Favorites() {
     setRecipesFilter(filterDrinks);
   };
 
-  const handleFavorite = (e) => {
-    const removeFav = favoriteRecipes.filter((recipe) => (recipe.id !== e.target.id));
+  const handleFavorite = (event) => {
+    const removeFav = favoriteRecipes.filter((recipe) => (recipe.id !== event.target.id));
     setRecipesFilter(removeFav);
     localStorage.setItem('favoriteRecipes', JSON.stringify(removeFav));
     setRender(true);
