@@ -8,6 +8,7 @@ function RecipeProvider({ children }) {
   const [drink, setDrink] = useState([]);
   const [page, setPage] = useState('');
   const [categories, setCategories] = useState({ meals: [], drinks: [] });
+  const [filter, setFilter] = useState('');
 
   // https://www.thecocktaildb.com/api/json/v1/1/{endpoint};
 
@@ -48,10 +49,12 @@ function RecipeProvider({ children }) {
     fetchDrink,
     setPage,
     fetchCategories,
+    setFilter,
     meal,
     drink,
     page,
     categories,
+    filter,
   };
 
   return (

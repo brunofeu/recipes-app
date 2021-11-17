@@ -26,6 +26,7 @@ function RecomendationCard({ recomendations = [''], type }) {
     <div>
       <h2>Recomendadas</h2>
       <button type="button" onClick={ handleClick } value="subtract">{'<'}</button>
+      <button type="button" onClick={ handleClick } value="add">{'>'}</button>
       <ul>
         {sixRecipes.map((recipe, index) => (
           <li
@@ -42,7 +43,6 @@ function RecomendationCard({ recomendations = [''], type }) {
           </li>
         ))}
       </ul>
-      <button type="button" onClick={ handleClick } value="add">{'>'}</button>
     </div>
   );
 }

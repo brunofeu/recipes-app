@@ -17,8 +17,8 @@ import ExploreByPlaces from './pages/Explore/ExploreByPlaces';
 import Profile from './pages/Profile/Profile';
 import Favorites from './pages/Profile/Favorites';
 import MadeRecipes from './pages/Profile/MadeRecipes';
-import './App.css';
 import NotFound from './pages/NotFound';
+import './App.css';
 
 function App() {
   return (

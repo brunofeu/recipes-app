@@ -5,7 +5,7 @@ import RecipeContext from '../context/RecipeContext';
 
 function IngredientCard({ list, url }) {
   const history = useHistory();
-  const { fetchDrink, fetchMeal } = useContext(RecipeContext);
+  const { fetchDrink, fetchMeal, setFilter } = useContext(RecipeContext);
   const [key, setKey] = useState();
   const [type, setType] = useState();
 
@@ -22,6 +22,7 @@ function IngredientCard({ list, url }) {
         ? fetchMeal('filter', 'i', ingredient)
         : fetchDrink('filter', 'i', ingredient)
     );
+    setFilter(ingredient);
     history.push(`/${type}`);
     console.log(filterByIngredient);
     // REQUISITO 77
@@ -33,8 +34,14 @@ function IngredientCard({ list, url }) {
     <div>
       <ul>
         {list.map((item, index) => (
-          <li key={ index } data-testid={ `${index}-ingredient-card` }>
-            <button type="button" name={ `${item[key]}` } onClick={ handleClick }>
+          <li key={ index }>
+            <button
+              className="ingredient-button"
+              type="button"
+              name={ `${item[key]}` }
+              onClick={ handleClick }
+              data-testid={ `${index}-ingredient-card` }
+            >
               <img
                 name={ `${item[key]}` }
                 src={ `https://www.${url}.com/images/ingredients/${item[key]}-Small.png` }

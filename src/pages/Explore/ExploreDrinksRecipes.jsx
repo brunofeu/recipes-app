@@ -5,13 +5,14 @@ import RecipeContext from '../../context/RecipeContext';
 
 function ExploreDrinksRecipes() {
   const { fetchDrink } = useContext(RecipeContext);
-  const [ingredientsList, setIngredientsList] = useState();
+  const [ingredientsList, setIngredientsList] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
   const fetchIngredients = async () => {
     setIsloading(true);
     const INGREDIENTS_LIST_SIZE = 12;
     const ingredients = await fetchDrink('list', 'i', 'list');
+    // const variable = ingredients.slice(0, INGREDIENTS_LIST_SIZE)
     setIngredientsList(ingredients.slice(0, INGREDIENTS_LIST_SIZE));
     setIsloading(false);
   };
