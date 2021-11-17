@@ -10,7 +10,7 @@ function ExploreByPlaces() {
 
   const getAreas = async () => {
     const fetchAreas = await fetchMeal('list', 'a', 'list');
-    fetchAreas.push({ strArea: 'All' });
+    fetchAreas.unshift({ strArea: 'All' });
     setAreas(fetchAreas);
   };
 
