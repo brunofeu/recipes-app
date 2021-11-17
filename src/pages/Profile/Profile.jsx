@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 
 function Profile() {
+  if (!localStorage.getItem('user')) {
+    localStorage.setItem('user', JSON.stringify([]));
+  }
   const localEmail = JSON.parse(localStorage.getItem('user'));
   const history = useHistory();
 

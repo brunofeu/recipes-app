@@ -8,7 +8,9 @@ import '../../App.css';
 function Favorites() {
   const [recipeFilter, setRecipesFilter] = useState([]);
   const [render, setRender] = useState(false);
-
+  if (!localStorage.getItem('favoriteRecipes')) {
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+  }
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   const handlecliclAll = () => {
