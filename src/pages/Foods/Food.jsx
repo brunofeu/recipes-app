@@ -6,7 +6,7 @@ import Categories from '../../components/Categories';
 
 function Food() {
   const {
-    meal, fetchMeal, setPage, fetchCategories, categories,
+    meal, fetchMeal, setPage, fetchCategories, categories, /* alertTrigger, */
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
@@ -36,7 +36,9 @@ function Food() {
         onClick={ handleClick }
         onAll={ fetchMeal }
       />
-      <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+      { (meal !== null)
+        ? <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+        : console.log('??') }
     </div>
   );
 }

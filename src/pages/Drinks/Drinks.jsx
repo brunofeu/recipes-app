@@ -6,7 +6,7 @@ import Categories from '../../components/Categories';
 
 function Drinks() {
   const {
-    drink, fetchDrink, setPage, fetchCategories, categories,
+    drink, fetchDrink, setPage, fetchCategories, categories, alertTrigger,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
@@ -36,7 +36,11 @@ function Drinks() {
         onClick={ handleClick }
         onAll={ fetchDrink }
       />
-      <CardReceita infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] } />
+      { (drink !== null)
+        ? <CardReceita
+          infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
+        />
+        : alertTrigger() }
     </div>
   );
 }
