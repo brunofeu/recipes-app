@@ -42,7 +42,7 @@ function Food() {
         { (meal !== null)
           ? (
             <CardReceita
-              infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } 
+              infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] }
             />
           )
           : <FiltersNotFound /> }
