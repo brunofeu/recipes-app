@@ -4,6 +4,7 @@ import RecipeContext from '../../context/RecipeContext';
 import CardReceita from '../../components/CardReceita';
 import Footer from '../../components/Footer';
 import Categories from '../../components/Categories';
+import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Food() {
   const {
@@ -38,7 +39,13 @@ function Food() {
           onClick={ handleClick }
           onAll={ fetchMeal }
         />
-        <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+        { (meal !== null)
+          ? (
+            <CardReceita
+              infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } 
+            />
+          )
+          : <FiltersNotFound /> }
       </div>
       <footer>
         <Footer />
