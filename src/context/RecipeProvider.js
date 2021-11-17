@@ -6,6 +6,7 @@ function RecipeProvider({ children }) {
   // const [isLoading, setLoading] = useState(true);
   const [meal, setMeal] = useState([]);
   const [drink, setDrink] = useState([]);
+  const [arrayInfo, setAI] = useState([]);
   const [page, setPage] = useState('');
   const [categories, setCategories] = useState({ meals: [], drinks: [] });
 
@@ -35,7 +36,11 @@ function RecipeProvider({ children }) {
     return url === 'themealdb' ? randomRecipe.meals : randomRecipe.drinks;
   };
 
-  useEffect(() => {}, []);
+  const alertTrigger = () => {
+    global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  };
+
+  // useEffect(() => {}, []);
 
   const fetchCategories = async (type, key) => {
     const CATEGORY_URL = `https://www.the${type}db.com/api/json/v1/1/list.php?c=list`;
@@ -45,11 +50,14 @@ function RecipeProvider({ children }) {
   };
 
   const context = {
+    alertTrigger,
     fetchRandom,
     fetchMeal,
     fetchDrink,
+    setAI,
     setPage,
     fetchCategories,
+    arrayInfo,
     meal,
     drink,
     page,
