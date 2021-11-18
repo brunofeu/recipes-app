@@ -108,7 +108,12 @@ function Favorites() {
             key={ rec.id }
             to={ `/${rec.type}s/${rec.id}` }
           >
-            <h2 data-testid={ `${index}-horizontal-name` }>{rec.name}</h2>
+            <h2
+              data-testid={ `${index}-horizontal-name` }
+              className="horizontal-name"
+            >
+              {rec.name}
+            </h2>
           </Link>
         </div>
       )) }
