@@ -6,10 +6,10 @@ import ShareButton from '../../components/ShareButton';
 function MadeRecipes() {
   const [recipesFilter, setRecipesFilter] = useState([]);
   console.log(recipesFilter);
-  if (!localStorage.getItem('madeRecipes')) {
-    localStorage.setItem('madeRecipes', JSON.stringify([]));
+  if (!localStorage.getItem('doneRecipes')) {
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
   }
-  const madeRecipes = JSON.parse(localStorage.getItem('madeRecipes'));
+  const madeRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   const handlecliclAll = () => {
     setRecipesFilter(madeRecipes);
@@ -62,6 +62,7 @@ function MadeRecipes() {
                 data-testid={ `${index}-horizontal-image` }
                 src={ recipe.image }
                 alt={ recipe.name }
+                className="recipe-img"
               />
             </Link>
             <div>
