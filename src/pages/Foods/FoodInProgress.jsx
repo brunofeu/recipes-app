@@ -6,7 +6,7 @@ import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 
-function MainFoodsInProgress({ history, match: { params: { id } } }) {
+function FoodinProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
     const getLocalStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!getLocalStorage) {
@@ -89,19 +89,17 @@ function MainFoodsInProgress({ history, match: { params: { id } } }) {
 
   useEffect(() => {
     function saveInLocal() {
-      if (checkArray.length) {
-        let getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        if (!getLocal) {
-          const objectStore = {};
-          localStorage.setItem('inProgressRecipes', JSON.stringify(objectStore));
-          getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        }
-        const objeto = {
-          [id]: checkArray,
-        };
-        localStorage.setItem('inProgressRecipes',
-          JSON.stringify({ ...getLocal, meals: { ...getLocal.meals, ...objeto } }));
+      let getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      if (!getLocal) {
+        const objectStore = {};
+        localStorage.setItem('inProgressRecipes', JSON.stringify(objectStore));
+        getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
       }
+      const objeto = {
+        [id]: checkArray,
+      };
+      localStorage.setItem('inProgressRecipes',
+        JSON.stringify({ ...getLocal, meals: { ...getLocal.meals, ...objeto } }));
     }
     saveInLocal();
   }, [checkArray, id]);
@@ -219,7 +217,7 @@ function MainFoodsInProgress({ history, match: { params: { id } } }) {
   );
 }
 
-MainFoodsInProgress.propTypes = {
+FoodinProgress.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -230,4 +228,4 @@ MainFoodsInProgress.propTypes = {
   }).isRequired,
 };
 
-export default MainFoodsInProgress;
+export default FoodinProgress;
