@@ -6,6 +6,7 @@ function RecipeProvider({ children }) {
   // const [isLoading, setLoading] = useState(true);
   const [meal, setMeal] = useState([]);
   const [drink, setDrink] = useState([]);
+  const [arrayInfo, setAI] = useState([]);
   const [page, setPage] = useState('');
   const [categories, setCategories] = useState({ meals: [], drinks: [] });
 
@@ -43,11 +44,14 @@ function RecipeProvider({ children }) {
   };
 
   const context = {
+    alertTrigger,
     fetchRandom,
     fetchMeal,
     fetchDrink,
+    setAI,
     setPage,
     fetchCategories,
+    arrayInfo,
     meal,
     drink,
     page,
