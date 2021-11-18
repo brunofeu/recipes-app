@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import RecipeCard from '../../components/RecipeCard';
 import RecipeContext from '../../context/RecipeContext';
 
@@ -55,6 +56,7 @@ function ExploreByPlaces() {
       && <RecipeCard
         infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] }
       />}
+      <Footer />
     </div>
   );
 }

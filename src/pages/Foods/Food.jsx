@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
+import Footer from '../../components/Footer';
 import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 import FiltersNotFound from '../../components/FiltersNotFound';
@@ -45,6 +46,7 @@ function Food() {
       { (meal !== null)
         ? <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
         : <FiltersNotFound /> }
+      <Footer />
     </div>
   );
 }
