@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import clipboardCopy from 'clipboard-copy';
 import fetchDrinkById from '../../services/drinkAPI';
 import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
@@ -124,9 +125,10 @@ function MainDrinkInProgress({ history, match: { params: { id } } }) {
     const actual = `${a[0]}//${a[1]}${a[2]}/${a[3]}/${a[4]}`;
     const input = document.createElement('input');
     document.body.appendChild(input);
-    input.value = actual;
-    input.select();
-    document.execCommand('copy');
+    clipboardCopy(actual);
+    // input.value = actual;
+    // input.select();
+    // document.execCommand('copy');
     document.body.removeChild(input);
   };
 
