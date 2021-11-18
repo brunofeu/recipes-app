@@ -1,19 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
-import CardReceita from '../../components/CardReceita';
+import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Food() {
   const {
-    meal, fetchMeal, setPage, fetchCategories, categories,
+    meal, fetchMeal, setPage, fetchCategories, categories, filter, setFilter,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
   useEffect(() => {
     setPage('comidas');
-    fetchMeal();
+    if (filter === '') {
+      fetchMeal();
+    } else {
+      fetchMeal('filter', 'i', filter);
+      setFilter('');
+    }
     fetchCategories('meal', 'meals');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -38,7 +43,7 @@ function Food() {
         onAll={ fetchMeal }
       />
       { (meal !== null)
-        ? <CardReceita infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
+        ? <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
         : <FiltersNotFound /> }
     </div>
   );

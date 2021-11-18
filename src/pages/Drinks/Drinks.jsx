@@ -1,19 +1,25 @@
 import React, { useEffect, useContext, useState } from 'react';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
-import CardReceita from '../../components/CardReceita';
+import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 import FiltersNotFound from '../../components/FiltersNotFound';
 
 function Drinks() {
   const {
-    drink, fetchDrink, setPage, fetchCategories, categories,
+    drink, fetchDrink, setPage, fetchCategories, categories, filter, setFilter,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
 
   useEffect(() => {
     setPage('bebidas');
-    fetchDrink();
+    if (filter === '') {
+      fetchDrink();
+    } else {
+      fetchDrink('filter', 'i', filter);
+      setFilter('');
+    }
+    console.log(filter);
     fetchCategories('cocktail', 'drinks');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,7 +45,7 @@ function Drinks() {
       />
       { (drink !== null)
         ? (
-          <CardReceita
+          <RecipeCard
             infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
           />
         )

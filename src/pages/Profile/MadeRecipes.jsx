@@ -6,7 +6,9 @@ import ShareButton from '../../components/ShareButton';
 function MadeRecipes() {
   const [recipesFilter, setRecipesFilter] = useState([]);
   console.log(recipesFilter);
-
+  if (!localStorage.getItem('madeRecipes')) {
+    localStorage.setItem('madeRecipes', JSON.stringify([]));
+  }
   const madeRecipes = JSON.parse(localStorage.getItem('madeRecipes'));
 
   const handlecliclAll = () => {

@@ -8,7 +8,9 @@ import '../../App.css';
 function Favorites() {
   const [recipeFilter, setRecipesFilter] = useState([]);
   const [render, setRender] = useState(false);
-
+  if (!localStorage.getItem('favoriteRecipes')) {
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+  }
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   const handlecliclAll = () => {
@@ -106,7 +108,12 @@ function Favorites() {
             key={ rec.id }
             to={ `/${rec.type}s/${rec.id}` }
           >
-            <h2 data-testid={ `${index}-horizontal-name` }>{rec.name}</h2>
+            <h2
+              data-testid={ `${index}-horizontal-name` }
+              className="horizontal-name"
+            >
+              {rec.name}
+            </h2>
           </Link>
         </div>
       )) }

@@ -39,6 +39,7 @@ function FoodRecipes(props) {
             src={ recipe.strMealThumb }
             alt="imagem-da-receita"
             data-testid="recipe-photo"
+            className="recipe-img"
           />
           <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
           <ShareButton
