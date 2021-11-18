@@ -39,6 +39,7 @@ function DrinkRecipes(props) {
             src={ recipe.strDrinkThumb }
             alt="imagem-da-receita"
             data-testid="recipe-photo"
+            className="recipe-img"
           />
           <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
           <ShareButton

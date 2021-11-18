@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import ShareButton from '../../components/ShareButton';
@@ -6,8 +6,10 @@ import ShareButton from '../../components/ShareButton';
 function MadeRecipes() {
   const [recipesFilter, setRecipesFilter] = useState([]);
   console.log(recipesFilter);
-
-  const madeRecipes = JSON.parse(localStorage.getItem('madeRecipes'));
+  if (!localStorage.getItem('doneRecipes')) {
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
+  }
+  const madeRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   const handlecliclAll = () => {
     setRecipesFilter(madeRecipes);
@@ -60,6 +62,7 @@ function MadeRecipes() {
                 data-testid={ `${index}-horizontal-image` }
                 src={ recipe.image }
                 alt={ recipe.name }
+                className="recipe-img"
               />
             </Link>
             <div>
@@ -81,10 +84,10 @@ function MadeRecipes() {
                 testid={ `${index}-horizontal-share-btn` }
               />
               {recipe.tags.length > 0
-                ? recipe.tags.map((tag, indice) => (
+                ? recipe.tags.map((tag) => (
                   <span
-                    key={ indice }
-                    data-testid={ `${indice}-${tag}-horizontal-tag` }
+                    key={ tag }
+                    data-testid={ `${index}-${tag}-horizontal-tag` }
                   >
                     {tag}
                   </span>))
