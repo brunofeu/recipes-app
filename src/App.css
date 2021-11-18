@@ -1,3 +1,8 @@
+body {
+  height: 640px;
+  width: 360px;
+}
+
 .meals {
   align-items: center;
   background: #0fa36b;
@@ -70,4 +75,21 @@
 .start-recipe-btn {
   bottom: 0;
   position: fixed;
+}
+
+.recipeImg {
+  height: 100px;
+  width: 100px;
+}
+
+.ingredient-button {
+  width: 100%;
+}
+
+.horizontal-name {
+  width: 80%;
+}
+
+.recipe-img {
+  width: 150px;
 }

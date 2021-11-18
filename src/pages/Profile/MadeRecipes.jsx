@@ -1,78 +1,102 @@
 import React, { useEffect, useState } from 'react';
-import FinishedDrinkCard from '../../components/FinishedDrinkCard';
-import FinishedMealCard from '../../components/FinishedMealCard';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import ShareButton from '../../components/ShareButton';
 
-function RecipesMade() {
-  const [recipes, setRecipes] = useState([]);
+function MadeRecipes() {
+  const [recipesFilter, setRecipesFilter] = useState([]);
+  console.log(recipesFilter);
+  if (!localStorage.getItem('madeRecipes')) {
+    localStorage.setItem('madeRecipes', JSON.stringify([]));
+  }
+  const madeRecipes = JSON.parse(localStorage.getItem('madeRecipes'));
 
-  useEffect(() => {
-    const getInfo = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (getInfo) {
-      setRecipes(getInfo);
-    }
-  }, []);
-
-  const handleFood = () => {
-    const getInfo = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (getInfo) {
-      const filterFood = getInfo.filter(({ type }) => type === 'comida');
-      setRecipes(filterFood);
-    }
+  const handlecliclAll = () => {
+    setRecipesFilter(madeRecipes);
   };
 
-  const handleDrink = () => {
-    const getInfo = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (getInfo) {
-      const filterDrink = getInfo.filter(({ type }) => type === 'bebida');
-      setRecipes(filterDrink);
-    }
+  const handleClickFood = () => {
+    const filterFood = madeRecipes.filter((recipe) => (recipe.type === 'comida'));
+    setRecipesFilter(filterFood);
   };
 
-  const handleAll = () => {
-    const getAll = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (getAll) {
-      setRecipes(getAll);
-    }
+  const handleClickDrinks = () => {
+    const filterDrinks = madeRecipes.filter((recipe) => (recipe.type === 'bebida'));
+    setRecipesFilter(filterDrinks);
   };
+
+  useEffect(() => setRecipesFilter(madeRecipes), []);
 
   return (
     <div>
-      <Header title="Receitas Feitas" showRender={ false } />
+      <Header title="Receitas Feitas" />
       <div>
         <button
           type="button"
+          onClick={ handlecliclAll }
           data-testid="filter-by-all-btn"
-          onClick={ handleAll }
         >
           All
         </button>
         <button
           type="button"
+          onClick={ handleClickFood }
           data-testid="filter-by-food-btn"
-          onClick={ handleFood }
         >
           Food
         </button>
         <button
           type="button"
+          onClick={ handleClickDrinks }
           data-testid="filter-by-drink-btn"
-          onClick={ handleDrink }
         >
           Drinks
         </button>
+        { recipesFilter !== null ? recipesFilter.map((recipe, index) => (
+          <div key={ recipe.id }>
+            <Link
+              key={ recipe.id }
+              to={ `/${recipe.type}s/${recipe.id}` }
+            >
+              <img
+                data-testid={ `${index}-horizontal-image` }
+                src={ recipe.image }
+                alt={ recipe.name }
+              />
+            </Link>
+            <div>
+              <h4
+                data-testid={ `${index}-horizontal-top-text` }
+              >
+                {recipe.area
+                  ? `${recipe.area} - ${recipe.category}` : `${recipe.alcoholicOrNot}`}
+              </h4>
+              <Link
+                key={ recipe.id }
+                to={ `/${recipe.type}s/${recipe.id}` }
+              >
+                <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>
+              </Link>
+              <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
+              <ShareButton
+                clipBoard={ (`http://localhost:3000/${recipe.type}s/${recipe.id}`) }
+                testid={ `${index}-horizontal-share-btn` }
+              />
+              {recipe.tags.length > 0
+                ? recipe.tags.map((tag, indice) => (
+                  <span
+                    key={ indice }
+                    data-testid={ `${indice}-${tag}-horizontal-tag` }
+                  >
+                    {tag}
+                  </span>))
+                : null}
+            </div>
+          </div>
+        )) : <p>Nenhuma receita finalizada!</p> }
       </div>
-      { recipes.map((item, index) => {
-        let card;
-        if (item.type === 'comida') {
-          card = <FinishedMealCard key={ index } card={ item } index={ index } />;
-        } else {
-          card = <FinishedDrinkCard key={ index } card={ item } index={ index } />;
-        }
-        return card;
-      }) }
     </div>
   );
 }
 
-export default RecipesMade;
+export default MadeRecipes;

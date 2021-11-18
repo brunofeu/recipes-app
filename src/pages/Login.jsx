@@ -13,7 +13,6 @@ function Login(props) {
     const testEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/.test(email);
     return testPassword && testEmail ? setDisabled(false) : setDisabled(true);
   };
-
   useEffect(() => {
     validadeEmailPassword();
     // eslint-disable-next-line react-hooks/exhaustive-deps

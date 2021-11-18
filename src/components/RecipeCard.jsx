@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types';
-import React, { /* useContext */ } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card } from 'react-bootstrap';
 
-// import RecipeContext from '../context/RecipeContext';
-
-function CardReceita(props) {
-  // const { alertTrigger } = useContext(RecipeContext);
+function RecipeCard(props) {
   const CARDS_QUANTITY = 12;
   const { infos } = props;
   const [infoArray, id, image, name, type] = infos;
+  if (!infoArray) return <div />;
   const recipes = infoArray.slice(0, CARDS_QUANTITY);
-  console.log(recipes[0]);
   return (
     <section>
       {recipes.map((recipe, index) => (
@@ -40,7 +37,7 @@ function CardReceita(props) {
   );
 }
 
-CardReceita.propTypes = {
+RecipeCard.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -49,4 +46,4 @@ CardReceita.propTypes = {
   }).isRequired,
 }.isRequired;
 
-export default CardReceita;
+export default RecipeCard;
