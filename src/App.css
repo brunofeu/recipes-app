@@ -89,3 +89,7 @@ body {
 .horizontal-name {
   width: 80%;
 }
+
+.recipe-img {
+  width: 150px;
+}
