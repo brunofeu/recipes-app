@@ -2,8 +2,8 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
-import { cleanup } from '@testing-library/react';
-// import ExploreMenu from '../pages/Explore/ExploreMenu';
+import ExploreMenu from '../pages/Explore/ExploreMenu';
+import { fireEvent } from '@testing-library/dom';
 // import { screen, fireEvent } from '@testing-library/dom';
 
 const EMAIL_TEST_ID = 'email-input';
@@ -16,15 +16,16 @@ const EXPLORE_FOOD = 'explore-food';
 // const EXPLORE_PAGE_PATH = '/explorar/comidas';
 
 describe('Realiza todos os testes da página de Explorar comidas', () => {
-  afterEach(cleanup);
   it('O header é renderizado corretamente', () => {
-    const { getByTestId } = renderWithRouter(<App />);
+    const { getByTestId, history } = renderWithRouter(<App />);
     console.log(window.location.pathname);
-    userEvent.type(getByTestId(EMAIL_TEST_ID), MOCK_EMAIL);
-    userEvent.type(getByTestId(PASSWORD_TEST_ID), '1234567');
-    userEvent.click(getByTestId(LOGIN_BTN_TEST_ID));
-    userEvent.click(getByTestId(EXPLORE_BOTTON_BTN));
-    userEvent.click(getByTestId(EXPLORE_FOOD));
+    // fireEvent.type(getByTestId(EMAIL_TEST_ID), MOCK_EMAIL);
+    fireEvent.change(getByTestId(EMAIL_TEST_ID), { target: { value: MOCK_EMAIL } });
+    // fireEvent.type(getByTestId(PASSWORD_TEST_ID), '1234567');
+    fireEvent.change(getByTestId(PASSWORD_TEST_ID), { target: { value: 1234567 } });
+    fireEvent.click(getByTestId(LOGIN_BTN_TEST_ID));
+    fireEvent.click(getByTestId(EXPLORE_BOTTON_BTN));
+    fireEvent.click(getByTestId(EXPLORE_FOOD));
 
     expect(getByTestId('profile-top-btn')).toBeInTheDocument();
     expect(getByTestId('page-title')).toHaveTextContent(/Explorar Comidas/i);
@@ -36,7 +37,7 @@ describe('Realiza todos os testes da página de Explorar comidas', () => {
   // expect(exploreByIngredientBtn).toHaveTextContent('Por Ingredientes');
   // expect(getByTestId('page-title')).toHaveTextContent('Explorar Comidas');
   it('Os botões da página são renderizados corretamente ', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     console.log(window.location.pathname);
     // userEvent.type(getByTestId(EMAIL_TEST_ID), MOCK_EMAIL);
     // userEvent.type(getByTestId(PASSWORD_TEST_ID), '1234567');

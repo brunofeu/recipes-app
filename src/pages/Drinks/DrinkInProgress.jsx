@@ -111,7 +111,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
     labelCheckbox.forEach((inputs) => {
       if (inputs.textContent === value) {
-        inputs.className = 'texto-riscado';
+        inputs.classList.toggle('texto-riscado');
       }
     });
   };
@@ -124,9 +124,6 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     const input = document.createElement('input');
     document.body.appendChild(input);
     clipboardCopy(actual);
-    // input.value = actual;
-    // input.select();
-    // document.execCommand('copy');
     document.body.removeChild(input);
   };
 

@@ -112,7 +112,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
     labelCheckbox.forEach((inputs) => {
       if (inputs.textContent === value) {
-        inputs.className = 'texto-riscado';
+        inputs.classList.toggle('texto-riscado');
       }
     });
   };
@@ -141,9 +141,6 @@ function FoodinProgress({ history, match: { params: { id } } }) {
     const input = document.createElement('input');
     document.body.appendChild(input);
     clipboardCopy(actual);
-    // console.log(actual)
-    // input.value = actual;
-    // document.execCommand('copy');
     document.body.removeChild(input);
   };
 
