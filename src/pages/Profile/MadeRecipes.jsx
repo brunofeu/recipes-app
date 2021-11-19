@@ -84,10 +84,10 @@ function MadeRecipes() {
                 testid={ `${index}-horizontal-share-btn` }
               />
               {recipe.tags.length > 0
-                ? recipe.tags.map((tag, indice) => (
+                ? recipe.tags.map((tag) => (
                   <span
-                    key={ indice }
-                    data-testid={ `${indice}-${tag}-horizontal-tag` }
+                    key={ tag }
+                    data-testid={ `${index}-${tag}-horizontal-tag` }
                   >
                     {tag}
                   </span>))
