@@ -8,7 +8,7 @@ function ExploreMenu() {
   return (
     <>
       <div>
-        <Header title="Explorar" />
+        <Header title="Explorar" showSearchBtn={ false } />
         <button
           type="button"
           data-testid="explore-food"

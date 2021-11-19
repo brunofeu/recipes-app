@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
-function Login(props) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const history = useHistory();
 
   const validadeEmailPassword = () => {
     const MIN_CHARACTERS_PASSWORD = 6;
@@ -19,7 +21,6 @@ function Login(props) {
   }, [email, password]);
 
   const handleSubmit = () => {
-    const { history } = props;
     localStorage.setItem('mealsToken', JSON.stringify(1));
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
     localStorage.setItem('user', JSON.stringify({ email }));

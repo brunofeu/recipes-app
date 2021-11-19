@@ -16,7 +16,7 @@ function ExploreFoods() {
   return (
     <>
       <div>
-        <Header title="Explorar Comidas" />
+        <Header title="Explorar Comidas" showSearchBtn={ false } />
         <button
           type="button"
           data-testid="explore-by-ingredient"
