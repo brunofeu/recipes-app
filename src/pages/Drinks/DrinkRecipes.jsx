@@ -16,6 +16,7 @@ function DrinkRecipes(props) {
   const [recipe, setRecipe] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [inProgress, setInProgress] = useState(false);
 
   const fetchRecipeDetail = async () => {
     setIsLoading(true);
@@ -26,10 +27,35 @@ function DrinkRecipes(props) {
     setIsLoading(false);
   };
 
+  const checkInProgress = () => {
+    if (!localStorage.getItem('inProgressRecipes')) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(
+        { meals: {}, cocktails: {} },
+      ));
+    } else {
+      const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      if (!inProgressRecipes.meals) inProgressRecipes.meals = {};
+      if (!inProgressRecipes.cocktails) inProgressRecipes.cocktails = [];
+      // console.log(inProgressRecipes)
+      setInProgress(Object.keys(inProgressRecipes.cocktails).some(
+        (progress) => progress === id,
+      ));
+    }
+  };
+
   useEffect(() => {
     fetchRecipeDetail();
+    checkInProgress();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const isDone = () => {
+    if (!localStorage.getItem('doneRecipes')) {
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
+    }
+    const checkDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    return checkDone.some((item) => item.id === id);
+  };
 
   return (
     <div>
@@ -51,7 +77,11 @@ function DrinkRecipes(props) {
           <IngredientsList recipe={ recipe } />
           <RecipeInstructions recipe={ recipe } />
           <RecomendationCard recomendations={ recomendations } type="Meal" />
-          <StartButton location={ history.location.pathname } />
+          <StartButton
+            location={ history.location.pathname }
+            inProgress={ inProgress }
+            hidden={ isDone() }
+          />
         </div>
       )}
     </div>

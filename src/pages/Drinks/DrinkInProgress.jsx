@@ -6,16 +6,16 @@ import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 
-function MainDrinkInProgress({ history, match: { params: { id } } }) {
+function DrinkInProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
     const getLocalStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!getLocalStorage) {
       return [];
     }
-    if (Object.keys(getLocalStorage).includes('drinks')) {
+    if (Object.keys(getLocalStorage).includes('cocktails')) {
       const findItem = [getLocalStorage].find((storage) => Object
-        .keys(storage.drinks).includes(id));
-      if (findItem) return getLocalStorage.drinks[id];
+        .keys(storage.cocktails).includes(id));
+      if (findItem) return getLocalStorage.cocktails[id];
       return [];
     }
     return [];
@@ -56,19 +56,17 @@ function MainDrinkInProgress({ history, match: { params: { id } } }) {
 
   useEffect(() => {
     function saveInLocal() {
-      if (checkArray.length) {
-        let getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        if (!getLocal) {
-          const objectStore = {};
-          localStorage.setItem('inProgressRecipes', JSON.stringify(objectStore));
-          getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        }
-        const objeto = {
-          [id]: checkArray,
-        };
-        localStorage.setItem('inProgressRecipes',
-          JSON.stringify({ ...getLocal, drinks: { ...getLocal.drinks, ...objeto } }));
+      let getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      if (!getLocal) {
+        const objectStore = {};
+        localStorage.setItem('inProgressRecipes', JSON.stringify(objectStore));
+        getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
       }
+      const objeto = {
+        [id]: checkArray,
+      };
+      localStorage.setItem('inProgressRecipes',
+        JSON.stringify({ ...getLocal, cocktails: { ...getLocal.cocktails, ...objeto } }));
     }
     saveInLocal();
   }, [checkArray, id]);
@@ -218,7 +216,7 @@ function MainDrinkInProgress({ history, match: { params: { id } } }) {
   );
 }
 
-MainDrinkInProgress.propTypes = {
+DrinkInProgress.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -229,4 +227,4 @@ MainDrinkInProgress.propTypes = {
   }).isRequired,
 };
 
-export default MainDrinkInProgress;
+export default DrinkInProgress;
