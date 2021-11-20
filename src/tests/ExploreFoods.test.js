@@ -1,9 +1,9 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/dom';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
-import ExploreMenu from '../pages/Explore/ExploreMenu';
-import { fireEvent } from '@testing-library/dom';
+// import ExploreMenu from '../pages/Explore/ExploreMenu';
 // import { screen, fireEvent } from '@testing-library/dom';
 
 const EMAIL_TEST_ID = 'email-input';
@@ -17,7 +17,7 @@ const EXPLORE_FOOD = 'explore-food';
 
 describe('Realiza todos os testes da página de Explorar comidas', () => {
   it('O header é renderizado corretamente', () => {
-    const { getByTestId, history } = renderWithRouter(<App />);
+    const { getByTestId } = renderWithRouter(<App />);
     console.log(window.location.pathname);
     // fireEvent.type(getByTestId(EMAIL_TEST_ID), MOCK_EMAIL);
     fireEvent.change(getByTestId(EMAIL_TEST_ID), { target: { value: MOCK_EMAIL } });
@@ -37,7 +37,7 @@ describe('Realiza todos os testes da página de Explorar comidas', () => {
   // expect(exploreByIngredientBtn).toHaveTextContent('Por Ingredientes');
   // expect(getByTestId('page-title')).toHaveTextContent('Explorar Comidas');
   it('Os botões da página são renderizados corretamente ', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
     console.log(window.location.pathname);
     // userEvent.type(getByTestId(EMAIL_TEST_ID), MOCK_EMAIL);
     // userEvent.type(getByTestId(PASSWORD_TEST_ID), '1234567');
