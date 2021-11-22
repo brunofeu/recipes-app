@@ -6,6 +6,8 @@ import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 
+import '../../styles/FoodRecipes.css';
+
 function FoodinProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
     const getLocalStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -158,7 +160,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
   );
 
   return (
-    <div>
+    <div className="recipes-container">
       { foodInfo.map((food) => {
         const allFood = (
           <div key={ food.idMeal }>
@@ -182,7 +184,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
         );
         return allFood;
       }) }
-      <div>
+      <div className="recipes-checkbox">
         <ul>
           { ingredients.map(({ strMeasure, strIngredient }, index) => {
             const ingrID = `${index}-ingredient-step`;

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/Menu.css';
+
 function Categories(props) {
   const { categories, onClick, onAll } = props;
   const BTN_QUANTITY = 5;
   const shownCategories = categories.slice(0, BTN_QUANTITY);
 
   return (
-    <div>
+    <div className="menu-categories">
       {shownCategories.map((category, index) => (
         <button
           key={ index }
@@ -26,7 +28,6 @@ function Categories(props) {
         onClick={ () => onAll() }
       >
         All
-
       </button>
     </div>
   );

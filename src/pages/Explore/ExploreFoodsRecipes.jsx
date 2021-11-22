@@ -4,6 +4,8 @@ import Footer from '../../components/Footer';
 import IngredientCard from '../../components/IngredientCard';
 import RecipeContext from '../../context/RecipeContext';
 
+import '../../styles/Explore.css';
+
 function ExploreFoodsRecipes() {
   const { fetchMeal } = useContext(RecipeContext);
   const [ingredientsList, setIngredientsList] = useState();
@@ -24,9 +26,11 @@ function ExploreFoodsRecipes() {
 
   return (
     <>
-      <div>
+      <div className="ingredients-section">
         <Header title="Explorar Ingredientes" />
-        {!isLoading && <IngredientCard list={ ingredientsList } url="themealdb" /> }
+        <div className="cards-ingredients">
+          {!isLoading && <IngredientCard list={ ingredientsList } url="themealdb" /> }
+        </div>
       </div>
       <footer>
         <Footer />

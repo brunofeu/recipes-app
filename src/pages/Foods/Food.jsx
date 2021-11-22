@@ -6,6 +6,8 @@ import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 import FiltersNotFound from '../../components/FiltersNotFound';
 
+import '../../styles/Menu.css';
+
 function Food() {
   const {
     meal, fetchMeal, setPage, fetchCategories, categories, filter, setFilter,

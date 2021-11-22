@@ -1,0 +1,76 @@
+.menu-explore {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-left: 18%;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.menu-explore button[ type = 'button' ] {
+  align-items: center;
+  border-radius: 10px;
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 8px;
+  width: auto;
+}
+
+.ingredients-section {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  height: 1400px;
+  justify-content: center;
+  margin-left: 85px;
+  width: 1200px;
+}
+
+.cards-ingredients {
+  background-color: rgb(92, 86, 86);
+  border: 5px solid rgba(0, 0, 0, 0.125);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  margin: 5px;
+  outline: var(--outline);
+  outline-offset: -1rem;
+  text-align: center;
+  width: auto;
+}
+
+.card-link {
+  align-items: center;
+  display: flex;
+  height: 144px;
+  margin-left: 13px;
+  text-decoration: none;
+}
+
+.cards-section {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  height: 1400px;
+  justify-content: center;
+  margin-left: 85px;
+  width: 1200px;
+}
+
+.cards {
+  background-color: rgb(92, 86, 86);
+  border: 5px solid rgba(0, 0, 0, 0.125);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  margin: 5px;
+  outline: var(--outline);
+  outline-offset: -1rem;
+  text-align: center;
+  width: auto;
+}

@@ -6,6 +6,9 @@ import RecipeCard from '../../components/RecipeCard';
 import Categories from '../../components/Categories';
 import FiltersNotFound from '../../components/FiltersNotFound';
 
+import '../../styles/Menu.css';
+import '../../App.css';
+
 function Drinks() {
   const {
     drink, fetchDrink, setPage, fetchCategories, categories, filter, setFilter,
@@ -39,11 +42,13 @@ function Drinks() {
   return (
     <div>
       <Header title="Bebidas" showSearchBtn="true" />
-      <Categories
-        categories={ categories.drinks }
-        onClick={ handleClick }
-        onAll={ fetchDrink }
-      />
+      <div className="menu-categories">
+        <Categories
+          categories={ categories.drinks }
+          onClick={ handleClick }
+          onAll={ fetchDrink }
+        />
+      </div>
       { (drink !== null)
         ? (
           <RecipeCard

@@ -1,0 +1,33 @@
+.searchBar-container {
+  background: chartreuse;
+  display: flex;
+  width: 500px;
+}
+
+.searchBar-container p {
+  font-size: 15px;
+}
+
+.searchBar-container input[ data-testid = 'search-input' ] {
+  height: 30px;
+  margin-left: -390px;
+  width: 300px;
+}
+
+.searchBar-container div {
+  background: chocolate;
+  display: flex;
+  width: 500px;
+}
+
+.searchBar-container button[ data-testid = 'exec-search-btn' ] {
+  height: 40px;
+  width: 100px;
+}
+
+.search-btn {
+  background: cornflowerblue;
+  height: 42px;
+  margin-left: 20px;
+  width: 20px;
+}

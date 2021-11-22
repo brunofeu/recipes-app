@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import profileIcon from '../images/profileIcon.svg';
+/* import wallPaperFood from '../images/wallPaperFood.jpg'; */
+
+import '../styles/Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -28,38 +32,50 @@ function Login() {
   };
 
   return (
-    <form>
-      <label htmlFor="email">
-        Email:
-        <input
-          name="email"
-          type="email"
-          data-testid="email-input"
-          id="email"
-          value={ email }
-          onChange={ (event) => setEmail(event.target.value) }
-        />
-      </label>
-      <label htmlFor="password">
-        Senha:
-        <input
-          name="password"
-          type="password"
-          data-testid="password-input"
-          id="password"
-          value={ password }
-          onChange={ (event) => setPassword(event.target.value) }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ disabled }
-        onClick={ handleSubmit }
-      >
-        Entrar
-      </button>
-    </form>
+    <>
+      {/* <header>
+        <h1>Bem Vindo ao App de Receitas !</h1>
+      </header> */}
+      <div className="login-div">
+        <img src={ profileIcon } alt="user" width="100" height="100" />
+        <h2 className="login-title">Login</h2>
+        <form>
+          <label htmlFor="email">
+            <p>Email:</p>
+            <input
+              name="email"
+              type="email"
+              data-testid="email-input"
+              id="email"
+              value={ email }
+              onChange={ (event) => setEmail(event.target.value) }
+            />
+          </label>
+          <label htmlFor="password">
+            <p>Senha:</p>
+            <input
+              name="password"
+              type="password"
+              data-testid="password-input"
+              id="password"
+              value={ password }
+              onChange={ (event) => setPassword(event.target.value) }
+            />
+          </label>
+          <div>
+            <button
+              id="login-button"
+              type="button"
+              data-testid="login-submit-btn"
+              disabled={ disabled }
+              onClick={ handleSubmit }
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

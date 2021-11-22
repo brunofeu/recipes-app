@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import Footer from '../../components/Footer';
 
+import '../../styles/Explore.css';
+
 function ExploreFoods() {
   const history = useHistory();
   const { fetchRandom } = useContext(RecipeContext);
@@ -15,29 +17,31 @@ function ExploreFoods() {
 
   return (
     <>
-      <div>
-        <Header title="Explorar Comidas" showSearchBtn={ false } />
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explorar/comidas/ingredientes') }
-        >
-          Por Ingredientes
-        </button>
-        <button
-          type="button"
-          data-testid="explore-by-area"
-          onClick={ () => history.push('/explorar/comidas/area') }
-        >
-          Por Local de Origem
-        </button>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ handleClick }
-        >
-          Me Surpreenda!
-        </button>
+      <div className="recipes-checkbox">
+        <Header title="Explorar Comidas" />
+        <div className="menu-explore">
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            onClick={ () => history.push('/explorar/comidas/ingredientes') }
+          >
+            Por Ingredientes
+          </button>
+          <button
+            type="button"
+            data-testid="explore-by-area"
+            onClick={ () => history.push('/explorar/comidas/area') }
+          >
+            Por Local de Origem
+          </button>
+          <button
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ handleClick }
+          >
+            Me Surpreenda!
+          </button>
+        </div>
       </div>
       <footer>
         <Footer />

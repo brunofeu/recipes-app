@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import Footer from '../../components/Footer';
 
+import '../../styles/Explore.css';
+
 function ExploreDrinks() {
   const history = useHistory();
   const { fetchRandom } = useContext(RecipeContext);
@@ -17,20 +19,22 @@ function ExploreDrinks() {
     <>
       <div>
         <Header title="Explorar Bebidas" />
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explorar/bebidas/ingredientes') }
-        >
-          Por Ingredientes
-        </button>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ handleClick }
-        >
-          Me Surpreenda!
-        </button>
+        <div className="menu-explore">
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            onClick={ () => history.push('/explorar/bebidas/ingredientes') }
+          >
+            Por Ingredientes
+          </button>
+          <button
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ handleClick }
+          >
+            Me Surpreenda!
+          </button>
+        </div>
       </div>
       <footer>
         <Footer />

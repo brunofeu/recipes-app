@@ -1,0 +1,92 @@
+body {
+  background-color: rgb(46, 42, 42);
+  background-image: url('../images/wallPaper_2.jpg');
+  background-size: cover;
+  font-family: Comfortaa , sans-serif;
+  margin: 0;
+  max-width: 360px;
+  padding: 0;
+}
+
+header {
+  color: white;
+  display: flex;
+  font-size: 10%;
+  letter-spacing: 10%;
+  margin-left: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  width: 300%;
+}
+
+/* header h1 {
+  background-color: rgba(69, 69, 73, 0.8);
+  margin-top: 20px;
+} */
+
+.login-div {
+  background-color: rgba(69, 69, 73, 0.8);
+  border: 2px solid black;
+  border-radius: 80px;
+  box-sizing: 68px 28px;
+  color: white;
+  height: 70%;
+  left: 50%;
+  margin-top: 30px;
+  position: absolute;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.login-title {
+  font-size: 25px;
+  letter-spacing: 10px;
+  margin: 0;
+  padding-bottom: 20px;
+  padding-left: 0;
+  padding-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login-div img[ alt = 'user' ] {
+  border-radius: 50%;
+  left: 35%;
+  position: absolute;
+  top: -90px;
+}
+
+.login-div p {
+  font-weight: 500;
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.login-div input {
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+.login-div input[ id = 'email' ], input[ id = 'password' ] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 16px;
+  height: 40px;
+  margin-left: 15px;
+  outline: none;
+}
+
+.login-div button[ id = 'login-button' ] {
+  border: none;
+  border-radius: 20px;
+  color: black;
+  height: 35px;
+  margin-left: 15px;
+  margin-top: 30px;
+  outline: none;
+  width: 90%;
+}
