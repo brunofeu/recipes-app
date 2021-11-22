@@ -9,7 +9,7 @@ import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
 import RecipeContext from '../../context/RecipeContext';
 
-import '../../styles/FoodRecipes.css';
+// import '../../styles/FoodRecipes.css';
 
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;

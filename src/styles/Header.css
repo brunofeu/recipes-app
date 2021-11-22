@@ -1,15 +1,26 @@
 .header {
-  align-items: flex-start;
-  background-color: rgba(69, 69, 73, 0.8);
   display: flex;
-  justify-content: flex-end;
-  margin-top: 2%;
-  width: 134%;
+  background-color: rgba(69, 69, 73, 0.8);
+  justify-content: space-between;
+  padding: 10px ;
 }
 
-.header button[ type = 'button' ] {
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 4%;
-  margin-top: 0.5%;
+.header-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  border-radius: 100px;
+  text-shadow: 1px 1px 2px black, 0 0 3em blue, 0 0 0.2em blue;
 }
+
+.header-button img {
+filter: drop-shadow(2px 4px 8px #ffffff);
+}
+
+.page-title {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 10em blue, 0 0 0.2em blue;
+}
+
+

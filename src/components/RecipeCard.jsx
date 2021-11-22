@@ -15,8 +15,8 @@ function RecipeCard(props) {
   return (
     <section className="cards-section">
       {recipes.map((recipe, index) => (
-        <div className="cards" key="cards">
-          <Link to={ `/${type}/${recipe[id]}` } key={ recipe[`${id}`] }>
+        <div className="cards" key={ recipe[`${id}`] }>
+          <Link to={ `/${type}/${recipe[id]}` }>
             <Card
               id={ recipe[id] }
               style={ { width: '18rem' } }

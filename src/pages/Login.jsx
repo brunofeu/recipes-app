@@ -32,14 +32,11 @@ function Login() {
   };
 
   return (
-    <>
-      {/* <header>
-        <h1>Bem Vindo ao App de Receitas !</h1>
-      </header> */}
-      <div className="login-div">
-        <img src={ profileIcon } alt="user" width="100" height="100" />
+    <div className="container-login">
+      <div className="login-main">
+        <img src={ profileIcon } alt="user" />
         <h2 className="login-title">Login</h2>
-        <form>
+        <form className="form-container">
           <label htmlFor="email">
             <p>Email:</p>
             <input
@@ -75,7 +72,7 @@ function Login() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

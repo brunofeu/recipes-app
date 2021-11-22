@@ -6,7 +6,7 @@ import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 
-import '../../styles/DrinkInProgress.css';
+import '../../styles/RecipeInProgress.css';
 
 function DrinkInProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
@@ -176,7 +176,12 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
             <button type="button" onClick={ handleFavorite }>
               <img src={ icon } alt="icone-de-favoritar" data-testid="favorite-btn" />
             </button>
-            <p data-testid="instructions">{ drink.strInstructions }</p>
+            <p
+              className="recipe-instruction"
+              data-testid="instructions"
+            >
+              { drink.strInstructions }
+            </p>
           </div>
         );
         return allDrink;
@@ -212,6 +217,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
         </ul>
       </div>
       <button
+        className="finish-recipe-btn"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ disable }

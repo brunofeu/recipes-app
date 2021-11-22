@@ -1,0 +1,22 @@
+.recipes-container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(92, 86, 86, 0.596);
+}
+
+
+.recipes-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+}
+
+
+.finish-recipe-btn {
+  border-radius: 10px;
+  margin-bottom: 10%;
+}
