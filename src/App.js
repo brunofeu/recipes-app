@@ -22,8 +22,8 @@ import './App.css';
 
 function App() {
   return (
-    <RecipeProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <RecipeProvider>
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/comidas" component={ Food } />
@@ -57,8 +57,8 @@ function App() {
           <Route path="/receitas-favoritas" component={ Favorites } />
           <Route to="" component={ NotFound } />
         </Switch>
-      </BrowserRouter>
-    </RecipeProvider>
+      </RecipeProvider>
+    </BrowserRouter>
   );
 }
 

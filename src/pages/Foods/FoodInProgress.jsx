@@ -24,10 +24,10 @@ function FoodinProgress({ history, match: { params: { id } } }) {
   const isFavorite = getFavorites(id);
   const [foodInfo, setFoodInfo] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [disable, setDisable] = useState(true);
   const [link, setLink] = useState('');
   const [icon, setIcon] = useState(isFavorite);
-  const [disable, setDisable] = useState(true);
-  const [checkArray, SetCheckArray] = useState(localStorageChecked);
+  const [checkArray, setCheckArray] = useState(localStorageChecked);
 
   useEffect(() => {
     fetchFoodById(id).then(({ meals }) => setFoodInfo(meals));
@@ -106,13 +106,15 @@ function FoodinProgress({ history, match: { params: { id } } }) {
 
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
-      SetCheckArray([...checkArray, index]);
+      setCheckArray([...checkArray, index]);
+    } else {
+      setCheckArray([...checkArray.filter((item) => item !== index)]);
     }
 
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
     labelCheckbox.forEach((inputs) => {
       if (inputs.textContent === value) {
-        inputs.className = 'texto-riscado';
+        inputs.classList.toggle('texto-riscado');
       }
     });
   };
@@ -141,19 +143,19 @@ function FoodinProgress({ history, match: { params: { id } } }) {
     const input = document.createElement('input');
     document.body.appendChild(input);
     clipboardCopy(actual);
-    // console.log(actual)
-    // input.value = actual;
-    // document.execCommand('copy');
     document.body.removeChild(input);
   };
 
   const verifyChecked = () => {
-    const input = document.querySelectorAll('.inputs-checkbox');
-    input.forEach((inputs) => {
-      if (inputs.checked === true) setDisable(false);
-      else setDisable(true);
-    });
+    if (ingredients.length === checkArray.length) setDisable(false);
+    else setDisable(true);
   };
+
+  useEffect(
+    () => verifyChecked(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [ingredients, checkArray],
+  );
 
   return (
     <div>
@@ -181,29 +183,34 @@ function FoodinProgress({ history, match: { params: { id } } }) {
         return allFood;
       }) }
       <div>
-        { ingredients.map(({ strMeasure, strIngredient }, index) => {
-          const ingrID = `${index}-ingredient-step`;
-          return (
-            <label
-              onChange={ verifyChecked }
-              data-testid={ ingrID }
-              key={ index }
-              htmlFor={ index }
-              className="label-checkbox"
-            >
-              <br />
-              { `${strMeasure} ${strIngredient}` }
-              <input
-                checked={ checkArray.includes(index) }
-                className="inputs-checkbox"
-                id={ index }
-                type="checkbox"
-                key={ index }
-                value={ `${strMeasure} ${strIngredient}` }
-                onClick={ (e) => riskCompleteds(e, index) }
-              />
-            </label>);
-        }) }
+        <ul>
+          { ingredients.map(({ strMeasure, strIngredient }, index) => {
+            const ingrID = `${index}-ingredient-step`;
+            return (
+              <li key={ index }>
+                <label
+                  data-testid={ ingrID }
+                  htmlFor={ index }
+                  className={ (
+                    checkArray.includes(index)
+                      ? 'inputs-checkbox texto-riscado'
+                      : 'inputs-checkbox') }
+                >
+                  <input
+                    onChange={ verifyChecked }
+                    checked={ checkArray.includes(index) }
+                    className="inputs-checkbox"
+                    id={ index }
+                    type="checkbox"
+                    value={ `${strMeasure} ${strIngredient}` }
+                    onClick={ (e) => riskCompleteds(e, index) }
+                  />
+                  { ` ${strMeasure} ${strIngredient}` }
+                </label>
+              </li>
+            );
+          }) }
+        </ul>
       </div>
       <button
         disabled={ disable }

@@ -33,9 +33,7 @@ function Categories(props) {
 }
 
 Categories.propTypes = {
-  categories: PropTypes.shape({
-    slice: PropTypes.func,
-  }).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   onAll: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
 };

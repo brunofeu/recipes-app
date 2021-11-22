@@ -93,3 +93,7 @@ body {
 .recipe-img {
   width: 150px;
 }
+
+.texto-riscado {
+  text-decoration: line-through;
+}

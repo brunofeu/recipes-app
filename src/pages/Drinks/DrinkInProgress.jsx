@@ -22,15 +22,15 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   };
   const localStorageChecked = auxiliar();
   const isFavorite = getFavorites(id);
-  const [drinkInfo, setdrinkInfo] = useState([]);
+  const [drinkInfo, setDrinkInfo] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [disable, setDisable] = useState(true);
   const [link, setLink] = useState('');
   const [icon, setIcon] = useState(isFavorite);
-  const [checkArray, SetCheckArray] = useState(localStorageChecked);
+  const [checkArray, setCheckArray] = useState(localStorageChecked);
 
   useEffect(() => {
-    fetchDrinkById(id).then(({ drinks }) => setdrinkInfo(drinks));
+    fetchDrinkById(id).then(({ drinks }) => setDrinkInfo(drinks));
   }, [id]);
 
   useEffect(() => {
@@ -105,13 +105,13 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   // Risca o ingrediente
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
-      SetCheckArray([...checkArray, index]);
+      setCheckArray([...checkArray, index]);
     }
 
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
     labelCheckbox.forEach((inputs) => {
       if (inputs.textContent === value) {
-        inputs.className = 'texto-riscado';
+        inputs.classList.toggle('texto-riscado');
       }
     });
   };
@@ -124,19 +124,19 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     const input = document.createElement('input');
     document.body.appendChild(input);
     clipboardCopy(actual);
-    // input.value = actual;
-    // input.select();
-    // document.execCommand('copy');
     document.body.removeChild(input);
   };
 
   const verifyChecked = () => {
-    const input = document.querySelectorAll('.inputs-checkbox');
-    input.forEach((inputs) => {
-      if (inputs.checked === true) setDisable(false);
-      else setDisable(true);
-    });
+    if (ingredients.length === checkArray.length) setDisable(false);
+    else setDisable(true);
   };
+
+  useEffect(
+    () => verifyChecked(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [ingredients, checkArray],
+  );
 
   const handleFavorite = () => {
     const objSave = drinkInfo.map((item) => {
@@ -180,29 +180,34 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
         return allDrink;
       }) }
       <div>
-        { ingredients.map(({ strMeasure, strIngredient }, i) => {
-          const ingrID = `${i}-ingredient-step`;
-          return (
-            <label
-              data-testid={ ingrID }
-              key={ i }
-              htmlFor={ i }
-              className="label-checkbox"
-              onChange={ verifyChecked }
-            >
-              <br />
-              { `${strMeasure} ${strIngredient}` }
-              <input
-                checked={ checkArray.includes(i) }
-                className="inputs-checkbox"
-                id={ i }
-                type="checkbox"
-                key={ i }
-                value={ `${strMeasure} ${strIngredient}` }
-                onClick={ (e) => riskCompleteds(e, i) }
-              />
-            </label>);
-        }) }
+        <ul>
+          { ingredients.map(({ strMeasure, strIngredient }, i) => {
+            const ingrID = `${i}-ingredient-step`;
+            return (
+              <li key={ i }>
+                <label
+                  data-testid={ ingrID }
+                  htmlFor={ i }
+                  className={ (
+                    checkArray.includes(i)
+                      ? 'inputs-checkbox texto-riscado'
+                      : 'inputs-checkbox') }
+                >
+                  <input
+                    onChange={ verifyChecked }
+                    checked={ checkArray.includes(i) }
+                    className="inputs-checkbox"
+                    id={ i }
+                    type="checkbox"
+                    value={ `${strMeasure} ${strIngredient}` }
+                    onClick={ (e) => riskCompleteds(e, i) }
+                  />
+                </label>
+                { ` ${strMeasure} ${strIngredient}` }
+              </li>
+            );
+          }) }
+        </ul>
       </div>
       <button
         type="button"

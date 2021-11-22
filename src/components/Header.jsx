@@ -36,9 +36,6 @@ function Header({ title, showSearchBtn = false }) {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   showSearchBtn: PropTypes.bool.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
 };
 
 export default Header;

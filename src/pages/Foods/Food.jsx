@@ -37,7 +37,7 @@ function Food() {
 
   return (
     <div>
-      <Header title="Comidas" showSearchBtn="true" />
+      <Header title="Comidas" showSearchBtn />
       <Categories
         categories={ categories.meals }
         onClick={ handleClick }
