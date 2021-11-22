@@ -128,12 +128,15 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   };
 
   const verifyChecked = () => {
-    const input = document.querySelectorAll('.inputs-checkbox');
-    input.forEach((inputs) => {
-      if (inputs.checked === true) setDisable(false);
-      else setDisable(true);
-    });
+    if (ingredients.length === checkArray.length) setDisable(false);
+    else setDisable(true);
   };
+
+  useEffect(
+    () => verifyChecked(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [ingredients, checkArray],
+  );
 
   const handleFavorite = () => {
     const objSave = drinkInfo.map((item) => {
@@ -177,29 +180,34 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
         return allDrink;
       }) }
       <div>
-        { ingredients.map(({ strMeasure, strIngredient }, i) => {
-          const ingrID = `${i}-ingredient-step`;
-          return (
-            <label
-              data-testid={ ingrID }
-              key={ i }
-              htmlFor={ i }
-              className="label-checkbox"
-              onChange={ verifyChecked }
-            >
-              <br />
-              { `${strMeasure} ${strIngredient}` }
-              <input
-                checked={ checkArray.includes(i) }
-                className="inputs-checkbox"
-                id={ i }
-                type="checkbox"
-                key={ i }
-                value={ `${strMeasure} ${strIngredient}` }
-                onClick={ (e) => riskCompleteds(e, i) }
-              />
-            </label>);
-        }) }
+        <ul>
+          { ingredients.map(({ strMeasure, strIngredient }, i) => {
+            const ingrID = `${i}-ingredient-step`;
+            return (
+              <li key={ i }>
+                <label
+                  data-testid={ ingrID }
+                  htmlFor={ i }
+                  className={ (
+                    checkArray.includes(i)
+                      ? 'inputs-checkbox texto-riscado'
+                      : 'inputs-checkbox') }
+                >
+                  <input
+                    onChange={ verifyChecked }
+                    checked={ checkArray.includes(i) }
+                    className="inputs-checkbox"
+                    id={ i }
+                    type="checkbox"
+                    value={ `${strMeasure} ${strIngredient}` }
+                    onClick={ (e) => riskCompleteds(e, i) }
+                  />
+                </label>
+                { ` ${strMeasure} ${strIngredient}` }
+              </li>
+            );
+          }) }
+        </ul>
       </div>
       <button
         type="button"
