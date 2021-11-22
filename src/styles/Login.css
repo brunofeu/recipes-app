@@ -33,23 +33,23 @@
 } */
 
 .container-login {
-  display: flex;
-  justify-content: center;
   align-content: center;
-  height: 100vh;
   align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
 }
 
-.login-main{
-  display: flex;
-  flex-direction: column;
+.login-main {
   align-items: center;
   background-color: rgba(69, 69, 73, 0.8);
   border: 2px solid black;
   border-radius: 40px;
   color: white;
-  width: 70%;
+  display: flex;
+  flex-direction: column;
   height: 400px;
+  width: 70%;
 }
 
 .login-title {
@@ -61,17 +61,17 @@
   text-transform: uppercase;
 }
 
-.login-main img[ alt = 'user' ] {
-  width: 80px;
+.login-main img {
   background-color: white;
   border-radius: 50%;
   margin-top: 25px;
+  width: 80px;
 }
 
 .form-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .login-main p {
@@ -81,22 +81,19 @@
 }
 
 .login-main input {
-  margin-bottom: 2%;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.login-main input[ id = 'email' ], input[ id = 'password' ] {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid white;
+  border-radius: 10px;
   color: white;
   font-size: 16px;
   height: 40px;
+  margin-bottom: 2%;
   outline: none;
+  width: 100%;
 }
 
-.login-main button[ id = 'login-button' ] {
+.login-main button {
   border: none;
   border-radius: 20px;
   color: black;

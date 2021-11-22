@@ -1,11 +1,11 @@
 .recipes-container {
+  background-color: rgba(92, 86, 86, 0.596);
+  color: white;
   display: flex;
   flex-direction: column;
-  color: white;
   margin: 0;
-  width: 100%;
   padding: 15px;
-  background-color: rgba(92, 86, 86, 0.596);
+  width: 100%;
 }
 
 
