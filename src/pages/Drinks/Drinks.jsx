@@ -42,11 +42,13 @@ function Drinks() {
   return (
     <div>
       <Header title="Bebidas" showSearchBtn="true" />
-      <Categories
-        categories={ categories.drinks }
-        onClick={ handleClick }
-        onAll={ fetchDrink }
-      />
+      <div className="menu-categories">
+        <Categories
+          categories={ categories.drinks }
+          onClick={ handleClick }
+          onAll={ fetchDrink }
+        />
+      </div>
       { (drink !== null)
         ? (
           <RecipeCard

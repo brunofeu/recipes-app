@@ -55,7 +55,7 @@ function MadeRecipes() {
           Drinks
         </button>
         { recipesFilter !== null ? recipesFilter.map((recipe, index) => (
-          <div key={ recipe.id }>
+          <div className="cards-recipe-made" key={ recipe.id }>
             <Link
               key={ recipe.id }
               to={ `/${recipe.type}s/${recipe.id}` }

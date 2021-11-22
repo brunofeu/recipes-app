@@ -1,99 +1,92 @@
-body{
-  margin: 0;
-  padding: 0;
+body {
   background-color: rgb(46, 42, 42);
+  background-image: url('../images/wallPaper_2.jpg');
   background-size: cover;
-  font-family: "Comfortaa", sans-serif;
-  background-image: url(../images/wallPaper_2.jpg);
+  font-family: Comfortaa , sans-serif;
+  margin: 0;
+  max-width: 360px;
+  padding: 0;
 }
 
 header {
+  color: white;
   display: flex;
-  width: 300%;
-  margin-left: 200px;
-  letter-spacing: 10px;
-  text-transform: uppercase;
+  font-size: 10%;
+  letter-spacing: 10%;
+  margin-left: 0%;
   text-align: center;
-  font-size: 25px;
-  color: #fff;
+  text-transform: uppercase;
+  width: 300%;
 }
 
-header h1 {
-  margin-top: 20px;
+/* header h1 {
   background-color: rgba(69, 69, 73, 0.8);
-}
+  margin-top: 20px;
+} */
 
 .login-div {
-  margin-top: 30px;
-  width: 320px;
-  height: 420px;
-  border: 2px solid #000;
-  border-radius: 80px 0px 80px 0px;
-  color: #fff;
   background-color: rgba(69, 69, 73, 0.8);
-  top: 55%;
-  left: 50%;
-  position: absolute;
-  transform:  translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 80px;
   box-sizing: 68px 28px;
+  color: white;
+  height: 70%;
+  left: 50%;
+  margin-top: 30px;
+  position: absolute;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 60%;
 }
 
-#login-title {
-  margin: 0;
-  padding-top: 15px;
-  padding-left: 0;
-  padding-bottom: 20px;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  text-align: center;
+.login-title {
   font-size: 25px;
+  letter-spacing: 10px;
+  margin: 0;
+  padding-bottom: 20px;
+  padding-left: 0;
+  padding-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.login-div img[alt="user"] {
+.login-div img[ alt = 'user' ] {
   border-radius: 50%;
+  left: 35%;
   position: absolute;
   top: -90px;
-  left: 112px;
 }
 
 .login-div p {
+  font-weight: 500;
   margin: 0;
   margin-left: 15px;
   padding: 0;
-  font-weight: bold;
 }
 
 .login-div input {
+  margin-bottom: 2%;
   width: 100%;
-  margin-bottom: 21px;
 }
 
-.login-div input[id="email"], input[id="password"] {
+.login-div input[ id = 'email' ], input[ id = 'password' ] {
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid white;
-  background-color: transparent;
-  outline: none;
-  height: 40px;
   color: white;
   font-size: 16px;
+  height: 40px;
   margin-left: 15px;
+  outline: none;
 }
 
-.login-div button[id="login-button"] {
+.login-div button[ id = 'login-button' ] {
   border: none;
-  outline: none;
+  border-radius: 20px;
+  color: black;
   height: 35px;
-  width: 90%;
-  color: #000;
   margin-left: 15px;
   margin-top: 30px;
-  /* background: #fff; */
-  border-radius: 20px;
-  /* transition: 0.2s; */
+  outline: none;
+  width: 90%;
 }
-
-/* .login-div button[id="login-button"]:hover {
-  cursor: pointer;
-  background: #3c61d8;
-  transition: 0.2s;
-} */

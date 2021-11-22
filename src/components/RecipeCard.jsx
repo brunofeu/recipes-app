@@ -15,7 +15,7 @@ function RecipeCard(props) {
   return (
     <section className="cards-section">
       {recipes.map((recipe, index) => (
-        <div className="cards" key="">
+        <div className="cards" key="cards">
           <Link to={ `/${type}/${recipe[id]}` } key={ recipe[`${id}`] }>
             <Card
               id={ recipe[id] }
@@ -23,7 +23,7 @@ function RecipeCard(props) {
               data-testid={ `${index}-recipe-card` }
             >
               <Card.Img
-                id="card-image"
+                className="card-image"
                 variant="top"
                 src={ recipe[`${image}`] }
                 alt="food"

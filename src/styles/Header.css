@@ -1,15 +1,15 @@
 .header {
-  display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
-  margin-top: 20px;
   background-color: rgba(69, 69, 73, 0.8);
-  width: 1000px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2%;
+  width: 134%;
 }
 
-.header button[type="button"] {
+.header button[ type = 'button' ] {
   border-radius: 10px;
   margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 20px;
+  margin-right: 4%;
+  margin-top: 0.5%;
 }

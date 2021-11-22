@@ -32,13 +32,12 @@ function Login(props) {
 
   return (
     <>
-      {/* <img src={ wallPaperFood } alt="wallPaper" /> */}
-      <header>
+      {/* <header>
         <h1>Bem Vindo ao App de Receitas !</h1>
-      </header>
+      </header> */}
       <div className="login-div">
         <img src={ profileIcon } alt="user" width="100" height="100" />
-        <h2 id="login-title">Login</h2>
+        <h2 className="login-title">Login</h2>
         <form>
           <label htmlFor="email">
             <p>Email:</p>

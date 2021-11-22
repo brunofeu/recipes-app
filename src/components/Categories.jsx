@@ -28,7 +28,6 @@ function Categories(props) {
         onClick={ () => onAll() }
       >
         All
-
       </button>
     </div>
   );
