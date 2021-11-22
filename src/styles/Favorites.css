@@ -1,0 +1,18 @@
+.menu-favorites {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+  margin-left: 200px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.menu-favorites button[type="button"] {
+  border-radius: 10px;
+  margin-top: 8px;
+  margin-left: 20px;
+  margin-right: 10px;
+  width: 150px;
+  height: 30px;
+  align-items: center;
+}

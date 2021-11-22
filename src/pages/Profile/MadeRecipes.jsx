@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import ShareButton from '../../components/ShareButton';
 
+import '../../styles/MadeRecipes.css';
+
 function MadeRecipes() {
   const [recipesFilter, setRecipesFilter] = useState([]);
   console.log(recipesFilter);
@@ -30,7 +32,7 @@ function MadeRecipes() {
   return (
     <div>
       <Header title="Receitas Feitas" />
-      <div>
+      <div className="menu-made-recipes">
         <button
           type="button"
           onClick={ handlecliclAll }

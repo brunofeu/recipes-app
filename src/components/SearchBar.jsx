@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 
+import '../styles/SearchBar.css';
+
 function SearchBar() {
   const {
     alertTrigger,
@@ -93,7 +95,7 @@ function SearchBar() {
   }, [meal, drink]);
 
   return (
-    <div>
+    <div className="searchBar-container">
       <input
         data-testid="search-input"
         labelText="Procurar..."
@@ -101,28 +103,32 @@ function SearchBar() {
         onChange={ handleChange }
       />
       <div>
-        <label htmlFor="byIngridient">
-          <input
-            data-testid="ingredient-search-radio"
-            id="byIngridient"
-            name="radioBtn"
-            type="radio"
-            value="ingredient"
-            onClick={ handleCheck }
-          />
-          Ingrediente
-        </label>
-        <label htmlFor="byName">
-          <input
-            data-testid="name-search-radio"
-            id="byName"
-            name="radioBtn"
-            type="radio"
-            value="name"
-            onClick={ handleCheck }
-          />
-          Nome
-        </label>
+        <div>
+          <label htmlFor="byIngridient">
+            <input
+              data-testid="ingredient-search-radio"
+              id="byIngridient"
+              name="radioBtn"
+              type="radio"
+              value="ingredient"
+              onClick={ handleCheck }
+            />
+            <p>Ingrediente</p>
+          </label>
+        </div>
+        <div>
+          <label htmlFor="byName">
+            <input
+              data-testid="name-search-radio"
+              id="byName"
+              name="radioBtn"
+              type="radio"
+              value="name"
+              onClick={ handleCheck }
+            />
+            <p>Nome</p>
+          </label>
+        </div>
         <label htmlFor="byFirstLetter">
           <input
             data-testid="first-letter-search-radio"
@@ -132,16 +138,18 @@ function SearchBar() {
             value="firstLetter"
             onClick={ handleCheck }
           />
-          Primeira Letra
+          <p>Primeira Letra</p>
         </label>
       </div>
-      <button
-        data-testid="exec-search-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Buscar
-      </button>
+      <div className="search-btn">
+        <button
+          data-testid="exec-search-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Buscar
+        </button>
+      </div>
     </div>
   );
 }

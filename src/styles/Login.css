@@ -1,0 +1,99 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(46, 42, 42);
+  background-size: cover;
+  font-family: "Comfortaa", sans-serif;
+  background-image: url(../images/wallPaper_2.jpg);
+}
+
+header {
+  display: flex;
+  width: 300%;
+  margin-left: 200px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+}
+
+header h1 {
+  margin-top: 20px;
+  background-color: rgba(69, 69, 73, 0.8);
+}
+
+.login-div {
+  margin-top: 30px;
+  width: 320px;
+  height: 420px;
+  border: 2px solid #000;
+  border-radius: 80px 0px 80px 0px;
+  color: #fff;
+  background-color: rgba(69, 69, 73, 0.8);
+  top: 55%;
+  left: 50%;
+  position: absolute;
+  transform:  translate(-50%, -50%);
+  box-sizing: 68px 28px;
+}
+
+#login-title {
+  margin: 0;
+  padding-top: 15px;
+  padding-left: 0;
+  padding-bottom: 20px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+}
+
+.login-div img[alt="user"] {
+  border-radius: 50%;
+  position: absolute;
+  top: -90px;
+  left: 112px;
+}
+
+.login-div p {
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+  font-weight: bold;
+}
+
+.login-div input {
+  width: 100%;
+  margin-bottom: 21px;
+}
+
+.login-div input[id="email"], input[id="password"] {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.login-div button[id="login-button"] {
+  border: none;
+  outline: none;
+  height: 35px;
+  width: 90%;
+  color: #000;
+  margin-left: 15px;
+  margin-top: 30px;
+  /* background: #fff; */
+  border-radius: 20px;
+  /* transition: 0.2s; */
+}
+
+/* .login-div button[id="login-button"]:hover {
+  cursor: pointer;
+  background: #3c61d8;
+  transition: 0.2s;
+} */

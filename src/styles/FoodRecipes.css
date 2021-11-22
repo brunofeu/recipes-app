@@ -1,0 +1,24 @@
+.recipes-container {
+  align-items: center;
+  margin-left: 250px;
+  margin-top: 20px;
+  width: 900px;
+  color: white;
+}
+
+.recipes-container h1[data-tesid="recipe-title"] {
+  display: flex;
+  margin-left: 20px;
+}
+
+.recipes-container img[alt="imagem-da-receita"] {
+  border: 5px solid rgba(68, 66, 66, 0.664);
+  width: 400px;
+  height: 400px;
+  margin-top: 10px;
+  margin-left: 250px;
+}
+
+.recipes-name {
+  background-color: rgba(92, 86, 86, 0.596);
+}

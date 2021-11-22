@@ -9,6 +9,8 @@ import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
 import RecipeContext from '../../context/RecipeContext';
 
+import '../../styles/FoodRecipes.css';
+
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
   const history = useHistory();
@@ -60,7 +62,7 @@ function DrinkRecipes(props) {
   return (
     <div>
       {!isLoading && (
-        <div>
+        <div className="recipes-container">
           <img
             src={ recipe.strDrinkThumb }
             alt="imagem-da-receita"
@@ -74,8 +76,10 @@ function DrinkRecipes(props) {
           />
           <FavoriteButton recipe={ recipe } type="Drink" />
           <h3 data-testid="recipe-category">{ recipe.strAlcoholic }</h3>
-          <IngredientsList recipe={ recipe } />
-          <RecipeInstructions recipe={ recipe } />
+          <div className="recipes-name">
+            <IngredientsList recipe={ recipe } />
+            <RecipeInstructions recipe={ recipe } />
+          </div>
           <RecomendationCard recomendations={ recomendations } type="Meal" />
           <StartButton
             location={ history.location.pathname }

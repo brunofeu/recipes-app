@@ -1,0 +1,15 @@
+.menu-categories {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+  margin-left: 190px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.menu-categories button[type="button"] {
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+}
