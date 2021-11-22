@@ -22,15 +22,15 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   };
   const localStorageChecked = auxiliar();
   const isFavorite = getFavorites(id);
-  const [drinkInfo, setdrinkInfo] = useState([]);
+  const [drinkInfo, setDrinkInfo] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [disable, setDisable] = useState(true);
   const [link, setLink] = useState('');
   const [icon, setIcon] = useState(isFavorite);
-  const [checkArray, SetCheckArray] = useState(localStorageChecked);
+  const [checkArray, setCheckArray] = useState(localStorageChecked);
 
   useEffect(() => {
-    fetchDrinkById(id).then(({ drinks }) => setdrinkInfo(drinks));
+    fetchDrinkById(id).then(({ drinks }) => setDrinkInfo(drinks));
   }, [id]);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   // Risca o ingrediente
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
-      SetCheckArray([...checkArray, index]);
+      setCheckArray([...checkArray, index]);
     }
 
     const labelCheckbox = document.querySelectorAll('.label-checkbox');

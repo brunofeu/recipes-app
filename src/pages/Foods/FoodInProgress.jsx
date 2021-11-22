@@ -24,10 +24,10 @@ function FoodinProgress({ history, match: { params: { id } } }) {
   const isFavorite = getFavorites(id);
   const [foodInfo, setFoodInfo] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [disable, setDisable] = useState(true);
   const [link, setLink] = useState('');
   const [icon, setIcon] = useState(isFavorite);
-  const [disable, setDisable] = useState(true);
-  const [checkArray, SetCheckArray] = useState(localStorageChecked);
+  const [checkArray, setCheckArray] = useState(localStorageChecked);
 
   useEffect(() => {
     fetchFoodById(id).then(({ meals }) => setFoodInfo(meals));
@@ -106,7 +106,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
 
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
-      SetCheckArray([...checkArray, index]);
+      setCheckArray([...checkArray, index]);
     }
 
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
