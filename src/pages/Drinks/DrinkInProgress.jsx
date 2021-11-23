@@ -36,6 +36,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   }, [id]);
 
   useEffect(() => {
+    console.log('olha a merda')
     if (ingredients.length === 0) {
       const MAX_INGREDIENT = 15;
       drinkInfo.map((item) => {
@@ -108,6 +109,8 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
       setCheckArray([...checkArray, index]);
+    } else {
+      setCheckArray([...checkArray.filter((item) => item !== index)]);
     }
 
     const labelCheckbox = document.querySelectorAll('.label-checkbox');
@@ -209,8 +212,8 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
                     value={ `${strMeasure} ${strIngredient}` }
                     onClick={ (e) => riskCompleteds(e, i) }
                   />
+                  { ` ${strMeasure} ${strIngredient}` }
                 </label>
-                { ` ${strMeasure} ${strIngredient}` }
               </li>
             );
           }) }

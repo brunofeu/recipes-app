@@ -1,19 +1,13 @@
-/* .fixedbottom {
-  bottom: 0;
+.fixedbottom {
   position: fixed;
-  right: 0;
-} */
-
-/* footer {
-  background-color: rgba(69, 69, 73, 0.8);
+  background-color: rgba(69, 69, 73, 0.95);
   bottom: 0;
   display: flex;
   justify-content: space-around;
   padding: 10px;
-  position: fixed;
   width: 100vw;
 }
 
 footer img {
   filter: invert(100%);
-} */
+}

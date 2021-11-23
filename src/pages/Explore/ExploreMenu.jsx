@@ -8,30 +8,26 @@ import '../../styles/Explore.css';
 function ExploreMenu() {
   const history = useHistory();
   return (
-    <>
-      <div>
-        <Header title="Explorar" />
-        <div className="menu-explore">
-          <button
-            type="button"
-            data-testid="explore-food"
-            onClick={ () => history.push('/explorar/comidas') }
-          >
-            Explorar Comidas
-          </button>
-          <button
-            type="button"
-            data-testid="explore-drinks"
-            onClick={ () => history.push('/explorar/bebidas') }
-          >
-            Explorar Bebidas
-          </button>
-        </div>
+    <div>
+      <Header title="Explorar" showSearchBtn={ false } />
+      <div className="menu-explore">
+        <button
+          type="button"
+          data-testid="explore-food"
+          onClick={ () => history.push('/explorar/comidas') }
+        >
+          Explorar Comidas
+        </button>
+        <button
+          type="button"
+          data-testid="explore-drinks"
+          onClick={ () => history.push('/explorar/bebidas') }
+        >
+          Explorar Bebidas
+        </button>
       </div>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
 

@@ -13,17 +13,16 @@ function Header({ title, showSearchBtn = false }) {
 
   return (
     <header>
-      { showSearchBar && <SearchBar /> }
-      { showSearchBtn && (
-        <div className="header">
-          <button
-            className="header-button"
-            type="button"
-            onClick={ () => history.push('/perfil') }
-          >
-            <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
-          </button>
-          <h1 className="page-title" data-testid="page-title">{title}</h1>
+      <div className="header">
+        <button
+          className="header-button"
+          type="button"
+          onClick={ () => history.push('/perfil') }
+        >
+          <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
+        </button>
+        <h1 className="page-title" data-testid="page-title">{title}</h1>
+        { showSearchBtn && (
           <button
             className="header-button"
             type="button"
@@ -31,8 +30,9 @@ function Header({ title, showSearchBtn = false }) {
           >
             <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
           </button>
-        </div>
-      )}
+        )}
+      </div>
+      { showSearchBar && <SearchBar /> }
     </header>
   );
 }

@@ -52,10 +52,10 @@ function FoodinProgress({ history, match: { params: { id } } }) {
             { strMeasure: item[itemMeasure], strIngredient: item[itemIngredient] },
           ];
         }
-        return ingredients;
+        return setIngredients(arr);
       });
     }
-  }, [foodInfo, ingredients]);
+  });
 
   const RedirectToRecipesMade = () => {
     const dateNow = new Date();
