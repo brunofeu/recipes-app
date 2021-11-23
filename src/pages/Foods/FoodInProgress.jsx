@@ -170,8 +170,8 @@ function FoodinProgress({ history, match: { params: { id } } }) {
               data-testid="recipe-photo"
               width="250px"
             />
-            <h1 data-testid="recipe-title">{ food.strMeal }</h1>
-            <h2 data-testid="recipe-category">{ food.strCategory }</h2>
+            <h2 data-testid="recipe-title">{ food.strMeal }</h2>
+            <h3 data-testid="recipe-category">{ food.strCategory }</h3>
             <p>{ link }</p>
             <button type="button" data-testid="share-btn" onClick={ handleLinks }>
               <img src={ shareImage } alt="botao-compartilhar" />
@@ -179,6 +179,36 @@ function FoodinProgress({ history, match: { params: { id } } }) {
             <button type="button" onClick={ handleFavorite }>
               <img src={ icon } alt="icone-de-favoritar" data-testid="favorite-btn" />
             </button>
+            <div className="recipes-checkbox">
+              <ul>
+                { ingredients.map(({ strMeasure, strIngredient }, index) => {
+                  const ingrID = `${index}-ingredient-step`;
+                  return (
+                    <li key={ index } className="list-checkbox">
+                      <label
+                        data-testid={ ingrID }
+                        htmlFor={ index }
+                        className={ (
+                          checkArray.includes(index)
+                            ? 'inputs-checkbox texto-riscado'
+                            : 'inputs-checkbox') }
+                      >
+                        <input
+                          onChange={ verifyChecked }
+                          checked={ checkArray.includes(index) }
+                          className="inputs-checkbox"
+                          id={ index }
+                          type="checkbox"
+                          value={ `${strMeasure} ${strIngredient}` }
+                          onClick={ (e) => riskCompleteds(e, index) }
+                        />
+                        { ` ${strMeasure} ${strIngredient}` }
+                      </label>
+                    </li>
+                  );
+                }) }
+              </ul>
+            </div>
             <p
               className="recipe-instruction"
               data-testid="instructions"
@@ -189,36 +219,6 @@ function FoodinProgress({ history, match: { params: { id } } }) {
         );
         return allFood;
       }) }
-      <div className="recipes-checkbox">
-        <ul>
-          { ingredients.map(({ strMeasure, strIngredient }, index) => {
-            const ingrID = `${index}-ingredient-step`;
-            return (
-              <li key={ index }>
-                <label
-                  data-testid={ ingrID }
-                  htmlFor={ index }
-                  className={ (
-                    checkArray.includes(index)
-                      ? 'inputs-checkbox texto-riscado'
-                      : 'inputs-checkbox') }
-                >
-                  <input
-                    onChange={ verifyChecked }
-                    checked={ checkArray.includes(index) }
-                    className="inputs-checkbox"
-                    id={ index }
-                    type="checkbox"
-                    value={ `${strMeasure} ${strIngredient}` }
-                    onClick={ (e) => riskCompleteds(e, index) }
-                  />
-                  { ` ${strMeasure} ${strIngredient}` }
-                </label>
-              </li>
-            );
-          }) }
-        </ul>
-      </div>
       <button
         className="finish-recipe-btn"
         disabled={ disable }
