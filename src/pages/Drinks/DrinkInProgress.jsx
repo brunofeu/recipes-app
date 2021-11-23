@@ -36,7 +36,6 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   }, [id]);
 
   useEffect(() => {
-    console.log('olha a merda')
     if (ingredients.length === 0) {
       const MAX_INGREDIENT = 15;
       drinkInfo.map((item) => {
