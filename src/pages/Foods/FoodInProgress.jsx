@@ -168,7 +168,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
               src={ food.strMealThumb }
               alt={ food.strMeal }
               data-testid="recipe-photo"
-              width="250px"
+              width="200px"
             />
             <h2 data-testid="recipe-title">{ food.strMeal }</h2>
             <h3 data-testid="recipe-category">{ food.strCategory }</h3>
@@ -219,15 +219,17 @@ function FoodinProgress({ history, match: { params: { id } } }) {
         );
         return allFood;
       }) }
-      <button
-        className="finish-recipe-btn"
-        disabled={ disable }
-        type="button"
-        data-testid="finish-recipe-btn"
-        onClick={ RedirectToRecipesMade }
-      >
-        Finalizar Receita
-      </button>
+      <div className="container-finish-btn">
+        <button
+          className="finish-recipe-btn"
+          disabled={ disable }
+          type="button"
+          data-testid="finish-recipe-btn"
+          onClick={ RedirectToRecipesMade }
+        >
+          Finalizar Receita
+        </button>
+      </div>
     </div>
   );
 }

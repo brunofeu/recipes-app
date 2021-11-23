@@ -167,7 +167,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
               src={ drink.strDrinkThumb }
               alt={ drink.strDrink }
               data-testid="recipe-photo"
-              width="250px"
+              width="200px"
             />
             <h1 data-testid="recipe-title">{ drink.strDrink }</h1>
             <h2 data-testid="recipe-category">{ drink.strCategory }</h2>
@@ -218,15 +218,17 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
           }) }
         </ul>
       </div>
-      <button
-        className="finish-recipe-btn"
-        type="button"
-        data-testid="finish-recipe-btn"
-        disabled={ disable }
-        onClick={ RedirectToRecipesMade }
-      >
-        Finalizar Receita
-      </button>
+      <div className="container-finish-btn">
+        <button
+          className="finish-recipe-btn"
+          disabled={ disable }
+          type="button"
+          data-testid="finish-recipe-btn"
+          onClick={ RedirectToRecipesMade }
+        >
+          Finalizar Receita
+        </button>
+      </div>
     </div>
   );
 }
