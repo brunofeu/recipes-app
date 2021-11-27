@@ -12,6 +12,7 @@ function Categories(props) {
     <div className="menu-categories">
       {shownCategories.map((category, index) => (
         <button
+          className="filter-categories-btn"
           key={ index }
           type="button"
           name={ category.strCategory }
@@ -22,6 +23,7 @@ function Categories(props) {
         </button>
       ))}
       <button
+        className="filter-categories-btn"
         type="button"
         name="All"
         data-testid="All-category-filter"

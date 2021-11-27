@@ -15,29 +15,30 @@ function RecipeCard(props) {
   return (
     <section className="cards-section">
       {recipes.map((recipe, index) => (
-        <div className="cards" key={ recipe[`${id}`] }>
-          <Link to={ `/${type}/${recipe[id]}` }>
-            <Card
-              id={ recipe[id] }
-              style={ { width: '18rem' } }
-              data-testid={ `${index}-recipe-card` }
-            >
-              <Card.Img
-                className="card-image"
-                variant="top"
-                src={ recipe[`${image}`] }
-                alt="food"
-                data-testid={ `${index}-card-img` }
-              />
+        <Link className="cards" key={ recipe[`${id}`] } to={ `/${type}/${recipe[id]}` }>
+          <Card
+            className="card-btn"
+            id={ recipe[id] }
+            data-testid={ `${index}-recipe-card` }
+          >
+            <Card.Img
+              className="card-image"
+              variant="top"
+              src={ recipe[`${image}`] }
+              alt="food"
+              value="teste"
+              data-testid={ `${index}-card-img` }
+            />
+            <Card.ImgOverlay>
               <Card.Title
-                className="card-link"
+                className="card-title"
                 data-testid={ `${index}-card-name` }
               >
-                <h3>{recipe[`${name}`]}</h3>
+                <h4>{recipe[`${name}`]}</h4>
               </Card.Title>
-            </Card>
-          </Link>
-        </div>
+            </Card.ImgOverlay>
+          </Card>
+        </Link>
       ))}
     </section>
   );
