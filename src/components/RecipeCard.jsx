@@ -29,7 +29,7 @@ function RecipeCard(props) {
               value="teste"
               data-testid={ `${index}-card-img` }
             />
-            <Card.ImgOverlay>
+            <Card.ImgOverlay className="card-title-overlay">
               <Card.Title
                 className="card-title"
                 data-testid={ `${index}-card-name` }
