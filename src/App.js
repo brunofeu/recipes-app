@@ -19,6 +19,7 @@ import Favorites from './pages/Profile/Favorites';
 import MadeRecipes from './pages/Profile/MadeRecipes';
 import NotFound from './pages/NotFound';
 // import './App.css';
+import './styles/RecipePage.css';
 
 function App() {
   return (

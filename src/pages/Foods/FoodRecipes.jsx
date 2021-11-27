@@ -9,8 +9,6 @@ import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
 import RecipeContext from '../../context/RecipeContext';
 
-// import '../../styles/RecipeInProgress.css';
-
 function FoodRecipes(props) {
   const { match: { params: { id } } } = props;
   const history = useHistory();
@@ -61,21 +59,27 @@ function FoodRecipes(props) {
   return (
     <div>
       {!isLoading && (
-        <div className="recipes-container">
+        <div className="recipe-container">
           <img
             src={ recipe.strMealThumb }
-            alt="imagem-da-receita"
+            alt={ recipe.strMeal }
             data-testid="recipe-photo"
             className="recipe-img"
           />
-          <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
-          <ShareButton
-            clipBoard={ window.location.href }
-            testid="share-btn"
-          />
-          <FavoriteButton recipe={ recipe } type="Meal" />
-          <h3 data-testid="recipe-category">{ recipe.strCategory }</h3>
-          <div className="recipes-name">
+          <div className="header-recipe">
+            <div className="header-recipe-title">
+              <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
+              <h4 data-testid="recipe-category">{ recipe.strCategory }</h4>
+            </div>
+            <div className="header-recipe-btn">
+              <ShareButton
+                clipBoard={ window.location.href }
+                testid="share-btn"
+              />
+              <FavoriteButton recipe={ recipe } type="Meal" />
+            </div>
+          </div>
+          <div className="recipes-detail">
             <IngredientsList recipe={ recipe } />
             <RecipeInstructions recipe={ recipe } />
           </div>

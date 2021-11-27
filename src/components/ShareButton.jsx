@@ -17,7 +17,7 @@ function ShareButton({ testid, clipBoard }) {
   }, [linkCopy]);
 
   return (
-    <div>
+    <div className="share-btn">
       <button
         type="button"
         onClick={ handleClick }

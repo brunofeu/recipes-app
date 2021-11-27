@@ -9,8 +9,6 @@ import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
 import RecipeContext from '../../context/RecipeContext';
 
-// import '../../styles/FoodRecipes.css';
-
 function DrinkRecipes(props) {
   const { match: { params: { id } } } = props;
   const history = useHistory();
@@ -38,7 +36,6 @@ function DrinkRecipes(props) {
       const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
       if (!inProgressRecipes.meals) inProgressRecipes.meals = {};
       if (!inProgressRecipes.cocktails) inProgressRecipes.cocktails = [];
-      // console.log(inProgressRecipes)
       setInProgress(Object.keys(inProgressRecipes.cocktails).some(
         (progress) => progress === id,
       ));
@@ -62,21 +59,27 @@ function DrinkRecipes(props) {
   return (
     <div>
       {!isLoading && (
-        <div className="recipes-container">
+        <div className="recipe-container">
           <img
             src={ recipe.strDrinkThumb }
-            alt="imagem-da-receita"
+            alt={ recipe.strDrink }
             data-testid="recipe-photo"
             className="recipe-img"
           />
-          <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
-          <ShareButton
-            clipBoard={ window.location.href }
-            testid="share-btn"
-          />
-          <FavoriteButton recipe={ recipe } type="Drink" />
-          <h3 data-testid="recipe-category">{ recipe.strAlcoholic }</h3>
-          <div className="recipes-name">
+          <div className="header-recipe">
+            <div className="header-recipe-title">
+              <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
+              <h4 data-testid="recipe-category">{ recipe.strAlcoholic }</h4>
+            </div>
+            <div className="header-recipe-btn">
+              <ShareButton
+                clipBoard={ window.location.href }
+                testid="share-btn"
+              />
+              <FavoriteButton recipe={ recipe } type="Drink" />
+            </div>
+          </div>
+          <div className="recipes-detail">
             <IngredientsList recipe={ recipe } />
             <RecipeInstructions recipe={ recipe } />
           </div>
