@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import profileIcon from '../../images/profileIcon.svg';
 
 import '../../styles/Profile.css';
 
@@ -20,10 +21,12 @@ function Profile() {
   return (
     <div>
       <Header title="Perfil" />
-      <div className="menu-perfil">
-        <h2 data-testid="profile-email">{localEmail.email}</h2>
-        <div>
+      <div className="profile-container">
+        <img src={ profileIcon } alt="profile" className="profile-img" />
+        <h3 data-testid="profile-email">{localEmail.email}</h3>
+        <div className="profile-btn-container">
           <button
+            className="profile-btn"
             type="button"
             data-testid="profile-done-btn"
             onClick={ () => history.push('/receitas-feitas') }
@@ -31,6 +34,7 @@ function Profile() {
             Receitas Feitas
           </button>
           <button
+            className="profile-btn"
             type="button"
             data-testid="profile-favorite-btn"
             onClick={ () => history.push('/receitas-favoritas') }
@@ -38,6 +42,7 @@ function Profile() {
             Receitas Favoritas
           </button>
           <button
+            className="profile-btn sair-btn"
             type="button"
             data-testid="profile-logout-btn"
             onClick={ handleClick }
