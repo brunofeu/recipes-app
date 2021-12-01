@@ -9,6 +9,8 @@ import FiltersNotFound from '../../components/FiltersNotFound';
 import '../../styles/Menu.css';
 import '../../App.css';
 
+const selectedFilterClass = 'recipe-filter-selected';
+
 function Drinks() {
   const {
     drink, fetchDrink, setPage, fetchCategories, categories, filter, setFilter,
@@ -28,12 +30,21 @@ function Drinks() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = async ({ target: { name } }) => {
+  const handleClick = ({ target }) => {
+    const { name } = target;
     if (selected.state === false || (selected.state === true && selected.name !== name)) {
       fetchDrink('filter', 'c', name);
       setSelected({ name, state: true });
+      [...target.parentNode.children].forEach(
+        (item) => item.classList.remove(selectedFilterClass),
+      );
+      target.classList.toggle(selectedFilterClass);
     }
     if (selected.state === true && selected.name === name) {
+      [...target.parentNode.children].forEach(
+        (item) => item.classList.remove(selectedFilterClass),
+      );
+      target.parentNode.children.All.classList.toggle(selectedFilterClass);
       fetchDrink();
       setSelected({ name: '', state: false });
     }

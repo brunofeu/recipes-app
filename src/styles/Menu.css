@@ -7,6 +7,17 @@
 }
 
 .filter-categories-btn {
-  border-radius: 10px;
-  margin-right: 1%;
+  background-color: white;
+  padding: 0 24px;
+  margin: 1px;
+  border: 1px solid #4f4f4f;
+  border-radius: 4px;
+  font-size: 17px;
+  color: black;
+  z-index: 1;
+}
+
+.recipe-filter-selected {
+  background-color: gray;
+  color: white;
 }

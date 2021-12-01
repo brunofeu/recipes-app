@@ -59,32 +59,34 @@ function FoodRecipes(props) {
   return (
     <div>
       {!isLoading && (
-        <div className="recipe-container">
+        <div>
           <img
             src={ recipe.strMealThumb }
             alt={ recipe.strMeal }
             data-testid="recipe-photo"
             className="recipe-img"
           />
-          <div className="header-recipe">
-            <div className="header-recipe-title">
-              <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
-              <h4 data-testid="recipe-category">{ recipe.strCategory }</h4>
+          <div className="recipe-container">
+            <div className="header-recipe">
+              <div className="header-recipe-title">
+                <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
+                <h4 data-testid="recipe-category">{ recipe.strCategory }</h4>
+              </div>
+              <div className="header-recipe-btn">
+                <ShareButton
+                  clipBoard={ window.location.href }
+                  testid="share-btn"
+                />
+                <FavoriteButton recipe={ recipe } type="Meal" />
+              </div>
             </div>
-            <div className="header-recipe-btn">
-              <ShareButton
-                clipBoard={ window.location.href }
-                testid="share-btn"
-              />
-              <FavoriteButton recipe={ recipe } type="Meal" />
+            <div className="recipes-detail">
+              <IngredientsList recipe={ recipe } />
+              <RecipeInstructions recipe={ recipe } />
             </div>
+            <h2 data-testid="video">Video</h2>
+            <RecomendationCard recomendations={ recomendations } type="Drink" />
           </div>
-          <div className="recipes-detail">
-            <IngredientsList recipe={ recipe } />
-            <RecipeInstructions recipe={ recipe } />
-          </div>
-          <h2 data-testid="video">Video</h2>
-          <RecomendationCard recomendations={ recomendations } type="Drink" />
           <StartButton
             location={ history.location.pathname }
             inProgress={ inProgress }

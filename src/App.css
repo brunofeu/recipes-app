@@ -77,7 +77,6 @@ body {
 .start-recipe-btn {
   bottom: 0;
   position: fixed;
-  
 }
 
 .recipeImg {
@@ -96,7 +95,6 @@ body {
 .texto-riscado {
   text-decoration: line-through;
 }
-
 
 .share-btn {
   border-radius: 10px;

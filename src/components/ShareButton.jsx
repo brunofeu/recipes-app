@@ -17,15 +17,17 @@ function ShareButton({ testid, clipBoard }) {
   }, [linkCopy]);
 
   return (
-    <div className="share-btn">
+    <div>
       <button
         type="button"
         onClick={ handleClick }
+        className="recipe-page-btn"
       >
         <img
           src={ shareIcon }
           alt="botão compartilhar"
           data-testid={ testid }
+          className="favorite-btn-img"
         />
       </button>
       { linkCopy && <p>Link copiado!</p> }

@@ -19,11 +19,12 @@ function RecipeCard(props) {
           <Card
             className="card-btn"
             id={ recipe[id] }
+            style={ { borderRadius: '10px' } }
             data-testid={ `${index}-recipe-card` }
           >
             <Card.Img
+              style={ { borderRadius: '10px' } }
               className="card-image"
-              variant="top"
               src={ recipe[`${image}`] }
               alt="food"
               value="teste"

@@ -23,7 +23,7 @@ function Categories(props) {
         </button>
       ))}
       <button
-        className="filter-categories-btn"
+        className="filter-categories-btn recipe-filter-selected"
         type="button"
         name="All"
         data-testid="All-category-filter"

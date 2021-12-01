@@ -8,6 +8,8 @@ import FiltersNotFound from '../../components/FiltersNotFound';
 
 import '../../styles/Menu.css';
 
+const selectedFilterClass = 'recipe-filter-selected';
+
 function Food() {
   const {
     meal, fetchMeal, setPage, fetchCategories, categories, filter, setFilter,
@@ -26,12 +28,21 @@ function Food() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = ({ target: { name } }) => {
+  const handleClick = ({ target }) => {
+    const { name } = target;
     if (selected.state === false || (selected.state === true && selected.name !== name)) {
       fetchMeal('filter', 'c', name);
       setSelected({ name, state: true });
+      [...target.parentNode.children].forEach(
+        (item) => item.classList.remove(selectedFilterClass),
+      );
+      target.classList.toggle(selectedFilterClass);
     }
     if (selected.state === true && selected.name === name) {
+      [...target.parentNode.children].forEach(
+        (item) => item.classList.remove(selectedFilterClass),
+      );
+      target.parentNode.children.All.classList.toggle(selectedFilterClass);
       fetchMeal();
       setSelected({ name: '', state: false });
     }

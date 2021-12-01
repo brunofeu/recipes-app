@@ -10,4 +10,5 @@
 
 footer img {
   filter: invert(100%);
+  height: 30px;
 }

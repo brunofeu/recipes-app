@@ -59,31 +59,33 @@ function DrinkRecipes(props) {
   return (
     <div>
       {!isLoading && (
-        <div className="recipe-container">
+        <div>
           <img
             src={ recipe.strDrinkThumb }
             alt={ recipe.strDrink }
             data-testid="recipe-photo"
             className="recipe-img"
           />
-          <div className="header-recipe">
-            <div className="header-recipe-title">
-              <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
-              <h4 data-testid="recipe-category">{ recipe.strAlcoholic }</h4>
+          <div className="recipe-container">
+            <div className="header-recipe">
+              <div className="header-recipe-title">
+                <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
+                <h4 data-testid="recipe-category">{ recipe.strAlcoholic }</h4>
+              </div>
+              <div className="header-recipe-btn">
+                <ShareButton
+                  clipBoard={ window.location.href }
+                  testid="share-btn"
+                />
+                <FavoriteButton recipe={ recipe } type="Drink" />
+              </div>
             </div>
-            <div className="header-recipe-btn">
-              <ShareButton
-                clipBoard={ window.location.href }
-                testid="share-btn"
-              />
-              <FavoriteButton recipe={ recipe } type="Drink" />
+            <div className="recipes-detail">
+              <IngredientsList recipe={ recipe } />
+              <RecipeInstructions recipe={ recipe } />
             </div>
+            <RecomendationCard recomendations={ recomendations } type="Meal" />
           </div>
-          <div className="recipes-detail">
-            <IngredientsList recipe={ recipe } />
-            <RecipeInstructions recipe={ recipe } />
-          </div>
-          <RecomendationCard recomendations={ recomendations } type="Meal" />
           <StartButton
             location={ history.location.pathname }
             inProgress={ inProgress }

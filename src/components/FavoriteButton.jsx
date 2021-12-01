@@ -67,11 +67,13 @@ function FavoriteButton({ recipe, type }) {
       <button
         type="button"
         onClick={ handleClick }
+        className="recipe-page-btn"
       >
         <img
           src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
           alt="botão favoritar"
           data-testid="favorite-btn"
+          className="favorite-btn-img"
         />
       </button>
     </div>
