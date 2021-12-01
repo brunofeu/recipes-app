@@ -16,30 +16,28 @@ function ExploreDrinks() {
   };
 
   return (
-    <>
-      <div>
-        <Header title="Explorar Bebidas" />
-        <div className="menu-explore">
-          <button
-            type="button"
-            data-testid="explore-by-ingredient"
-            onClick={ () => history.push('/explorar/bebidas/ingredientes') }
-          >
-            Por Ingredientes
-          </button>
-          <button
-            type="button"
-            data-testid="explore-surprise"
-            onClick={ handleClick }
-          >
-            Me Surpreenda!
-          </button>
-        </div>
+    <div>
+      <Header title="Explorar Bebidas" />
+      <div className="menu-explore">
+        <button
+          type="button"
+          data-testid="explore-by-ingredient"
+          onClick={ () => history.push('/explorar/bebidas/ingredientes') }
+          className="explore-recipe"
+        >
+          Por Ingredientes
+        </button>
+        <button
+          type="button"
+          data-testid="explore-surprise"
+          onClick={ handleClick }
+          className="explore-recipe"
+        >
+          Me Surpreenda!
+        </button>
       </div>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
 

@@ -16,37 +16,36 @@ function ExploreFoods() {
   };
 
   return (
-    <>
-      <div className="recipes-checkbox">
-        <Header title="Explorar Comidas" />
-        <div className="menu-explore">
-          <button
-            type="button"
-            data-testid="explore-by-ingredient"
-            onClick={ () => history.push('/explorar/comidas/ingredientes') }
-          >
-            Por Ingredientes
-          </button>
-          <button
-            type="button"
-            data-testid="explore-by-area"
-            onClick={ () => history.push('/explorar/comidas/area') }
-          >
-            Por Local de Origem
-          </button>
-          <button
-            type="button"
-            data-testid="explore-surprise"
-            onClick={ handleClick }
-          >
-            Me Surpreenda!
-          </button>
-        </div>
+    <div>
+      <Header title="Explorar Comidas" />
+      <div className="menu-explore">
+        <button
+          type="button"
+          data-testid="explore-by-ingredient"
+          onClick={ () => history.push('/explorar/comidas/ingredientes') }
+          className="explore-recipe"
+        >
+          Por Ingredientes
+        </button>
+        <button
+          type="button"
+          data-testid="explore-by-area"
+          onClick={ () => history.push('/explorar/comidas/area') }
+          className="explore-recipe"
+        >
+          Por Local de Origem
+        </button>
+        <button
+          type="button"
+          data-testid="explore-surprise"
+          onClick={ handleClick }
+          className="explore-recipe"
+        >
+          Me Surpreenda!
+        </button>
       </div>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
 
