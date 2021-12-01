@@ -41,3 +41,15 @@ margin: 10px 0 55px;
   flex-direction: column;
   margin: auto;
 }
+
+.explore-dropdown {
+  background-color: white;
+  border-radius: 10px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -15,10 +15,6 @@
   filter: drop-shadow(1px 1px 1px gray);
 }
 
-.header-button img {
-  filter: drop-shadow(2px 4px 8px white);
-}
-
 .page-title {
   color: white;
   font-size: 30px;

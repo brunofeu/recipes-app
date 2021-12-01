@@ -37,6 +37,7 @@ function ExploreByPlaces() {
         && (
           <select
             data-testid="explore-by-area-dropdown"
+            className="explore-dropdown"
             title={ areas[0].strArea }
             value={ selectValue }
             onChange={ handleSelect }
@@ -51,7 +52,8 @@ function ExploreByPlaces() {
                 {strArea}
               </option>
             ))}
-          </select>)}
+          </select>
+        )}
       { meal !== null
       && <RecipeCard
         infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] }
