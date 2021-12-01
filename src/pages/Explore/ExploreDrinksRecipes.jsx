@@ -24,15 +24,11 @@ function ExploreDrinksRecipes() {
   }, []);
 
   return (
-    <>
-      <div>
-        <Header title="Explorar Ingredientes" />
-        {!isLoading && <IngredientCard list={ ingredientsList } url="thecocktaildb" /> }
-      </div>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+    <div>
+      <Header title="Explorar Ingredientes" />
+      {!isLoading && <IngredientCard list={ ingredientsList } url="thecocktaildb" /> }
+      <Footer />
+    </div>
   );
 }
 

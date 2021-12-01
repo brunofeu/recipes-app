@@ -21,7 +21,7 @@ function IngredientCard({ list, url }) {
   };
 
   return (
-    <div>
+    <div className="menu-ingredients">
       <ul>
         {list.map((item, index) => (
           <li key={ index } data-testid={ `${index}-ingredient-card` }>

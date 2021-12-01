@@ -25,17 +25,13 @@ function ExploreFoodsRecipes() {
   }, []);
 
   return (
-    <>
-      <div className="ingredients-section">
-        <Header title="Explorar Ingredientes" />
-        <div className="cards-ingredients">
-          {!isLoading && <IngredientCard list={ ingredientsList } url="themealdb" /> }
-        </div>
+    <div>
+      <Header title="Explorar Ingredientes" />
+      <div>
+        {!isLoading && <IngredientCard list={ ingredientsList } url="themealdb" /> }
       </div>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
 

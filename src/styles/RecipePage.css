@@ -6,7 +6,7 @@
   margin: 0;
   width: 100%;
   padding: 0 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .header-recipe {
@@ -60,5 +60,18 @@
 .favorite-btn-img {
   height: 20px;
   /* filter: invert(100%); */
+}
+
+.recomendation-card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.carousel-btn {
+  height: 50px;
+  width: 25px;
+  border-radius: 8px;
+  background-color: rgba(252, 252, 252, 0.3);
 }
 

@@ -25,12 +25,11 @@ function Drinks() {
       fetchDrink('filter', 'i', filter);
       setFilter('');
     }
-    console.log(filter);
     fetchCategories('cocktail', 'drinks');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = ({ target }) => {
+  const handleClick = async ({ target }) => {
     const { name } = target;
     if (selected.state === false || (selected.state === true && selected.name !== name)) {
       fetchDrink('filter', 'c', name);

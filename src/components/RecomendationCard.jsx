@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+
 function RecomendationCard({ recomendations = [''], type }) {
   const ARRAY_POSITION_SIX = 6;
   const sixRecipes = recomendations.slice(0, ARRAY_POSITION_SIX);
@@ -21,28 +24,61 @@ function RecomendationCard({ recomendations = [''], type }) {
     }));
   };
 
-  return (
+  const typeLink = () => (type === 'Meal' ? 'comidas' : 'bebidas');
 
+  return (
     <div>
       <h2>Recomendadas</h2>
-      <button type="button" onClick={ handleClick } value="subtract">{'<'}</button>
-      <button type="button" onClick={ handleClick } value="add">{'>'}</button>
-      <ul>
+      <div className="recomendation-card-container">
+        <button
+          className="carousel-btn"
+          type="button"
+          onClick={ handleClick }
+          value="subtract"
+        >
+          {'<'}
+        </button>
+
         {sixRecipes.map((recipe, index) => (
-          <li
+          <Link
+            className="cards"
             key={ recipe[`id${type}`] }
-            data-testid={ `${index}-recomendation-card` }
-            id={ index }
+            to={ `/${typeLink()}/${recipe[`id${type}`]}` }
             hidden={ !indexCards.includes(index) }
           >
-            <p
-              data-testid={ `${index}-recomendation-title` }
+            <Card
+              className="card-btn"
+              id={ index }
+              style={ { borderRadius: '10px' } }
+              data-testid={ `${index}-recomendation-card` }
             >
-              { recipe[`str${type}`] }
-            </p>
-          </li>
+              <Card.Img
+                style={ { borderRadius: '10px' } }
+                className="card-image"
+                src={ recipe[`str${type}Thumb`] }
+                alt="food"
+              />
+              <Card.ImgOverlay className="card-title-overlay">
+                <Card.Title
+                  className="card-title"
+                  data-testid={ `${index}-recomendation-title` }
+                >
+                  <h4>{recipe[`str${type}`] }</h4>
+                </Card.Title>
+              </Card.ImgOverlay>
+            </Card>
+          </Link>
         ))}
-      </ul>
+        <button
+          className="carousel-btn"
+          type="button"
+          onClick={ handleClick }
+          value="add"
+        >
+          {'>'}
+        </button>
+      </div>
+
     </div>
   );
 }

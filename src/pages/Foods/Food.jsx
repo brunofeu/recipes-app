@@ -47,7 +47,6 @@ function Food() {
       setSelected({ name: '', state: false });
     }
   };
-
   return (
     <div>
       <Header title="Comidas" showSearchBtn />
