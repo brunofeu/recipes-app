@@ -160,7 +160,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
   );
 
   return (
-    <div className="recipes-container">
+    <div className="in-progress-container">
       { foodInfo.map((food) => {
         const allFood = (
           <div key={ food.idMeal }>
@@ -168,17 +168,41 @@ function FoodinProgress({ history, match: { params: { id } } }) {
               src={ food.strMealThumb }
               alt={ food.strMeal }
               data-testid="recipe-photo"
-              width="200px"
+              className="recipe-img"
             />
-            <h2 data-testid="recipe-title">{ food.strMeal }</h2>
-            <h3 data-testid="recipe-category">{ food.strCategory }</h3>
-            <p>{ link }</p>
-            <button type="button" data-testid="share-btn" onClick={ handleLinks }>
-              <img src={ shareImage } alt="botao-compartilhar" />
-            </button>
-            <button type="button" onClick={ handleFavorite }>
-              <img src={ icon } alt="icone-de-favoritar" data-testid="favorite-btn" />
-            </button>
+            <div className="in-progress-header-recipe">
+              <div className="header-recipe-title">
+                <h1 data-testid="recipe-title">{ food.strMeal }</h1>
+                <h4 data-testid="recipe-category">{ food.strCategory }</h4>
+                <p>{ link }</p>
+              </div>
+              <div className="header-recipe-btn">
+                <button
+                  className="recipe-page-btn"
+                  type="button"
+                  data-testid="share-btn"
+                  onClick={ handleLinks }
+                >
+                  <img
+                    className="favorite-btn-img"
+                    src={ shareImage }
+                    alt="botao-compartilhar"
+                  />
+                </button>
+                <button
+                  className="recipe-page-btn"
+                  type="button"
+                  onClick={ handleFavorite }
+                >
+                  <img
+                    className="favorite-btn-img"
+                    src={ icon }
+                    alt="icone-de-favoritar"
+                    data-testid="favorite-btn"
+                  />
+                </button>
+              </div>
+            </div>
             <div className="recipes-checkbox">
               <ul>
                 { ingredients.map(({ strMeasure, strIngredient }, index) => {
@@ -210,7 +234,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
               </ul>
             </div>
             <p
-              className="recipe-instruction"
+              className="recipe-detail"
               data-testid="instructions"
             >
               { food.strInstructions }
@@ -219,17 +243,15 @@ function FoodinProgress({ history, match: { params: { id } } }) {
         );
         return allFood;
       }) }
-      <div className="container-finish-btn">
-        <button
-          className="finish-recipe-btn"
-          disabled={ disable }
-          type="button"
-          data-testid="finish-recipe-btn"
-          onClick={ RedirectToRecipesMade }
-        >
-          Finalizar Receita
-        </button>
-      </div>
+      <button
+        className="finish-recipe-btn"
+        disabled={ disable }
+        type="button"
+        data-testid="finish-recipe-btn"
+        onClick={ RedirectToRecipesMade }
+      >
+        Finalizar Receita
+      </button>
     </div>
   );
 }

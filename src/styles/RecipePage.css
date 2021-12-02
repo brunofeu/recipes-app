@@ -6,7 +6,7 @@
   margin: 0;
   width: 100%;
   padding: 0 20px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .header-recipe {
@@ -74,4 +74,6 @@
   border-radius: 8px;
   background-color: rgba(252, 252, 252, 0.3);
 }
+
+
 

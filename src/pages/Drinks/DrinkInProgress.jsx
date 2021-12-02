@@ -5,7 +5,6 @@ import fetchDrinkById from '../../services/drinkAPI';
 import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
-
 import '../../styles/RecipeInProgress.css';
 
 function DrinkInProgress({ history, match: { params: { id } } }) {
@@ -55,7 +54,6 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
       });
     }
   });
-
   useEffect(() => {
     function saveInLocal() {
       let getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -72,7 +70,6 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     }
     saveInLocal();
   }, [checkArray, id]);
-
   const RedirectToRecipesMade = () => {
     const dateNow = new Date();
     const formatDate = `${dateNow}`.split(' GMT')[0];
@@ -104,7 +101,6 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     }
     history.push('/receitas-feitas');
   };
-  // Risca o ingrediente
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {
       setCheckArray([...checkArray, index]);
@@ -138,10 +134,8 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
 
   useEffect(
     () => verifyChecked(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [ingredients, checkArray],
   );
-
   const handleFavorite = () => {
     const objSave = drinkInfo.map((item) => {
       const obj = {
@@ -159,7 +153,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
   };
 
   return (
-    <div className="recipes-container">
+    <div className="in-progress-container">
       { drinkInfo.map((drink) => {
         const allDrink = (
           <div key={ drink.idDrink }>
@@ -167,19 +161,43 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
               src={ drink.strDrinkThumb }
               alt={ drink.strDrink }
               data-testid="recipe-photo"
-              width="200px"
+              className="recipe-img"
             />
-            <h1 data-testid="recipe-title">{ drink.strDrink }</h1>
-            <h2 data-testid="recipe-category">{ drink.strCategory }</h2>
-            <p>{ link }</p>
-            <button type="button" data-testid="share-btn" onClick={ handleLinks }>
-              <img src={ shareImage } alt="botao-compartilhar" />
-            </button>
-            <button type="button" onClick={ handleFavorite }>
-              <img src={ icon } alt="icone-de-favoritar" data-testid="favorite-btn" />
-            </button>
+            <div className="in-progress-header-recipe">
+              <div className="header-recipe-title">
+                <h1 data-testid="recipe-title">{ drink.strDrink }</h1>
+                <h4 data-testid="recipe-category">{ drink.strCategory }</h4>
+                <p>{ link }</p>
+              </div>
+              <div className="header-recipe-btn">
+                <button
+                  className="recipe-page-btn"
+                  type="button"
+                  data-testid="share-btn"
+                  onClick={ handleLinks }
+                >
+                  <img
+                    className="favorite-btn-img"
+                    src={ shareImage }
+                    alt="botao-compartilhar"
+                  />
+                </button>
+                <button
+                  className="recipe-page-btn"
+                  type="button"
+                  onClick={ handleFavorite }
+                >
+                  <img
+                    className="favorite-btn-img"
+                    src={ icon }
+                    alt="icone-de-favoritar"
+                    data-testid="favorite-btn"
+                  />
+                </button>
+              </div>
+            </div>
             <p
-              className="recipe-instruction"
+              className="recipe-detail"
               data-testid="instructions"
             >
               { drink.strInstructions }
@@ -218,17 +236,15 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
           }) }
         </ul>
       </div>
-      <div className="container-finish-btn">
-        <button
-          className="finish-recipe-btn"
-          disabled={ disable }
-          type="button"
-          data-testid="finish-recipe-btn"
-          onClick={ RedirectToRecipesMade }
-        >
-          Finalizar Receita
-        </button>
-      </div>
+      <button
+        className="finish-recipe-btn"
+        disabled={ disable }
+        type="button"
+        data-testid="finish-recipe-btn"
+        onClick={ RedirectToRecipesMade }
+      >
+        Finalizar Receita
+      </button>
     </div>
   );
 }
