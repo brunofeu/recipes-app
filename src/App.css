@@ -22,20 +22,6 @@ body {
   max-height: 80vh;
 }
 
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
-
 .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
@@ -74,24 +60,24 @@ body {
   }
 }
 
-.start-recipe-btn {
+/* .start-recipe-btn {
   bottom: 0;
   position: fixed;
-}
+} */
 
-.recipeImg {
+/* .recipeImg {
   height: 100px;
   width: 100px;
-}
+} */
 
-.horizontal-name {
+/* .horizontal-name {
   width: 80%;
-}
+} */
 
-.texto-riscado {
+/* .texto-riscado {
   text-decoration: line-through;
-}
+} */
 
-.share-btn {
+/* .share-btn {
   border-radius: 10px;
-}
+} */

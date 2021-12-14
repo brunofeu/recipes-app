@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton';
+import Footer from '../../components/Footer';
 import IngredientsList from '../../components/IngredientsList';
 import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
@@ -93,6 +94,7 @@ function FoodRecipes(props) {
               src={ transformToEmbedYoutube(recipe.strYoutube) }
               title="YouTube video player"
             />
+            <br />
             <RecomendationCard recomendations={ recomendations } type="Drink" />
           </div>
           <StartButton
@@ -100,6 +102,7 @@ function FoodRecipes(props) {
             inProgress={ inProgress }
             hidden={ isDone() }
           />
+          <Footer />
         </div>
       )}
     </div>
