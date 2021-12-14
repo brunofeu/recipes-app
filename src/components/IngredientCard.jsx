@@ -36,6 +36,7 @@ function IngredientCard({ list, url }) {
                 src={ `https://www.${url}.com/images/ingredients/${item[key]}-Small.png` }
                 alt={ `${item[key]}-img` }
                 data-testid={ `${index}-card-img` }
+                className="ingredient-img"
               />
               <p data-testid={ `${index}-card-name` }>{item[key]}</p>
             </button>

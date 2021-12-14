@@ -23,7 +23,7 @@ function ExploreDrinks() {
           type="button"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explorar/bebidas/ingredientes') }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Por Ingredientes
         </button>
@@ -31,7 +31,7 @@ function ExploreDrinks() {
           type="button"
           data-testid="explore-surprise"
           onClick={ handleClick }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Me Surpreenda!
         </button>

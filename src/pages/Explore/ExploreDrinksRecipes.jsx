@@ -26,7 +26,9 @@ function ExploreDrinksRecipes() {
   return (
     <div>
       <Header title="Explorar Ingredientes" />
-      {!isLoading && <IngredientCard list={ ingredientsList } url="thecocktaildb" /> }
+      <div className="menu-explore">
+        {!isLoading && <IngredientCard list={ ingredientsList } url="thecocktaildb" /> }
+      </div>
       <Footer />
     </div>
   );

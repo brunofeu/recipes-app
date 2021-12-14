@@ -27,7 +27,7 @@ function ExploreFoodsRecipes() {
   return (
     <div>
       <Header title="Explorar Ingredientes" />
-      <div>
+      <div className="menu-explore">
         {!isLoading && <IngredientCard list={ ingredientsList } url="themealdb" /> }
       </div>
       <Footer />
