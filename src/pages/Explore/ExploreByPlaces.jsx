@@ -33,31 +33,33 @@ function ExploreByPlaces() {
   return (
     <div>
       <Header title="Explorar Origem" showSearchBtn="true" />
-      {areas.length > 0
-        && (
-          <select
-            data-testid="explore-by-area-dropdown"
-            className="explore-dropdown"
-            title={ areas[0].strArea }
-            value={ selectValue }
-            onChange={ handleSelect }
-          >
-            <option data-testid="All-option">All</option>
-            {areas.map(({ strArea }, index) => (
-              <option
-                key={ index }
-                data-testid={ `${strArea}-option` }
-                value={ strArea }
-              >
-                {strArea}
-              </option>
-            ))}
-          </select>
-        )}
-      { meal !== null
-      && <RecipeCard
-        infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] }
-      />}
+      <div className="explore-by-area-container">
+        {areas.length > 0
+          && (
+            <select
+              data-testid="explore-by-area-dropdown"
+              className="explore-dropdown"
+              title={ areas[0].strArea }
+              value={ selectValue }
+              onChange={ handleSelect }
+            >
+              <option data-testid="All-option">All</option>
+              {areas.map(({ strArea }, index) => (
+                <option
+                  key={ index }
+                  data-testid={ `${strArea}-option` }
+                  value={ strArea }
+                >
+                  {strArea}
+                </option>
+              ))}
+            </select>
+          )}
+        { meal !== null
+        && <RecipeCard
+          infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] }
+        />}
+      </div>
       <Footer />
     </div>
   );

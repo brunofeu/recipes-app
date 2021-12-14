@@ -44,6 +44,12 @@
   filter: drop-shadow(2px 2px 2px #585858);
 }
 
+.explore-by-area-container {
+  position: relative;
+  top: 80px;
+  padding-bottom: 10px;
+}
+
 .explore-dropdown {
   background-color: white;
   border-radius: 10px;
@@ -52,6 +58,5 @@
   justify-content: center;
   width: 60%;
   margin: auto;
-  margin-top: 10px;
   margin-bottom: 10px;
 }

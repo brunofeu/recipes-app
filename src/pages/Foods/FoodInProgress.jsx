@@ -7,6 +7,7 @@ import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 
 import '../../styles/RecipeInProgress.css';
+import Footer from '../../components/Footer';
 
 function FoodinProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
@@ -252,6 +253,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
       >
         Finalizar Receita
       </button>
+      <Footer />
     </div>
   );
 }
