@@ -56,6 +56,8 @@ function FoodRecipes(props) {
     return checkDone.some((item) => item.id === id);
   };
 
+  const transformToEmbedYoutube = (url) => url.replace('watch?v=', 'embed/');
+
   return (
     <div>
       {!isLoading && (
@@ -85,6 +87,12 @@ function FoodRecipes(props) {
               <RecipeInstructions recipe={ recipe } />
             </div>
             <h2 data-testid="video">Video</h2>
+            <iframe
+              width="310"
+              height="200"
+              src={ transformToEmbedYoutube(recipe.strYoutube) }
+              title="YouTube video player"
+            />
             <RecomendationCard recomendations={ recomendations } type="Drink" />
           </div>
           <StartButton
