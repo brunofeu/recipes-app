@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
@@ -11,7 +11,6 @@ import RecipeContext from '../context/RecipeContext';
 function Header({ title, showSearchBtn = false }) {
   const history = useHistory();
   const { showSearchBar, setShowSearchBar } = useContext(RecipeContext);
-  // const [showSearchBar, setShowSearchBar] = useState(false);
 
   return (
     <header>
