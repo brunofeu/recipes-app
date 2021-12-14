@@ -8,6 +8,7 @@ function RecipeProvider({ children }) {
   const [page, setPage] = useState('');
   const [categories, setCategories] = useState({ meals: [], drinks: [] });
   const [filter, setFilter] = useState('');
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   const fetchMeal = async (method = 'search', option = 's', search = '') => {
     const mealURL = 'https://www.themealdb.com/api/json/v1/1/'
@@ -57,6 +58,8 @@ function RecipeProvider({ children }) {
     page,
     categories,
     filter,
+    showSearchBar,
+    setShowSearchBar,
   };
 
   return (
