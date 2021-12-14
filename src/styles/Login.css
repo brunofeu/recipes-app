@@ -1,37 +1,3 @@
-/* body {
-  background-color: rgb(46, 42, 42);
-  background-image: url('../images/wallPaper_2.jpg');
-  background-size: cover;
-  font-family: Comfortaa , sans-serif;
-  margin: 0;
-  max-width: 360px;
-  padding: 0;
-} */
-
-/* body {
-  display: flex;
-  height: 640px;
-  width: 360px;
-  background-image: url('../images/wallPaper_2.jpg');
-  background-size: cover
-} */
-
-/* header {
-  color: white;
-  display: flex;
-  font-size: 10%;
-  letter-spacing: 10%;
-  margin-left: 0%;
-  text-align: center;
-  text-transform: uppercase;
-  width: 300%;
-} */
-
-/* header h1 {
-  background-color: rgba(69, 69, 73, 0.8);
-  margin-top: 20px;
-} */
-
 .container-login {
   align-content: center;
   align-items: center;

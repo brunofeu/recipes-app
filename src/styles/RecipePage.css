@@ -74,5 +74,24 @@
   background-color: rgba(252, 252, 252, 0.3);
 }
 
+.link-copiado {
+  display: flex;
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  top: 80%;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  color: black;
+}
+
+.link-copiado p {
+  background-color: rgba(252, 252, 252, 0.95);
+  filter: drop-shadow(2px 2px 2px #585858);
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
 
 

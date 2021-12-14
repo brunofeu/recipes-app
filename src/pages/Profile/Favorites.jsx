@@ -6,6 +6,7 @@ import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
 import '../../styles/Favorites.css';
 import '../../App.css';
+import Footer from '../../components/Footer';
 
 function Favorites() {
   const [recipeFilter, setRecipesFilter] = useState([]);
@@ -42,43 +43,64 @@ function Favorites() {
   return (
     <section>
       <Header title="Receitas Favoritas" />
-      <div className="menu-favorites">
-        <button
-          type="button"
-          onClick={ handlecliclAll }
-          data-testid="filter-by-all-btn"
-        >
-          All
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickFood }
-          data-testid="filter-by-food-btn"
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickDrinks }
-          data-testid="filter-by-drink-btn"
-        >
-          Drinks
-        </button>
-
+      <div className="favorites-container">
+        <div className="favorite-recipes-menu">
+          <button
+            type="button"
+            onClick={ handlecliclAll }
+            data-testid="filter-by-all-btn"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            onClick={ handleClickFood }
+            data-testid="filter-by-food-btn"
+          >
+            Food
+          </button>
+          <button
+            type="button"
+            onClick={ handleClickDrinks }
+            data-testid="filter-by-drink-btn"
+          >
+            Drinks
+          </button>
+        </div>
         {recipeFilter.map((rec, index) => (
-          <div key={ rec.id }>
+          <div key={ rec.id } className="cards-recipe-made">
             <Link
               key={ rec.id }
               to={ `/${rec.type}s/${rec.id}` }
             >
               <img
-                className="recipeImg"
+                className="recipe-fav-img"
                 src={ rec.image }
                 alt={ rec.name }
                 data-testid={ `${index}-horizontal-image` }
               />
             </Link>
-            <div>
+            <div className="favorite-text">
+              <h4
+                data-testid={ `${index}-horizontal-top-text` }
+                className="horizontal-top-text"
+              >
+                {rec.area
+                  ? `${rec.area} - ${rec.category}` : `${rec.alcoholicOrNot}`}
+              </h4>
+              <Link
+                key={ rec.id }
+                to={ `/${rec.type}s/${rec.id}` }
+                className="horizontal-name"
+              >
+                <h2
+                  data-testid={ `${index}-horizontal-name` }
+                >
+                  {rec.name}
+                </h2>
+              </Link>
+            </div>
+            <div className="fav-share-btn">
               <ShareButton
                 clipBoard={ (`http://localhost:3000/${rec.type}s/${rec.id}`) }
                 testid={ `${index}-horizontal-share-btn` }
@@ -87,40 +109,21 @@ function Favorites() {
                 type="button"
                 onClick={ handleFavorite }
                 image={ blackHeartIcon }
+                className="recipe-page-btn"
               >
                 <img
                   alt="liked"
-                  // data-testid="favorite-btn"
+                  className="favorite-btn-img"
                   src={ blackHeartIcon }
                   id={ rec.id }
                   data-testid={ `${index}-horizontal-favorite-btn` }
                 />
               </button>
             </div>
-            <Link
-              key={ rec.id }
-              to={ `/${rec.type}s/${rec.id}` }
-            >
-              {/* <h2>{rec.name}</h2> */}
-            </Link>
-            <h4 data-testid={ `${index}-horizontal-top-text` }>
-              {rec.area
-                ? `${rec.area} - ${rec.category}` : `${rec.alcoholicOrNot}`}
-            </h4>
-            <Link
-              key={ rec.id }
-              to={ `/${rec.type}s/${rec.id}` }
-            >
-              <h2
-                data-testid={ `${index}-horizontal-name` }
-                className="horizontal-name"
-              >
-                {rec.name}
-              </h2>
-            </Link>
           </div>
         )) }
       </div>
+      <Footer />
     </section>
   );
 }
