@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ShareButton from '../../components/ShareButton';
 
@@ -32,28 +33,30 @@ function MadeRecipes() {
   return (
     <div>
       <Header title="Receitas Feitas" />
-      <div className="menu-made-recipes">
-        <button
-          type="button"
-          onClick={ handlecliclAll }
-          data-testid="filter-by-all-btn"
-        >
-          All
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickFood }
-          data-testid="filter-by-food-btn"
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          onClick={ handleClickDrinks }
-          data-testid="filter-by-drink-btn"
-        >
-          Drinks
-        </button>
+      <div className="made-recipes-container">
+        <div className="made-recipes-menu">
+          <button
+            type="button"
+            onClick={ handlecliclAll }
+            data-testid="filter-by-all-btn"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            onClick={ handleClickFood }
+            data-testid="filter-by-food-btn"
+          >
+            Food
+          </button>
+          <button
+            type="button"
+            onClick={ handleClickDrinks }
+            data-testid="filter-by-drink-btn"
+          >
+            Drinks
+          </button>
+        </div>
         { recipesFilter !== null ? recipesFilter.map((recipe, index) => (
           <div className="cards-recipe-made" key={ recipe.id }>
             <Link
@@ -64,27 +67,36 @@ function MadeRecipes() {
                 data-testid={ `${index}-horizontal-image` }
                 src={ recipe.image }
                 alt={ recipe.name }
-                className="recipe-img"
+                className="recipe-made-img"
               />
             </Link>
-            <div>
+            <div className="recipe-made-text">
               <h4
                 data-testid={ `${index}-horizontal-top-text` }
+                className="horizontal-top-text"
               >
                 {recipe.area
                   ? `${recipe.area} - ${recipe.category}` : `${recipe.alcoholicOrNot}`}
               </h4>
-              <Link
-                key={ recipe.id }
-                to={ `/${recipe.type}s/${recipe.id}` }
+              <div className="recipe-made-link-share">
+                <Link
+                  key={ recipe.id }
+                  to={ `/${recipe.type}s/${recipe.id}` }
+                  className="horizontal-name"
+                >
+                  <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>
+                </Link>
+                <ShareButton
+                  clipBoard={ (`http://localhost:3000/${recipe.type}s/${recipe.id}`) }
+                  testid={ `${index}-horizontal-share-btn` }
+                />
+              </div>
+              <p
+                data-testid={ `${index}-horizontal-done-date` }
+                className="horizontal-done-date"
               >
-                <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>
-              </Link>
-              <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
-              <ShareButton
-                clipBoard={ (`http://localhost:3000/${recipe.type}s/${recipe.id}`) }
-                testid={ `${index}-horizontal-share-btn` }
-              />
+                {recipe.doneDate}
+              </p>
               {recipe.tags.length > 0
                 ? recipe.tags.map((tag) => (
                   <span
@@ -98,6 +110,7 @@ function MadeRecipes() {
           </div>
         )) : <p>Nenhuma receita finalizada!</p> }
       </div>
+      <Footer />
     </div>
   );
 }

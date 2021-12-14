@@ -1,39 +1,64 @@
-/* .menu-made-recipes {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-  margin-left: -5%;
-  margin-top: 10px;
+.made-recipes-container {
+  position: relative;
+  top: 60px;
+  padding: 20px 0 70px;
+  background-color: rgba(92, 86, 86, 0.596);
   width: 100%;
 }
 
-.menu-made-recipes button[ type = 'button' ] {
-  align-items: center;
+.made-recipes-menu {
+  display: flex;
+  justify-content: center;
+}
+.made-recipes-menu button {
   border-radius: 10px;
-  height: 30px;
-  margin-left: 15%;
-  margin-right: 10px;
-  margin-top: 8px;
-  width: 130px;
+  flex-grow: 1;
+  margin: 1px;
 }
 
 .cards-recipe-made {
-  background-color: rgba(69, 69, 73, 0.8);
-  border: 1% solid rgba(0, 0, 0, 0.125);
-  box-shadow: var(--box-shadow);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 5%;
-  margin-top: 20%;
-  outline: var(--outline);
-  outline-offset: -1rem;
+  margin: 15px;
   text-align: center;
-  width: 100%;
-  margin-left: -100%;
+  align-items:center;
 }
 
-.recipe-img {
-  margin-top: 5%;
-} */
+.recipe-made-text {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.recipe-made-link-share {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.horizontal-top-text {
+  font-size: 16px;
+}
+
+.horizontal-name {
+  flex-grow: 1;
+  color: black;
+}
+
+.horizontal-name h2{
+  color: black;
+  font-size: 20px;
+}
+
+.horizontal-done-date {
+  font-size: 12px;
+}
+
+.recipe-made-img {
+  width: 120px;
+}
