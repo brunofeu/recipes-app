@@ -5,6 +5,13 @@ body {
   width: 360px;
 }
 
+.page-404 {
+  position: fixed;
+  top: 200px;
+  width: 300px;
+  filter: invert();
+}
+
 /* .meals {
   align-items: center;
   background: #0fa36b;
