@@ -16,6 +16,7 @@ function Drinks() {
     drink, fetchDrink, setPage, fetchCategories, categories, filter, setFilter,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
+  const infoCard = [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'];
 
   useEffect(() => {
     setPage('bebidas');
@@ -52,20 +53,16 @@ function Drinks() {
   return (
     <div>
       <Header title="Bebidas" showSearchBtn="true" />
-      <div className="menu-categories">
+      <div className="menu-container">
         <Categories
           categories={ categories.drinks }
           onClick={ handleClick }
           onAll={ fetchDrink }
         />
+        { (drink !== null)
+          ? <RecipeCard infos={ infoCard } />
+          : <FiltersNotFound /> }
       </div>
-      { (drink !== null)
-        ? (
-          <RecipeCard
-            infos={ [drink, 'idDrink', 'strDrinkThumb', 'strDrink', 'bebidas'] }
-          />
-        )
-        : <FiltersNotFound /> }
       <Footer />
     </div>
   );

@@ -1,9 +1,14 @@
 .header {
   align-items: center;
-  background-color: rgba(69, 69, 73, 0.8);
+  background-color: rgba(69, 69, 73, 0.9);
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  z-index: 40;
 }
 
 .header-button {
