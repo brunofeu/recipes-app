@@ -13,13 +13,12 @@
 }
 
 .filter-categories-btn {
-  background-color: white;
-  padding: 0 5px;
+  background-color: #efefef;
+  padding: 1px 7px;
   margin: 1px;
-  /* border: 1px solid #4f4f4f; */
   border: none;
   border-radius: 100px;
-  font-size: 15px;
+  font-size: 13px;
   color: black;
   z-index: 1;
 }
