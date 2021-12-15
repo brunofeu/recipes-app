@@ -1,7 +1,7 @@
 .searchBar-container {
   position: fixed;
   height: 100%;
-  width: 100%;
+  width: 360px;
   background-color: rgba(92, 86, 86, 0.596);
   z-index: 2;
 }
@@ -10,12 +10,13 @@
   flex-direction: column;
   display: flex;
   position: fixed;
-  top: 15vh;
+  top: 50px;
   background-color: rgba(255, 255, 255, 0.95);
-  margin: 10%;
-  width: 80%;
+  margin: 30px;
+  width: 300px;
+  height: 350px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 50px 5px  50px 50px;
   z-index: 99;
   align-items: center;
   }
@@ -26,8 +27,9 @@
 }
 
 .search-input {
-  border-radius: 4px;
+  border-radius: 10px;
   width: 200px;
+  outline: none;
 }
 
 .radio-container {
@@ -47,14 +49,23 @@
   padding: 5px;
 }
 
-
+.searchbar-btn-container {
+display: flex;
+}
 
 .search-btn {
   align-items: center;
   border-radius: 5px;
+  background-color: green;
+  border: none;
   display: flex;
   height: 35px;
   justify-content: center;
-  filter: drop-shadow(1px 1px 1px gray);
+  filter: drop-shadow(1px 1px 1px lightgray);
+  margin-right: 10px;
 }
+
+.search-btn-cancel {
+  background-color: lightcoral;
+} 
 

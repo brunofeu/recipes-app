@@ -143,14 +143,23 @@ function SearchBar() {
             <p>Primeira Letra</p>
           </label>
         </div>
-        <button
-          data-testid="exec-search-btn"
-          type="button"
-          onClick={ handleClick }
-          className="search-btn"
-        >
-          Buscar
-        </button>
+        <div className="searchbar-btn-container">
+          <button
+            data-testid="exec-search-btn"
+            type="button"
+            onClick={ handleClick }
+            className="search-btn"
+          >
+            Buscar
+          </button>
+          <button
+            type="button"
+            onClick={ () => setShowSearchBar(false) }
+            className="search-btn search-btn-cancel"
+          >
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@
   justify-content: space-around;
   padding: 8px;
   position: fixed;
-  width: 100vw;
+  width: 360px;
   z-index: 40;
   border-top: solid 1px lightgray;
 }
