@@ -1,9 +1,9 @@
-body {
+/* body {
   background-image: url('./images/wallPaper_2.jpg');
   background-size: cover;
   height: 640px;
   width: 360px;
-}
+} */
 
 .page-404 {
   position: fixed;

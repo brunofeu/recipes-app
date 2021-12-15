@@ -1,9 +1,10 @@
 .header {
   align-items: center;
-  background-color: rgba(69, 69, 73, 0.9);
+  background-color: white;
   display: flex;
+  border-bottom: solid 1px lightgray;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
   position: fixed;
   top: 0; 
   left: 0;
@@ -14,18 +15,23 @@
 .header-button {
   align-items: center;
   border-radius: 10px;
+  border: none;
   display: flex;
-  height: 45px;
+  background-color: white;
+  height: 35px;
+  width: 35px;
   justify-content: center;
-  filter: drop-shadow(1px 1px 1px gray);
+}
+
+.header-button img {
+  height: 20px;
 }
 
 .page-title {
-  color: white;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
   flex-grow: 2;
   justify-content: center;
   text-align: center;
-  filter: drop-shadow(1px 2px 3px black);
+  margin-top: 8px;
 }

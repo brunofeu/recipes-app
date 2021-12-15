@@ -1,4 +1,11 @@
+/* body {
+  height: 640px;
+  width: 360px;
+} */
+
 .container-login {
+  background-image: url('../images/wallPaper_2.jpg');
+  background-size: cover;
   align-content: center;
   align-items: center;
   display: flex;
