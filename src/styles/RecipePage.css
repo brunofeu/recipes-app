@@ -7,7 +7,6 @@
 }
 
 .header-recipe {
-  /* background-color: aqua; */
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -49,7 +48,7 @@
 }
 
 .recipe-page-btn {
-  background: white;
+  background: transparent;
   padding: 10px;
   border: none;
   border-radius: 16px;
