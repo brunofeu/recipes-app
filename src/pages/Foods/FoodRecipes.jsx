@@ -87,9 +87,9 @@ function FoodRecipes(props) {
               <IngredientsList recipe={ recipe } />
               <RecipeInstructions recipe={ recipe } />
             </div>
-            <h2 data-testid="video">Video</h2>
+            <h2 className="video-title" data-testid="video">Video</h2>
             <iframe
-              width="310"
+              width="320"
               height="200"
               src={ transformToEmbedYoutube(recipe.strYoutube) }
               title="YouTube video player"
