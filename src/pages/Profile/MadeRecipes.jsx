@@ -99,10 +99,11 @@ function MadeRecipes() {
               {recipe.tags.length > 0
                 ? recipe.tags.map((tag) => (
                   <span
+                    className="tag-text"
                     key={ tag }
                     data-testid={ `${index}-${tag}-horizontal-tag` }
                   >
-                    {tag}
+                    { tag }
                   </span>))
                 : null}
             </div>
