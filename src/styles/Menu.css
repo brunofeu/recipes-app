@@ -1,25 +1,25 @@
 .menu-container {
+  padding-bottom: 15px;
   position: relative;
   top: 70px;
-  padding-bottom: 15px;
 }
 
 .menu-categories {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 10px 0 15px 0;
   font-size: 14px;
+  justify-content: center;
+  margin: 10px 0 15px;
 }
 
 .filter-categories-btn {
   background-color: #efefef;
-  padding: 1px 7px;
-  margin: 1px;
   border: none;
   border-radius: 100px;
-  font-size: 13px;
   color: black;
+  font-size: 13px;
+  margin: 1px;
+  padding: 1px 7px;
   z-index: 1;
 }
 

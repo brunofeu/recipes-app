@@ -2,18 +2,18 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  width: 100%;
-  padding-bottom: 70px;
   min-height: 100vh;
+  padding-bottom: 70px;
+  width: 100%;
 }
 
 .in-progress-header-recipe {
+  align-items: center;
   display: flex;
+  font-size: 18px;
   justify-content: space-between;
   margin-top: 10px;
-  align-items: center;
   padding: 0 20px;
-  font-size: 18px;
 }
 
 .recipe-detail {
@@ -21,27 +21,35 @@
   text-align: justify;
 }
 
-.finish-recipe-btn:disabled{
+.finish-recipe-btn:disabled {
+
   /* background-color: gainsboro; */
+
   /* border: none; */
+
   /* border-radius: 4px; */
+
   /* bottom: 50px; */
+
   /* font-size: 19px; */
+
   /* width: 100%; */
+
   /* position: fixed; */
+
   /* z-index: 1; */
-  display:none;
+  display: none;
 }
 
-.finish-recipe-btn:enabled{
-  bottom: 50px;
+.finish-recipe-btn:enabled {
   background-color: rgb(4, 170, 107);
-  position: fixed;
-  width: 100%;
   border: none;
   border-radius: 4px;
-  font-size: 19px;
+  bottom: 50px;
   color: white;
+  font-size: 19px;
+  position: fixed;
+  width: 100%;
   z-index: 1;
 }
 

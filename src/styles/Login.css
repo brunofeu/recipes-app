@@ -4,10 +4,10 @@
 } */
 
 .container-login {
-  background-image: url('../images/wallPaper_2.jpg');
-  background-size: cover;
   align-content: center;
   align-items: center;
+  background-image: url('../images/wallPaper_2.jpg');
+  background-size: cover;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -60,9 +60,9 @@
   border-radius: 10px;
   color: white;
   display: flex;
-  margin: auto;
   font-size: 16px;
   height: 40px;
+  margin: auto;
   margin-bottom: 2%;
   outline: none;
   width: 80%;

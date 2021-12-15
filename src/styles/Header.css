@@ -1,26 +1,26 @@
 .header {
   align-items: center;
   background-color: white;
-  display: flex;
   border-bottom: solid 1px lightgray;
+  display: flex;
   justify-content: space-between;
+  left: 0;
   padding: 10px 20px 5px;
   position: fixed;
-  top: 0; 
-  left: 0;
+  top: 0;
   width: 360px;
   z-index: 40;
 }
 
 .header-button {
   align-items: center;
-  border-radius: 10px;
-  border: none;
-  display: flex;
   background-color: white;
+  border: none;
+  border-radius: 10px;
+  display: flex;
   height: 35px;
-  width: 35px;
   justify-content: center;
+  width: 35px;
 }
 
 .header-button img {
@@ -28,10 +28,10 @@
 }
 
 .page-title {
-  font-size: 20px;
   display: flex;
   flex-grow: 2;
+  font-size: 20px;
   justify-content: center;
-  text-align: center;
   margin-top: 8px;
+  text-align: center;
 }
