@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton';
+import Footer from '../../components/Footer';
 import IngredientsList from '../../components/IngredientsList';
 import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
@@ -91,6 +92,7 @@ function DrinkRecipes(props) {
             inProgress={ inProgress }
             hidden={ isDone() }
           />
+          <Footer />
         </div>
       )}
     </div>

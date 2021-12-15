@@ -30,7 +30,7 @@ function ShareButton({ testid, clipBoard }) {
           className="favorite-btn-img"
         />
       </button>
-      { linkCopy && <p>Link copiado!</p> }
+      { linkCopy && <div className="link-copiado"><p>Link copiado!</p></div> }
     </div>
   );
 }

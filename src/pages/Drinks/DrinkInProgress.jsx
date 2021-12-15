@@ -6,6 +6,7 @@ import shareImage from '../../images/shareIcon.svg';
 import { getFavorites, handleFavoriteAuxiliar }
   from '../../auxiliar/AuxiliarFunctions';
 import '../../styles/RecipeInProgress.css';
+import Footer from '../../components/Footer';
 
 function DrinkInProgress({ history, match: { params: { id } } }) {
   const auxiliar = () => {
@@ -211,7 +212,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
           { ingredients.map(({ strMeasure, strIngredient }, i) => {
             const ingrID = `${i}-ingredient-step`;
             return (
-              <li key={ i }>
+              <li key={ i } className="list-checkbox">
                 <label
                   data-testid={ ingrID }
                   htmlFor={ i }
@@ -245,6 +246,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
       >
         Finalizar Receita
       </button>
+      <Footer />
     </div>
   );
 }

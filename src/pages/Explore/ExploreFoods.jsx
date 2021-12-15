@@ -23,7 +23,7 @@ function ExploreFoods() {
           type="button"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explorar/comidas/ingredientes') }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Por Ingredientes
         </button>
@@ -31,7 +31,7 @@ function ExploreFoods() {
           type="button"
           data-testid="explore-by-area"
           onClick={ () => history.push('/explorar/comidas/area') }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Por Local de Origem
         </button>
@@ -39,7 +39,7 @@ function ExploreFoods() {
           type="button"
           data-testid="explore-surprise"
           onClick={ handleClick }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Me Surpreenda!
         </button>

@@ -15,7 +15,7 @@ function ExploreMenu() {
           type="button"
           data-testid="explore-food"
           onClick={ () => history.push('/explorar/comidas') }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Explorar Comidas
         </button>
@@ -23,7 +23,7 @@ function ExploreMenu() {
           type="button"
           data-testid="explore-drinks"
           onClick={ () => history.push('/explorar/bebidas') }
-          className="explore-recipe"
+          className="explore-recipe-btn"
         >
           Explorar Bebidas
         </button>

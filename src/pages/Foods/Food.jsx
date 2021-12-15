@@ -15,6 +15,7 @@ function Food() {
     meal, fetchMeal, setPage, fetchCategories, categories, filter, setFilter,
   } = useContext(RecipeContext);
   const [selected, setSelected] = useState({ name: '', state: false });
+  const infoCard = [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'];
 
   useEffect(() => {
     setPage('comidas');
@@ -50,14 +51,16 @@ function Food() {
   return (
     <div>
       <Header title="Comidas" showSearchBtn />
-      <Categories
-        categories={ categories.meals }
-        onClick={ handleClick }
-        onAll={ fetchMeal }
-      />
-      { (meal !== null)
-        ? <RecipeCard infos={ [meal, 'idMeal', 'strMealThumb', 'strMeal', 'comidas'] } />
-        : <FiltersNotFound /> }
+      <div className="menu-container">
+        <Categories
+          categories={ categories.meals }
+          onClick={ handleClick }
+          onAll={ fetchMeal }
+        />
+        { (meal !== null)
+          ? <RecipeCard infos={ infoCard } />
+          : <FiltersNotFound /> }
+      </div>
       <Footer />
     </div>
   );

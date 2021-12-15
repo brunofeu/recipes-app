@@ -1,11 +1,9 @@
 .in-progress-container {
-  background-color: rgba(92, 86, 86, 0.596);
-  color: white;
   display: flex;
   flex-direction: column;
   margin: 0;
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 70px;
   min-height: 100vh;
 }
 
@@ -15,6 +13,7 @@
   margin-top: 10px;
   align-items: center;
   padding: 0 20px;
+  font-size: 18px;
 }
 
 .recipe-detail {
@@ -22,27 +21,20 @@
   text-align: justify;
 }
 
-.recipes-checkbox {
-  display: flex;
-  flex-wrap: wrap;
-}
-.recipes-checkbox li {
-  list-style-type: none;
-}
-
 .finish-recipe-btn:disabled{
-  background-color: gainsboro;
-  border: none;
-  border-radius: 4px;
-  bottom: 0;
-  font-size: 19px;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
+  /* background-color: gainsboro; */
+  /* border: none; */
+  /* border-radius: 4px; */
+  /* bottom: 50px; */
+  /* font-size: 19px; */
+  /* width: 100%; */
+  /* position: fixed; */
+  /* z-index: 1; */
+  display:none;
 }
 
 .finish-recipe-btn:enabled{
-  bottom: 0;
+  bottom: 50px;
   background-color: rgb(4, 170, 107);
   position: fixed;
   width: 100%;
@@ -53,11 +45,15 @@
   z-index: 1;
 }
 
-.container-finish-btn {
-  display: flex;
-  justify-content: center;
+.list-checkbox {
+  font-size: 15px;
+  list-style-type: none;
 }
 
-.list-checkbox {
-  font-size: 12px;
+.texto-riscado {
+  text-decoration: line-through;
+}
+
+.recipe-page-btn {
+  margin: 5px;
 }

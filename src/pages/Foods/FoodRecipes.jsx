@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton';
+import Footer from '../../components/Footer';
 import IngredientsList from '../../components/IngredientsList';
 import RecipeInstructions from '../../components/RecipeInstructions';
 import RecomendationCard from '../../components/RecomendationCard';
@@ -56,6 +57,8 @@ function FoodRecipes(props) {
     return checkDone.some((item) => item.id === id);
   };
 
+  const transformToEmbedYoutube = (url) => url.replace('watch?v=', 'embed/');
+
   return (
     <div>
       {!isLoading && (
@@ -84,7 +87,14 @@ function FoodRecipes(props) {
               <IngredientsList recipe={ recipe } />
               <RecipeInstructions recipe={ recipe } />
             </div>
-            <h2 data-testid="video">Video</h2>
+            <h2 className="video-title" data-testid="video">Video</h2>
+            <iframe
+              width="320"
+              height="200"
+              src={ transformToEmbedYoutube(recipe.strYoutube) }
+              title="YouTube video player"
+            />
+            <br />
             <RecomendationCard recomendations={ recomendations } type="Drink" />
           </div>
           <StartButton
@@ -92,6 +102,7 @@ function FoodRecipes(props) {
             inProgress={ inProgress }
             hidden={ isDone() }
           />
+          <Footer />
         </div>
       )}
     </div>

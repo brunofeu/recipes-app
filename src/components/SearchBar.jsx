@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
@@ -13,6 +14,7 @@ function SearchBar() {
     page,
     meal,
     drink,
+    setShowSearchBar,
   } = useContext(RecipeContext);
 
   const [data, setData] = useState({
@@ -87,6 +89,7 @@ function SearchBar() {
     } if (data.selectedOption === 'firstLetter') {
       fetchRecipe('search', 'f', data.searchText);
     }
+    setShowSearchBar(false);
   };
 
   useEffect(() => {
@@ -96,14 +99,16 @@ function SearchBar() {
 
   return (
     <div className="searchBar-container">
-      <input
-        data-testid="search-input"
-        labelText="Procurar..."
-        name="search"
-        onChange={ handleChange }
-      />
-      <div>
-        <div>
+      <div className="search-bar">
+        <spam>Procurar</spam>
+        <input
+          className="search-input"
+          data-testid="search-input"
+          labelText="Procurar..."
+          name="search"
+          onChange={ handleChange }
+        />
+        <div className="radio-container">
           <label htmlFor="byIngridient">
             <input
               data-testid="ingredient-search-radio"
@@ -115,8 +120,6 @@ function SearchBar() {
             />
             <p>Ingrediente</p>
           </label>
-        </div>
-        <div>
           <label htmlFor="byName">
             <input
               data-testid="name-search-radio"
@@ -128,27 +131,35 @@ function SearchBar() {
             />
             <p>Nome</p>
           </label>
+          <label htmlFor="byFirstLetter">
+            <input
+              data-testid="first-letter-search-radio"
+              id="byFirstLetter"
+              name="radioBtn"
+              type="radio"
+              value="firstLetter"
+              onClick={ handleCheck }
+            />
+            <p>Primeira Letra</p>
+          </label>
         </div>
-        <label htmlFor="byFirstLetter">
-          <input
-            data-testid="first-letter-search-radio"
-            id="byFirstLetter"
-            name="radioBtn"
-            type="radio"
-            value="firstLetter"
-            onClick={ handleCheck }
-          />
-          <p>Primeira Letra</p>
-        </label>
-      </div>
-      <div className="search-btn">
-        <button
-          data-testid="exec-search-btn"
-          type="button"
-          onClick={ handleClick }
-        >
-          Buscar
-        </button>
+        <div className="searchbar-btn-container">
+          <button
+            data-testid="exec-search-btn"
+            type="button"
+            onClick={ handleClick }
+            className="search-btn"
+          >
+            Buscar
+          </button>
+          <button
+            type="button"
+            onClick={ () => setShowSearchBar(false) }
+            className="search-btn search-btn-cancel"
+          >
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   );

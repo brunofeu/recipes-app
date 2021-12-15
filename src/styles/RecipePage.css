@@ -1,23 +1,24 @@
 .recipe-container {
-  background-color: rgba(92, 86, 86, 0.596);
-  color: white;
   display: flex;
   flex-direction: column;
   margin: 0;
   width: 100%;
-  padding: 0 20px;
-  padding-bottom: 40px;
+  padding: 0 15px 100px;
 }
 
 .header-recipe {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  align-items: center;
+}
+
+.header-recipe-title h1{
+  font-size: 18px;
 }
 
 .header-recipe-title h4{
-  color:silver
+  color:silver;
+  font-size: 16px;
 }
 
 .header-recipe-btn {
@@ -28,38 +29,50 @@
 }
 
 .recipe-img {
-  height: 150px;
+  height: 180px;
   object-fit: cover;
   width: 100%;
 }
 
 .recipes-detail {
   text-align: justify;
+  font-size: 15px;
+}
+
+.recipes-detail h2{
+  font-size: 18px;
+}
+
+.video-title {
+  font-size: 18px
 }
 
 .recipe-page-btn {
-  background: white;
+  background: transparent;
   padding: 10px;
   border: none;
   border-radius: 16px;
 }
 
 .start-recipe-btn {
-  bottom: 0;
+  bottom: 50px;
   background-color: rgb(4, 170, 107);
   position: fixed;
   width: 100%;
-  display: inline-block;
   border: none;
   border-radius: 4px;
-  font-size: 19px;
+  font-size: 18px;
   color: white;
-  z-index: 1;
+  z-index: 41;
 }
 
 .favorite-btn-img {
   height: 20px;
   /* filter: invert(100%); */
+}
+
+.recomendation-title {
+  font-size: 18px;
 }
 
 .recomendation-card-container {
@@ -71,8 +84,27 @@
 .carousel-btn {
   height: 50px;
   width: 25px;
+  border: none;
+  background-color: white;
+}
+
+.link-copiado {
+  display: flex;
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  top: 80%;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  color: black;
+}
+
+.link-copiado p {
+  background-color: rgba(252, 252, 252, 0.95);
+  filter: drop-shadow(1px 1px 1px #585858);
+  padding: 3px 8px;
   border-radius: 8px;
-  background-color: rgba(252, 252, 252, 0.3);
 }
 
 

@@ -1,3 +1,9 @@
+.menu-container {
+  position: relative;
+  top: 70px;
+  padding-bottom: 15px;
+}
+
 .menu-categories {
   display: flex;
   justify-content: center;
@@ -7,17 +13,22 @@
 }
 
 .filter-categories-btn {
-  background-color: white;
-  padding: 0 24px;
+  background-color: #efefef;
+  padding: 1px 7px;
   margin: 1px;
-  border: 1px solid #4f4f4f;
-  border-radius: 4px;
-  font-size: 17px;
+  border: none;
+  border-radius: 100px;
+  font-size: 13px;
   color: black;
   z-index: 1;
 }
 
 .recipe-filter-selected {
-  background-color: brown;
+  background-color: black;
   color: white;
+}
+
+.filter-not-found {
+  font-size: 26px;
+  text-align: center;
 }
