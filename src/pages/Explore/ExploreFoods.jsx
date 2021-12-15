@@ -12,7 +12,7 @@ function ExploreFoods() {
 
   const handleClick = async () => {
     const randomRecipe = await fetchRandom('themealdb');
-    history.push(`/comidas/${randomRecipe[0].idMeal}`);
+    history.push(`/recipes-app/comidas/${randomRecipe[0].idMeal}`);
   };
 
   return (
@@ -22,7 +22,7 @@ function ExploreFoods() {
         <button
           type="button"
           data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explorar/comidas/ingredientes') }
+          onClick={ () => history.push('/recipes-app/explorar/comidas/ingredientes') }
           className="explore-recipe-btn"
         >
           Por Ingredientes
@@ -30,7 +30,7 @@ function ExploreFoods() {
         <button
           type="button"
           data-testid="explore-by-area"
-          onClick={ () => history.push('/explorar/comidas/area') }
+          onClick={ () => history.push('/recipes-app/explorar/comidas/area') }
           className="explore-recipe-btn"
         >
           Por Local de Origem

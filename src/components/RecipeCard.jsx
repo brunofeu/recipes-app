@@ -15,7 +15,7 @@ function RecipeCard(props) {
   return (
     <section className="cards-section">
       {recipes.map((recipe, index) => (
-        <Link className="cards" key={ recipe[`${id}`] } to={ `/${type}/${recipe[id]}` }>
+        <Link className="cards" key={ recipe[`${id}`] } to={ `/recipes-app/${type}/${recipe[id]}` }>
           <Card
             className="card-btn"
             id={ recipe[id] }

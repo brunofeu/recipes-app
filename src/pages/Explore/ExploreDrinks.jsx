@@ -12,7 +12,7 @@ function ExploreDrinks() {
 
   const handleClick = async () => {
     const randomRecipe = await fetchRandom('thecocktaildb');
-    history.push(`/bebidas/${randomRecipe[0].idDrink}`);
+    history.push(`/recipes-app/bebidas/${randomRecipe[0].idDrink}`);
   };
 
   return (
@@ -22,7 +22,7 @@ function ExploreDrinks() {
         <button
           type="button"
           data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explorar/bebidas/ingredientes') }
+          onClick={ () => history.push('/recipes-app/explorar/bebidas/ingredientes') }
           className="explore-recipe-btn"
         >
           Por Ingredientes

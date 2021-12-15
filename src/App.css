@@ -1,7 +1,12 @@
+* {
+  max-width: 360px;
+}
+
 body {
   height: 640px;
   width: 360px;
 }
+
 
 .page-404 {
   position: fixed;

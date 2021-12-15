@@ -43,7 +43,7 @@ function RecomendationCard({ recomendations = [''], type }) {
           <Link
             className="cards"
             key={ recipe[`id${type}`] }
-            to={ `/${typeLink()}/${recipe[`id${type}`]}` }
+            to={ `/recipes-app/${typeLink()}/${recipe[`id${type}`]}` }
             hidden={ !indexCards.includes(index) }
           >
             <Card
