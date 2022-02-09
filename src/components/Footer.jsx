@@ -8,7 +8,7 @@ import '../styles/Footer.css';
 const Footer = () => (
   <footer data-testid="footer" className="fixedbottom">
     <Link
-      to="/recipes-app/comidas"
+      to="/comidas"
     >
       <img
         src={ mealIcon }
@@ -18,7 +18,7 @@ const Footer = () => (
     </Link>
 
     <Link
-      to="/recipes-app/bebidas"
+      to="/bebidas"
     >
       <img
         src={ drinkIcon }
@@ -27,7 +27,7 @@ const Footer = () => (
       />
     </Link>
     <Link
-      to="/recipes-app/explorar"
+      to="/explorar"
     >
       <img
         alt="explore"

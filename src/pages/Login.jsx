@@ -28,7 +28,7 @@ function Login() {
     localStorage.setItem('mealsToken', JSON.stringify(1));
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
     localStorage.setItem('user', JSON.stringify({ email }));
-    history.push('/recipes-app/comidas');
+    history.push('/comidas');
   };
 
   return (

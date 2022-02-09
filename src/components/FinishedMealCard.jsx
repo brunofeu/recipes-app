@@ -18,7 +18,7 @@ function FinishedMealCard({ card, index }) {
         />
       </Link>
       <h3 data-testid={ `${index}-horizontal-top-text` }>{ `${area} - ${category}` }</h3>
-      <Link to={ `/recipes-app/comidas/${id}` }>
+      <Link to={ `/comidas/${id}` }>
         <h2 data-testid={ `${index}-horizontal-name` }>{ name }</h2>
       </Link>
       <p data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</p>
@@ -27,7 +27,7 @@ function FinishedMealCard({ card, index }) {
         alt="share"
         src={ shareImage }
         data-testid={ `${index}-horizontal-share-btn` }
-        onClick={ () => handleShare(setLink, `/recipes-app/comidas/${id}`) }
+        onClick={ () => handleShare(setLink, `/comidas/${id}`) }
       />
       <p>{ link }</p>
       { tags.map((item) => {

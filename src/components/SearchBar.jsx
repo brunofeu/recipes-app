@@ -42,7 +42,7 @@ function SearchBar() {
     const magicNumber = 1;
 
     if (goTo === magicNumber) {
-      history.push(`/recipes-app/comidas/${meal[0].idMeal}`);
+      history.push(`/comidas/${meal[0].idMeal}`);
     }
   };
 
@@ -51,7 +51,7 @@ function SearchBar() {
     const magicNumber = 1;
 
     if (goTo === magicNumber) {
-      history.push(`/recipes-app/bebidas/${drink[0].idDrink}`);
+      history.push(`/bebidas/${drink[0].idDrink}`);
     }
   };
 

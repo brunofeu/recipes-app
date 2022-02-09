@@ -71,7 +71,7 @@ function Favorites() {
           <div key={ rec.id } className="cards-recipe-made">
             <Link
               key={ rec.id }
-              to={ `/recipes-app/${rec.type}s/${rec.id}` }
+              to={ `/${rec.type}s/${rec.id}` }
             >
               <img
                 className="recipe-fav-img"

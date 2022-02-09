@@ -17,7 +17,7 @@ function IngredientCard({ list, url }) {
 
   const handleClick = async ({ target: { name } }) => {
     setFilter(name);
-    history.push(`/recipes-app/${type}`);
+    history.push(`/${type}`);
   };
 
   return (

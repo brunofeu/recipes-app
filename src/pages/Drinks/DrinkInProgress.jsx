@@ -100,7 +100,7 @@ function DrinkInProgress({ history, match: { params: { id } } }) {
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, ...objToSave]));
     }
-    history.push('/recipes-app/receitas-feitas');
+    history.push('/receitas-feitas');
   };
   const riskCompleteds = ({ target: { value, checked } }, index) => {
     if (checked) {

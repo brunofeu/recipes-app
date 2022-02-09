@@ -60,7 +60,7 @@ function MadeRecipes() {
           <div className="cards-recipe-made" key={ recipe.id }>
             <Link
               key={ recipe.id }
-              to={ `/recipes-app/${recipe.type}s/${recipe.id}` }
+              to={ `/${recipe.type}s/${recipe.id}` }
             >
               <img
                 data-testid={ `${index}-horizontal-image` }
@@ -80,7 +80,7 @@ function MadeRecipes() {
               <div className="recipe-made-link-share">
                 <Link
                   key={ recipe.id }
-                  to={ `/recipes-app/${recipe.type}s/${recipe.id}` }
+                  to={ `/${recipe.type}s/${recipe.id}` }
                   className="horizontal-name"
                 >
                   <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>

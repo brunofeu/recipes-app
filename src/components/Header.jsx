@@ -18,7 +18,7 @@ function Header({ title, showSearchBtn = false }) {
         <button
           className="header-button"
           type="button"
-          onClick={ () => history.push('/recipes-app/perfil') }
+          onClick={ () => history.push('/perfil') }
         >
           <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
         </button>

@@ -15,7 +15,7 @@ function Profile() {
 
   const handleClick = () => {
     localStorage.clear();
-    history.push('/recipes-app/');
+    history.push('/');
   };
 
   return (
@@ -29,7 +29,7 @@ function Profile() {
             className="profile-btn"
             type="button"
             data-testid="profile-done-btn"
-            onClick={ () => history.push('/recipes-app/receitas-feitas') }
+            onClick={ () => history.push('/receitas-feitas') }
           >
             Receitas Feitas
           </button>
@@ -37,7 +37,7 @@ function Profile() {
             className="profile-btn"
             type="button"
             data-testid="profile-favorite-btn"
-            onClick={ () => history.push('/recipes-app/receitas-favoritas') }
+            onClick={ () => history.push('/receitas-favoritas') }
           >
             Receitas Favoritas
           </button>

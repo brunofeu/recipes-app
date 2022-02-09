@@ -87,7 +87,7 @@ function FoodinProgress({ history, match: { params: { id } } }) {
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, ...objToSave]));
     }
-    history.push('/recipes-app/receitas-feitas');
+    history.push('/receitas-feitas');
   };
 
   useEffect(() => {
