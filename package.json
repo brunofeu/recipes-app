@@ -2,6 +2,7 @@
   
   "name": "recipes-app-test",
   "version": "0.1.0",
+  "description": "App de receitas desenvolvido para dispositivos moveis que é alimentado por duas API's distintas",
   "private": true,
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
